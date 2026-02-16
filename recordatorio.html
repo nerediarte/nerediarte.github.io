@@ -76,7 +76,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <form action = "procesar_formulario.php" method="POST" data-type="pedido"> <!--FORMULARIO EN CANVA???-->
                 <div class="form-group product-qty" style="white-space: nowrap;">
                   <label for="cantidad">Cantidad:</label>
                   <input type="text" value="100" id="cantidad" name="nombre" required>
@@ -157,7 +157,7 @@
         <div class="col-md-6">
           <div class="game_box">
             <!--figure><img src="images/contact.png"/></figure-->
-            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+            <form action="procesar_formulario.php" method="POST" data-type="contacto">
               <!--div class="form-group">
                 <label for="Nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -170,8 +170,8 @@
                 <label for="mensaje">Mensaje:</label>
                 <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
               </div>
+              <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
             </form>
-            <div class="send_btn"><button id="send-btn" type="button"><img src="images/send_button.png"></button></div>
           </div>
         </div>
       </div>
@@ -182,6 +182,7 @@
   </div>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/sheets-form.js"></script>
   <style>
     #email-modal-overlay {
       position: fixed;
@@ -252,7 +253,9 @@
   <div id="email-modal-overlay">
     <div class="email-modal">
       <h3>Dirección de correo</h3>
-      <input type="email" id="email-input" placeholder="tu@email.com" required>
+      <form data-type="correo">
+        <input type="email" id="email-input" placeholder="tu@email.com" required>
+      </form>
       <div class="modal-buttons">
         <button class="btn-confirm" type="button" id="email-confirm-btn">Confirmar</button>
         <button class="btn-cancel" type="button" id="email-cancel-btn">Cancelar</button>

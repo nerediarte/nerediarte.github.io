@@ -66,7 +66,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <form action="procesar_formulario.php" method="POST" data-type="pedido">
                 <div class="form-group">
                   <label for="Nombre">Nombre (Apellido opcional):</label>
                   <input type="text" id="nombre" name="nombre" required>
@@ -140,7 +140,7 @@
         <div class="col-md-6">
           <div class="game_box">
             <!--figure><img src="images/contact.png"/></figure-->
-            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+            <form action="procesar_formulario.php" method="POST" data-type="contacto">
               <!--div class="form-group">
                 <label for="Nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -153,8 +153,8 @@
                 <label for="mensaje">Mensaje:</label>
                 <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
               </div>
+              <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
             </form>
-            <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
           </div>
         </div>
       </div>
@@ -165,6 +165,7 @@
   </div>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/sheets-form.js"></script>
   <script>
     const products = {
       calendario: {
