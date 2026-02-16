@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nerediarte</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="main-layout">
+  <!--header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Calendarios</h1>
+        </div>
+        <div class="col-md-6 text-right">
+          <a href="index.html" class="read_more">Volver al sitio</a>
+        </div>
+      </div>
+    </div>
+  </header-->
+  <section class="slider_section">
+    <div class="banner_main">
+      <img src="images/encargos.png" alt="#"/>
+    </div>
+  </section>
+  <!-- Categories -->
+  <!-- WELLCOME -->
+  <img src="images/decorationSectionI.png" style="position: absolute; width: 100%;">
+  <section id="game" class="greenSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2>«El arte de acompañar»</h2>
+            <p>Si buscas algo personal para ti o para los tuyos, has llegado al lugar indicado.</p>
+            <p>Láminas, libretas, grabados en madera… todo diseñado con ilustraciones cristianas, llenas de significado y belleza.</p>
+            <p>Cuéntame lo que necesitas y juntos lo haremos realidad.</p>
+            <p style="font-style: italic;"><br>Atención: No realizo retratos de personas reales; todo el trabajo se centra en motivos cristianos y personajes bíblicos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="galeria" class="galeria">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="titlepage">
+            <h2>GALERÍA DE PEDIDOS</h2>
+            <span><img src="images/separador.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/1.png"></div>
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/2.png"></div>
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/3.png"></div>
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/4.png"></div>
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/5.png"></div>
+      <div class="col-md-4 padding_bottom"><img src="images/galeriaEncargos/6.png"></div>  
+      </div>
+    </div>
+  </div>
+  <!-- PERSONALIZACION -->
+  <div id="personalizacion">
+  <section class="greenSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2>¿Cómo funciona?</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/designprocess.png" class="img_caracteristicas">
+  </section>
+  <section class="greenSection" style="background-color: #fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2 style="color: #4b5745;">Cómo trabajo</h2>
+            <span class="starSpan"><img src="images/separador.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
+  </section>
+  <section class="formsSection">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
+            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
+            <p> Me pondré en contacto lo antes posible.</p>
+            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
+          </div>
+          
+        </div>
+        <div class="virgencita"><img src="images/drawDecoI.png"></div>
+        <div class="col-md-6">
+          <div class="game_box">
+            <!--figure><img src="images/contact.png"/></figure-->
+            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <!--div class="form-group">
+                <label for="Nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div-->
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
+              </div>
+            </form>
+            <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- END PERSONALIZACION -->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

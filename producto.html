@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producto</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="main-layout">
+  <nav class = "navbar navbar-expand-lg menuBar">
+    <div class="container">
+      <div class="row">
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">INICIO</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">TIENDA</a>
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar">
+            <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
+          </div>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">NEREDIARTE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="content">
+    <section class="product-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1">
+            <img id="product-image0" class="thumbnail" style="margin-top:0;">
+            <img id="product-image1" class="thumbnail">
+          </div>
+          <div class="col-md-6">
+            <img id="product-image" style="width:100%;">
+          </div>
+          <div class="col-md-5">
+            <div class="titlepage" style="margin-right: 50px;">
+              <h2 id="product-title">Producto</h2>
+              <h3 id="product-price"></h3>
+              <p id="product-subtitle" style="font-weight: 400;"></p>
+              <p id="product-description" style="text-align: justify;"></p>
+              <p>Cada mes incluye:</p>
+              <div>
+                <ul>
+                  <li><p id="product-caract1"></p></li>
+                  <li><p id="product-caract2"></p></li>
+                  <li><p id="product-caract3"></p></li>
+                </ul>
+              </div>
+              <p style="font-weight: 400;">¿No sabes como gestionar la impresión o prefieres no preocuparte?</p>
+              <p>Yo me encargo de todo: impresión y el envío, asesorándote para elegir la opción que mejor se adapte a ti. Recibirás tus recordatorios directamente en casa.</p>
+            </div>
+            <div class="game_box">
+              <!--figure><img src="images/contact.png"/></figure-->
+              <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+                <div class="form-group">
+                  <label for="Nombre">Nombre (Apellido opcional):</label>
+                  <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="Fecha">Fecha:</label>
+                      <input type="text" id="fecha" name="fecha" required>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group" style="padding-left:0;">
+                      <label for="Parroquia">Parroquia:</label>
+                      <input type="text" id="parroquia" name="parroquia" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Texto">Texto:</label>
+                  <input type="text" id="texto" name="texto" required>
+                </div>
+                <label><input type="checkbox" id="checkbox" class="checkbox"/> Solicitar impresión y envío</label>
+                <button type="submit"><img src="images/buy_button.png" alt="Agregar al carrito"></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- PERSONALIZACION -->
+  <div id="personalizacion">
+  <section class="greenSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2>¿Quieres un diseño personalizado?</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/designprocess.png" class="img_caracteristicas">
+  </section>
+  <section class="greenSection" style="background-color: #fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2 style="color: #4b5745;">Cómo trabajo</h2>
+            <span class="starSpan"><img src="images/separador.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
+  </section>
+  <section class="formsSection">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
+            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
+            <p> Me pondré en contacto lo antes posible.</p>
+            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
+          </div>
+          
+        </div>
+        <div class="virgencita"><img src="images/drawDecoI.png"></div>
+        <div class="col-md-6">
+          <div class="game_box">
+            <!--figure><img src="images/contact.png"/></figure-->
+            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <!--div class="form-group">
+                <label for="Nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div-->
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
+              </div>
+            </form>
+            <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- END PERSONALIZACION -->
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    const products = {
+      calendario: {
+        title: "CALENDARIO 2026",
+        subtitle: "Calendario de pared A4 horizontal (A3 abierto)",
+        description: "Prepárate para acompañar a María durante todo el año, y poder admirarla cada mes con una ilustración que te llevará a lo más profundo de su corazón. Mirándola a ella podremos descubrir todos sus síes al Señor en el amor, en la paciencia, en la humildad... Y así contagiarnos aunque sea un poquito para poder llevarlo a nuestro día a día.",
+        caract1: "Santo de cada día.",
+        caract2: "Festivos y solemnidades.",
+        caract3: "Color litúrgico de cada día.",
+        image: "images/calendarioII.png",
+        image0: "images/calendarioIII.png",
+        price: "€10 EUR",
+      },
+      agenda: {
+        title: "AGENDA 2026",
+        subtitle: "Agenda anual 2026 (Enero-Diciembre) tamaño A5.",
+        description: "Con estas agendas no solo podrás planificarte durante todo el curso a la perfección, sino que podrás hacerlo de la mano de Jesús y los apóstoles en una aventura que nos acercará juntos al corazón de Cristo.",
+        caract1: "Un evangelio acompañado de una ilustración, una reflexión y un reto.",
+        caract2: "Calendario con festivos marcados.",
+        caract3: "Planificación semanal con objetivos diarios.",
+        image: "images/agendaI.png",
+        image0: "images/calendarioIII.png",
+        price: "€20 EUR",
+      },
+    };
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    const productId = getQueryParam('product');
+    if (products[productId]) {
+      const product = products[productId];
+      document.getElementById('product-title').textContent = product.title;
+      document.getElementById('product-subtitle').textContent = product.subtitle;
+      document.getElementById('product-description').textContent = product.description;
+      document.getElementById('product-caract1').textContent = product.caract1;
+      document.getElementById('product-caract2').textContent = product.caract2;
+      document.getElementById('product-caract3').textContent = product.caract3;
+      document.getElementById('product-image').src = product.image;
+      document.getElementById('product-image0').src = product.image0;
+      document.getElementById('product-price').textContent = product.price;
+    } else {
+      document.getElementById('product-title').textContent = "Producto no encontrado";
+    }
+    // Add click listeners for small images
+    document.getElementById('product-image0').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image1').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+  </script>
+</body>
+</html>

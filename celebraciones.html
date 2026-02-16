@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendarios</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .category.selected { font-weight: bold; }
+    .menuBar { background-color: rgba(255,255,255,0.8); }
+    .menuBar.opaque { background-color: rgba(255,255,255,1); }
+    .menuBar.transparent { background-color: rgba(255,255,255,0.6); }
+  </style>
+</head>
+<body class="main-layout">
+  <!--header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Calendarios</h1>
+        </div>
+        <div class="col-md-6 text-right">
+          <a href="index.html" class="read_more">Volver al sitio</a>
+        </div>
+      </div>
+    </div>
+  </header-->
+  <nav class = "navbar navbar-expand-lg menuBar">
+    <div class="container">
+      <div class="row">
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">INICIO</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">TIENDA</a>
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar">
+            <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
+          </div>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">NEREDIARTE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="slider_section">
+    <div class="banner_main">
+      <img src="images/celebraciones.png" alt="#"/>
+    </div>
+  </section>
+  <!-- Categories -->
+  <!--CARACTERISTICAS-->
+  <section class="recordatorios">
+    <div class="container-fluid" style="padding:0;">
+      <img src="images/recordatorios_caract.png"></img>
+        <!--div class="row" style="position: relative;"> CUANDO TENGA TIEMPO AÑADIR LETRA "REAL" PARA Q SE VEA MEJOR
+          <div class="ms-auto">
+            <h1 class="caract">Diseño personalizable</h1>
+          </div>
+        </div-->
+      </div>
+  </section>
+  <!--PRODUCTOS-->
+  <section class="spanTitle" style="padding-bottom:0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="titlepage">
+            <h2>DISEÑOS DISPONIBLES</h2>
+              <span style="justify-content: center;"><img src="images/separador.png" style="width: 50%;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="products">
+    <div class="row">
+      <div class="col-md-2">
+        <h1 id="todas" class="category selected" onclick="selectCategory('todas')" style="cursor: pointer;">Todo</h1>
+        <h1 id="bautizos" class="category" onclick="selectCategory('bautizos')" style="cursor: pointer;">Bautizos</h1>
+        <h1 id="comuniones" class="category" onclick="selectCategory('comuniones')" style="cursor: pointer;">Comuniones</h1>
+        <!--h2 id="confirmaciones">Confirmaciones</h2-->
+      </div>
+      <div class="col-md-10">
+        <div id="bautizos-products" class="products-content row" style="display:none;">
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProduct('jesusito')" style="cursor: pointer;">
+              <img src="images/bautizo1.png">
+              <h3> NIÑO JESÚS</h3>
+              <h5>€35 EUR </h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProduct('almudena')" style="cursor: pointer;">
+              <img src="images/bautizo2.png">
+              <h3>VIRGEN DE LA ALMUDENA</h3>
+              <h5>€35 EUR </h5>
+            </div>
+          </div>
+        </div>
+        <div id="comuniones-products" class="products-content row" style="display:none;">
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProduct('clasico')" style="cursor: pointer;">
+              <img src="images/comunion2_0.png">
+              <h3>CLÁSICO</h3>
+              <h5>€35  EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProduct('vintage')" style="cursor: pointer;">
+              <img src="images/comunion1_0.png">
+              <h3>VINTAGE</h3>
+              <h5>€35  EUR</h5>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProduct('virgencita')" style="cursor: pointer;">
+              <img src="images/comunion3_0.png">
+              <h3>VIRGENCITA</h3>
+              <h5>€35  EUR</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    <!-- PERSONALIZACION -->
+  <div id="personalizacion">
+  <section class="greenSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2>¿Quieres un diseño personalizado?</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/designprocess.png" class="img_caracteristicas">
+  </section>
+  <section class="greenSection" style="background-color: #fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2 style="color: #4b5745;">Cómo trabajo</h2>
+            <span class="starSpan"><img src="images/separador.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
+  </section>
+  <section class="formsSection">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
+            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
+            <p> Me pondré en contacto lo antes posible.</p>
+            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
+          </div>
+          
+        </div>
+        <div class="virgencita"><img src="images/drawDecoI.png"></div>
+        <div class="col-md-6">
+          <div class="game_box">
+            <!--figure><img src="images/contact.png"/></figure-->
+            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <!--div class="form-group">
+                <label for="Nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div-->
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
+              </div>
+            </form>
+            <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- END PERSONALIZACION -->
+  
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    function selectCategory(cat) {
+      // Remove selected from all categories
+      document.querySelectorAll('.category').forEach(el => el.classList.remove('selected'));
+      // Add selected to clicked
+      document.getElementById(cat).classList.add('selected');
+      // Hide all products
+      document.querySelectorAll('.products-content').forEach(el => el.style.display = 'none');
+      // Show selected products
+      if (cat === 'todas') {
+        document.querySelectorAll('.products-content').forEach(el => el.style.display = 'flex');
+      } else {
+        document.getElementById(cat + '-products').style.display = 'flex';
+      }
+    }
+    // Initialize with todas selected
+    selectCategory('todas');
+    // Hover effect for images
+    document.querySelectorAll('.preview').forEach(preview => {
+      const img = preview.querySelector('img');
+      if (img) {
+        const normalSrc = img.src;
+        let hoverSrc;
+        if (normalSrc.includes('comunion2_0.png')) {
+          hoverSrc = 'images/comunion2_1.png';
+        } else if (normalSrc.includes('comunion1_0.png')){
+          hoverSrc ='images/comunion1_1.png';
+        } else if (normalSrc.includes('comunion3_0.png')){
+          hoverSrc ='images/comunion3_1.png';
+        } else if (normalSrc.includes('bautizo1.png')){
+          hoverSrc = 'images/bautizo1_2.png';
+        } else if (normalSrc.includes('bautizo2.png')){
+          hoverSrc = 'images/bautizo2_2.png';
+        } else {
+          //hoverSrc = normalSrc.replace('.png', '_hover.png');
+        }
+        preview.addEventListener('mouseenter', () => {
+          img.src = hoverSrc;
+          img.style.transition = 'ease-in-out 0.9s';
+        });
+        preview.addEventListener('mouseleave', () => img.src = normalSrc);
+      }
+    });
+    function goToProduct(id) {
+      window.location.href = 'recordatorio.html?product=' + id;
+    }
+    // Hover effect for menuBar transparency on slider image
+    const sliderImg = document.querySelector('.banner_main img');
+    const menuBar = document.querySelector('.menuBar');
+    // Make menuBar more opaque when slider_section is in view
+    const sliderSection = document.querySelector('.slider_section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          menuBar.classList.remove('opaque');
+        } else {
+          menuBar.classList.add('opaque');
+        }
+      });
+    });
+    observer.observe(sliderSection);
+  </script>
+</body>
+</html>

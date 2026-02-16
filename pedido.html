@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedido</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      background: #f9f9f9;
+      padding: 40px 20px;
+    }
+    .order-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .order-image {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .order-image img {
+      max-width: 25%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .order-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .order-title h1 {
+      color: #4b5745;
+      font-size: 28px;
+      margin: 0;
+    }
+    .order-subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #666;
+      font-size: 16px;
+    }
+    .order-list {
+      margin: 30px 0;
+      padding: 0 20px;
+    }
+    .order-list li {
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .order-separator {
+      height: 2px;
+      background: #e0e0e0;
+      margin: 30px 0;
+    }
+    .order-text {
+      text-align: center;
+      margin: 30px 0;
+      color: #333;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .order-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .order-buttons button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .order-buttons .btn-primary {
+      background: #4b5745;
+      color: #fff;
+    }
+    .order-buttons .btn-primary:hover {
+      background: #3a4232;
+    }
+    .order-buttons .btn-secondary {
+      background: #e0e0e0;
+      color: #333;
+    }
+    .order-buttons .btn-secondary:hover {
+      background: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <div class="order-container">
+    <!-- Primera imagen -->
+    <div class="order-image">
+      <img src="images/avatar.png" alt="Pedido">
+    </div>
+
+    <!-- Título y subtítulo -->
+    <div class="order-title">
+      <h1>¡Pedido reallizado con éxito!</h1>
+    </div>
+    <div class="order-subtitle">
+      <p>Detalles de tu compra</p>
+    </div>
+
+    <!-- Segunda imagen -->
+    <div class="order-image">
+      <img src="images/drawDecoI.png" alt="Decoración">
+    </div>
+
+    <!-- Lista de 5 elementos -->
+    <ul class="order-list">
+      <li><strong>Correo electrónico:</strong> <span id="user-email">-</span></li>
+      <li><strong>Producto:</strong> Recordatorio de comunión Vintage</li>
+      <li><strong>Cantidad:</strong> 100 unidades</li>
+      <li><strong>Precio unitario:</strong> €1.50</li>
+      <li><strong>Entrega:</strong> Dentro de 48 horas</li>
+    </ul>
+
+    <!-- Separador -->
+    <div class="order-separator"></div>
+
+    <!-- Texto -->
+    <div class="order-text">
+      <p>Gracias por tu compra. Recibirás un email de confirmación en breve con los detalles del pedido e instrucciones de pago.</p>
+    </div>
+
+    <!-- Dos botones -->
+    <div class="order-buttons">
+      <button class="btn-primary">Confirmar Pedido</button>
+      <button class="btn-secondary">Continuar Comprando</button>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Recuperar y mostrar email del localStorage
+    window.addEventListener('DOMContentLoaded', function() {
+      const userEmail = localStorage.getItem('userEmail');
+      const emailSpan = document.getElementById('user-email');
+      if(userEmail) {
+        emailSpan.textContent = userEmail;
+      } else {
+        emailSpan.textContent = 'No disponible';
+      }
+    });
+    
+    // Botones de acción
+    document.querySelectorAll('.order-buttons button').forEach(function(btn, index) {
+      btn.addEventListener('click', function() {
+        if(index === 0) {
+          // Confirmar Pedido - aquí irías al pago
+          alert('Redirigiendo a PayPal o tu pasarela de pago...');
+        } else {
+          // Continuar Comprando
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

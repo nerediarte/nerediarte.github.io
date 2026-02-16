@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producto</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    #overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:2000}
+    #overlay .modal{background:#fff;padding:20px;border-radius:8px;max-width:90%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+    #overlay .modal p{margin:0 0 12px;color:#333}
+    #overlay .modal button{padding:8px 14px;border-radius:6px;border:none;background:#4b5745;color:#fff;cursor:pointer}
+  </style>
+</head>
+<body class="main-layout">
+  <nav class = "navbar navbar-expand-lg menuBar">
+    <div class="container">
+      <div class="row">
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">INICIO</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">TIENDA</a>
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
+        </div>
+        <div class="ms-auto">
+          <div class="fixed-bar">
+            <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
+          </div>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
+        </div>
+        <div class="ms-auto">
+          <a class="fixed-bar" href="">NEREDIARTE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="content">
+    <section class="product-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1">
+            <img id="product-image0" class="thumbnail" style="margin-top:0;">
+            <img id="product-image1" class="thumbnail">
+            <img id="product-image2" class="thumbnail">
+            <img id="product-image3" class="thumbnail">
+            <img id="product-image4" class="thumbnail">
+          </div>
+          <div class="col-md-6">
+            <img id="product-image" style="width:100%;">
+          </div>
+          <div class="col-md-5">
+            <div class="titlepage">
+              <h2 style="display: inline;">Recordatorio de comunión: </h2>
+              <h2 id="product-title" style="display: inline;">Producto</h2>
+              <span style="margin:0; white-space: nowrap;">
+                <h3>€</h3>
+                <h3 id="product-price"></h3>
+                <h3> EUR</h3>
+              </span>
+              <p style="font-weight: 400; margin: 25px 0;">Recordatorios personalizables.</p>
+              <p>Tarjeta A6 de 300 g/m² impresa a dos caras con acabado estucado mate.</p>              
+              <!--div class="qty-input">
+	              <button class="qty-count qty-count-minus" data-action="minus" type="button">-</button>
+	              <input class="product-qty" type="number" name="product-qty" min="0" max="1000" value="1">
+	              <button class="qty-count qty-count-add" data-action="add" type="button">+</button>
+              </div-->
+              
+            </div>
+            <div class="game_box">
+              <!--figure><img src="images/contact.png"/></figure-->
+              <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+                <div class="form-group product-qty" style="white-space: nowrap;">
+                  <label for="cantidad">Cantidad:</label>
+                  <input type="text" value="100" id="cantidad" name="nombre" required>
+                  <p>Subtotal: €<span id="subtotal">0</span> EUR</p>
+                </div>
+                <span style="display:flex; height: 25px;"></span>
+                <div class="form-group">
+                  <label for="Nombre">Nombre (Apellido opcional):</label>
+                  <input type="text" id="nombre" name="nombre"> <!--poner el required-->
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="Fecha">Fecha:</label>
+                      <input type="text" id="fecha" name="fecha">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group" style="padding-left:0;">
+                      <label for="Parroquia">Parroquia:</label>
+                      <input type="text" id="parroquia" name="parroquia">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Texto">Texto:</label>
+                  <input type="text" id="texto" name="texto" value="Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.">
+                </div>
+                <span style="display:flex; height: 25px;"></span>
+                <button type="submit" href="pedido.html"><img src="images/pedido_button.png"></button>
+                <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- PERSONALIZACION -->
+  <div id="personalizacion">
+  <section class="greenSection">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2>¿Quieres un diseño personalizado?</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/designprocess.png" class="img_caracteristicas">
+  </section>
+  <section class="greenSection" style="background-color: #fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="paragraph">
+            <h2 style="color: #4b5745;">Cómo trabajo</h2>
+            <span class="starSpan"><img src="images/separador.png"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
+  </section>
+  <section class="formsSection">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
+            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
+            <p> Me pondré en contacto lo antes posible.</p>
+            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
+          </div>
+          
+        </div>
+        <div class="virgencita"><img src="images/drawDecoI.png"></div>
+        <div class="col-md-6">
+          <div class="game_box">
+            <!--figure><img src="images/contact.png"/></figure-->
+            <form action = "procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <!--div class="form-group">
+                <label for="Nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div-->
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
+              </div>
+            </form>
+            <div class="send_btn"><button id="send-btn" type="button"><img src="images/send_button.png"></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- END PERSONALIZACION -->
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <style>
+    #email-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    #email-modal-overlay .email-modal {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+    #email-modal-overlay .email-modal h3 {
+      color: #4b5745;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    #email-modal-overlay .email-modal input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    #email-modal-overlay .email-modal input:focus {
+      outline: none;
+      border-color: #4b5745;
+      box-shadow: 0 0 0 3px rgba(75, 87, 69, 0.1);
+    }
+    #email-modal-overlay .email-modal .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    #email-modal-overlay .email-modal button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    #email-modal-overlay .email-modal .btn-confirm {
+      background: #4b5745;
+      color: #fff;
+      flex: 1;
+    }
+    #email-modal-overlay .email-modal .btn-confirm:hover {
+      background: #3a4232;
+    }
+    #email-modal-overlay .email-modal .btn-cancel {
+      background: #e0e0e0;
+      color: #333;
+      flex: 1;
+    }
+    #email-modal-overlay .email-modal .btn-cancel:hover {
+      background: #d0d0d0;
+    }
+  </style>
+  <div id="email-modal-overlay">
+    <div class="email-modal">
+      <h3>Dirección de correo</h3>
+      <input type="email" id="email-input" placeholder="tu@email.com" required>
+      <div class="modal-buttons">
+        <button class="btn-confirm" type="button" id="email-confirm-btn">Confirmar</button>
+        <button class="btn-cancel" type="button" id="email-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const products = {
+      jesusito: {
+        title: "NIÑO JESÚS",
+        image: "images/bautizo1.png",
+        image0: "images/bautizo1_0.png",
+        image1: "images/bautizo1_2.png",
+        price: "€35 EUR",
+      },
+      almudena: {
+        title: "VIRGEN DE LA ALMUDENA",
+        image: "images/bautizo2.png",
+        image0: "images/bautizo2_0.png",
+        image1: "images/bautizo2_2.png",
+        price: "€35 EUR",
+      },
+      clasico: {
+        title: "CLÁSICO",
+        image: "images/comunion2.png",
+        image0: "images/comunion2_0.png",
+        image1: "images/comunion2_1.png",
+        image2: "images/comunion2_2.png",
+        image3: "images/comunion2_3.png",
+        image4: "images/comunion2_4.png",
+        price: "1.50",
+      },
+      vintage: {
+        title: "VINTAGE",
+        image: "images/comunion1.png",
+        image0: "images/comunion1_0.png",
+        image1: "images/comunion1_1.png",
+        image2: "images/comunion1_2.png",
+        image3: "images/comunion1_3.png",
+        image4: "images/comunion1_4.png",
+        price: "1.50",
+      },
+      virgencita: {
+        title: "VIRGENCITA",
+        image: "images/comunion3.png",
+        image0: "images/comunion3_0.png",
+        image1: "images/comunion3_1.png",
+        image2: "images/comunion1_2.png",
+        image3: "images/comunion1_3.png",
+        image4: "images/comunion3_4.png",
+        price: "1.75",
+      }
+    };
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    const productId = getQueryParam('product');
+    if (products[productId]) {
+      const product = products[productId];
+      document.getElementById('product-title').textContent = product.title;
+      document.getElementById('product-image').src = product.image;
+      document.getElementById('product-image0').src = product.image0;
+      document.getElementById('product-image1').src = product.image1;
+      document.getElementById('product-image2').src = product.image2;
+      document.getElementById('product-image3').src = product.image3;
+      document.getElementById('product-image4').src = product.image4;
+      document.getElementById('product-price').textContent = product.price;
+      updateSubtotal()
+    } else {
+      document.getElementById('product-title').textContent = "Producto no encontrado";
+    }
+    // Add click listeners for small images
+    document.getElementById('product-image0').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image1').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image2').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image3').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image4').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+
+    // Event listener para cantidad
+    document.getElementById('cantidad').addEventListener('input', updateSubtotal);
+    function updateSubtotal() {
+      const cantidad = parseInt(document.getElementById('cantidad').value);
+      const precio = parseFloat(document.getElementById('product-price').textContent);
+      const subtotal = (cantidad * precio).toFixed(2);
+      document.getElementById('subtotal').textContent = subtotal;
+    }
+
+    // Modal de email
+    const emailModalOverlay = document.getElementById('email-modal-overlay');
+    const emailInput = document.getElementById('email-input');
+    const emailConfirmBtn = document.getElementById('email-confirm-btn');
+    const emailCancelBtn = document.getElementById('email-cancel-btn');
+    
+    // Event listener para el formulario de producto
+    const productForm = document.querySelector('form[action="procesar_formulario.php"]');
+    if(productForm) {
+      productForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        emailModalOverlay.style.display = 'flex';
+        emailInput.focus();
+      });
+    }
+    
+    // Confirmar email -> enviar datos al endpoint PHP y guardar pedido
+    emailConfirmBtn.addEventListener('click', function() {
+      const email = emailInput.value.trim();
+      if(!(email && email.includes('@'))) {
+        alert('Por favor, introduce un email válido.');
+        emailInput.focus();
+        return;
+      }
+      const payload = {
+        type: 'order',
+        email: email,
+        productTitle: document.getElementById('product-title').textContent || '',
+        productPrice: document.getElementById('product-price').textContent || '',
+        cantidad: document.getElementById('cantidad') ? document.getElementById('cantidad').value : '',
+        nombre: document.getElementById('nombre') ? document.getElementById('nombre').value : '',
+        fecha: document.getElementById('fecha') ? document.getElementById('fecha').value : '',
+        parroquia: document.getElementById('parroquia') ? document.getElementById('parroquia').value : '',
+        texto: document.getElementById('texto') ? document.getElementById('texto').value : '',
+        subtotal: document.getElementById('subtotal') ? document.getElementById('subtotal').textContent : ''
+      };
+      fetch('procesar_formulario.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      }).then(resp => resp.json()).then(data => {
+        if(data && data.success) {
+          localStorage.setItem('userEmail', email);
+          // Opcional: mostrar número de pedido antes de redirigir
+          window.location.href = 'pedido.html';
+        } else {
+          alert('Error al guardar el pedido. Inténtalo de nuevo.');
+        }
+      }).catch(() => {
+        alert('Error al conectar con el servidor.');
+      });
+    });
+    
+    // Cancelar
+    emailCancelBtn.addEventListener('click', function() {
+      emailModalOverlay.style.display = 'none';
+      emailInput.value = '';
+    });
+    
+    // Cerrar modal al hacer click fuera
+    emailModalOverlay.addEventListener('click', function(e) {
+      if(e.target === emailModalOverlay) {
+        emailModalOverlay.style.display = 'none';
+        emailInput.value = '';
+      }
+    });
+    
+    // Permitir envío con Enter
+    emailInput.addEventListener('keypress', function(e) {
+      if(e.key === 'Enter') {
+        emailConfirmBtn.click();
+      }
+    });
+
+    // Enviar formulario de contacto / consulta (botón Send)
+    const sendBtn = document.getElementById('send-btn');
+    if(sendBtn) {
+      sendBtn.addEventListener('click', function() {
+        const contactEmail = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+        const mensaje = document.getElementById('mensaje') ? document.getElementById('mensaje').value.trim() : '';
+        if(!contactEmail || !contactEmail.includes('@')) {
+          alert('Introduce un email válido.');
+          return;
+        }
+        const payload = {
+          type: 'contact',
+          email: contactEmail,
+          mensaje: mensaje,
+          // Adjuntar información del producto si existe
+          productTitle: document.getElementById('product-title') ? document.getElementById('product-title').textContent : '',
+          productPrice: document.getElementById('product-price') ? document.getElementById('product-price').textContent : '',
+          cantidad: document.getElementById('cantidad') ? document.getElementById('cantidad').value : ''
+        };
+        fetch('procesar_formulario.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        }).then(r => r.json()).then(resp => {
+          if(resp && resp.success) {
+            alert('Mensaje enviado. Gracias. Tu número de referencia: ' + resp.order_number);
+            // limpiar campos
+            if(document.getElementById('email')) document.getElementById('email').value = '';
+            if(document.getElementById('mensaje')) document.getElementById('mensaje').value = '';
+          } else {
+            alert('Error al enviar. Inténtalo de nuevo.');
+          }
+        }).catch(() => alert('Error al conectar con el servidor.'));
+      });
+    }
+
+  </script>
+</body>
+</html>
