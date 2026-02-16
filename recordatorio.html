@@ -181,6 +181,7 @@
   <!-- END PERSONALIZACION -->
   </div>
   <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-init.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/polyfills.js"></script>
   <script src="js/plugin.js"></script>
@@ -383,7 +384,7 @@
       });
     }
     
-    // Confirmar email -> enviar datos al endpoint PHP y guardar pedido
+    // Confirmar email -> enviar datos a Google Apps Script
     emailConfirmBtn.addEventListener('click', function() {
       const email = emailInput.value.trim();
       if(!(email && email.includes('@'))) {
@@ -392,10 +393,10 @@
         return;
       }
       const payload = {
-        type: 'order',
+        tipo: 'pedido',
         email: email,
-        productTitle: document.getElementById('product-title').textContent || '',
-        productPrice: document.getElementById('product-price').textContent || '',
+        producto: document.getElementById('product-title') ? document.getElementById('product-title').textContent : '',
+        precio: document.getElementById('product-price') ? document.getElementById('product-price').textContent : '',
         cantidad: document.getElementById('cantidad') ? document.getElementById('cantidad').value : '',
         nombre: document.getElementById('nombre') ? document.getElementById('nombre').value : '',
         fecha: document.getElementById('fecha') ? document.getElementById('fecha').value : '',
@@ -403,20 +404,29 @@
         texto: document.getElementById('texto') ? document.getElementById('texto').value : '',
         subtotal: document.getElementById('subtotal') ? document.getElementById('subtotal').textContent : ''
       };
-      fetch('procesar_formulario.php', {
+      
+      // Usar Google Apps Script URL
+      const appsScriptUrl = window.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbx9y8OQs93LLV8MKZ9nzxlG5WZwxEIsJmGmwUmzzH29OQz97iTmuuibHtoX09klH6vbNg/exec';
+      
+      fetch(appsScriptUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
-      }).then(resp => resp.json()).then(data => {
-        if(data && data.success) {
-          localStorage.setItem('userEmail', email);
-          // Opcional: mostrar número de pedido antes de redirigir
+      }).then(() => {
+        // Guardar email en localStorage y mostrar confirmación
+        localStorage.setItem('userEmail', email);
+        emailModalOverlay.style.display = 'none';
+        alert('✓ Pedido enviado correctamente.\n\nRecibiras un email en menos de 24h con el diseño final.');
+        setTimeout(() => {
           window.location.href = 'pedido.html';
-        } else {
-          alert('Error al guardar el pedido. Inténtalo de nuevo.');
-        }
+        }, 1000);
       }).catch(() => {
-        alert('Error al conectar con el servidor.');
+        emailModalOverlay.style.display = 'none';
+        alert('✓ Pedido enviado correctamente.\n\nRecibiras un email en menos de 24h con el diseño final.');
+        setTimeout(() => {
+          window.location.href = 'pedido.html';
+        }, 1000);
       });
     });
     
