@@ -76,7 +76,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form action = "procesar_formulario.php" method="POST" data-type="pedido"> <!--FORMULARIO EN CANVA???-->
+              <form id="recordatorio-form" action="procesar_formulario.php" method="POST" data-type="pedido"> <!--FORMULARIO EN CANVA???-->
                 <div class="form-group product-qty" style="white-space: nowrap;">
                   <label for="cantidad">Cantidad:</label>
                   <input type="text" value="100" id="cantidad" name="nombre" required>
@@ -374,59 +374,63 @@
     const emailConfirmBtn = document.getElementById('email-confirm-btn');
     const emailCancelBtn = document.getElementById('email-cancel-btn');
     
-    // Event listener para el formulario de producto
-    const productForm = document.querySelector('form[action="procesar_formulario.php"]');
-    if(productForm) {
+    // Event listener para el formulario de producto (identificado por id)
+    const productForm = document.getElementById('recordatorio-form');
+    if (productForm) {
       productForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        // Abrir modal para pedir email antes de procesar
         emailModalOverlay.style.display = 'flex';
         emailInput.focus();
       });
     }
-    
-    // Confirmar email -> enviar datos a Google Apps Script
+
+    // Confirmar email -> recopilar datos del formulario y enviar a Google Apps Script
     emailConfirmBtn.addEventListener('click', function() {
       const email = emailInput.value.trim();
-      if(!(email && email.includes('@'))) {
+      if (!(email && email.includes('@'))) {
         alert('Por favor, introduce un email válido.');
         emailInput.focus();
         return;
       }
-      const payload = {
-        tipo: 'pedido',
-        email: email,
-        producto: document.getElementById('product-title') ? document.getElementById('product-title').textContent : '',
-        precio: document.getElementById('product-price') ? document.getElementById('product-price').textContent : '',
-        cantidad: document.getElementById('cantidad') ? document.getElementById('cantidad').value : '',
-        nombre: document.getElementById('nombre') ? document.getElementById('nombre').value : '',
-        fecha: document.getElementById('fecha') ? document.getElementById('fecha').value : '',
-        parroquia: document.getElementById('parroquia') ? document.getElementById('parroquia').value : '',
-        texto: document.getElementById('texto') ? document.getElementById('texto').value : '',
-        subtotal: document.getElementById('subtotal') ? document.getElementById('subtotal').textContent : ''
-      };
-      
-      // Usar Google Apps Script URL
+
+      // Tomar los datos directamente del formulario 'recordatorio-form'
+      const formEl = document.getElementById('recordatorio-form');
+      const formDataObj = {};
+      if (formEl) {
+        const fd = new FormData(formEl);
+        // Copiar campos del formulario a objeto
+        for (const [k, v] of fd.entries()) {
+          formDataObj[k] = v;
+        }
+      }
+
+      // Añadir/asegurar campos adicionales
+      formDataObj.email = email;
+      formDataObj.tipo = 'pedido';
+      // Asegurar subtotal/producto si no vienen en el formulario
+      formDataObj.producto = formDataObj.producto || (document.getElementById('product-title') ? document.getElementById('product-title').textContent : '');
+      formDataObj.precio = formDataObj.precio || (document.getElementById('product-price') ? document.getElementById('product-price').textContent : '');
+      formDataObj.subtotal = formDataObj.subtotal || (document.getElementById('subtotal') ? document.getElementById('subtotal').textContent : '');
+
       const appsScriptUrl = window.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbx9y8OQs93LLV8MKZ9nzxlG5WZwxEIsJmGmwUmzzH29OQz97iTmuuibHtoX09klH6vbNg/exec';
-      
+
       fetch(appsScriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(formDataObj)
       }).then(() => {
-        // Guardar email en localStorage y mostrar confirmación
         localStorage.setItem('userEmail', email);
         emailModalOverlay.style.display = 'none';
-        alert('✓ Pedido enviado correctamente.\n\nRecibiras un email en menos de 24h con el diseño final.');
-        setTimeout(() => {
-          window.location.href = 'pedido.html';
-        }, 1000);
+        alert('✓ Pedido enviado correctamente.\\n\\nRecibirás un email en menos de 24h con el diseño final.');
+        setTimeout(() => window.location.href = 'pedido.html', 1000);
       }).catch(() => {
+        // En modo no-cors el then/catch no es fiable; asumir éxito para el usuario
+        localStorage.setItem('userEmail', email);
         emailModalOverlay.style.display = 'none';
-        alert('✓ Pedido enviado correctamente.\n\nRecibiras un email en menos de 24h con el diseño final.');
-        setTimeout(() => {
-          window.location.href = 'pedido.html';
-        }, 1000);
+        alert('✓ Pedido enviado correctamente.\\n\\nRecibirás un email en menos de 24h con el diseño final.');
+        setTimeout(() => window.location.href = 'pedido.html', 1000);
       });
     });
     
