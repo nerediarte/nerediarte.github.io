@@ -84,7 +84,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form id="recordatorio-form" action="procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
+              <form id="recordatorio-form"> <!--FORMULARIO EN CANVA???-->
                 <div class="form-group product-qty" style="white-space: nowrap;">
                   <label for="cantidad">Cantidad:</label>
                   <input type="text" value="100" id="cantidad" name="nombre" required>
@@ -115,7 +115,7 @@
                 </div>
                 <span style="display:flex; height: 25px;"></span>
             </form>
-            <button id="pedido-btn" onclick="document.getElementById('email-modal-overlay').style.display='flex'"><img src="images/pedido_button.png"></button>
+            <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>
             <!--div >
                 <a class="btn" id="pedido-btn" href="#email-modal-overlay" style="text-align:left; margin-left: 5px;"><img src="images/pedido_button.png" style="width: 75%;"></a>
             </div-->
@@ -264,12 +264,12 @@
   <div id="email-modal-overlay">
     <div class="email-modal">
       <h3>Dirección de correo</h3>
-      <form data-type="correo">
-        <input type="email" id="email-input" placeholder="tu@email.com" required>
-      </form>
+      <input type="text" id="mail"> 
+        <!--input id="email-input"-->
+
       <div class="modal-buttons">
-        <button class="btn-confirm" type="submit" id="email-confirm-btn">Confirmar</button>
-        <button class="btn-cancel" type="button" id="email-cancel-btn">Cancelar</button>
+        <button class="btn-confirm" id="email-confirm-btn" onclick="procesarInfo()">Confirmar</button>
+        <button class="btn-cancel" id="email-cancel-btn">Cancelar</button>
       </div>
     </div>
   </div>
@@ -375,37 +375,47 @@
       document.getElementById('subtotal').textContent = subtotal;
     }
 
-    // Overlay (pedido) open/close handlers
-    (function(){
-      const pedidoBtn = document.getElementById('pedido-btn');
-      const overlay = document.getElementById('overlay');
-      const closeBtn = document.getElementById('overlay-close-btn');
+    const perror = document.createElement('p');
+    perror.style.height = '10px';
+    perror.style.color = 'red';
+    perror.style.fontSize = '14px';
+    perror.style.marginTop = '10px';
+    perror.textContent = "Por favor, completa todos los campos para habilitar el botón de pedido.";
+    document.getElementById('texto').parentNode.appendChild(perror);
+    perror.style.visibility = 'hidden';
+    
+    function enterEmail(){
+      const overlay = document.getElementById('email-modal-overlay');
 
       const nombre = document.getElementById('nombre');
       const fecha = document.getElementById('fecha');
       const parroquia = document.getElementById('parroquia');
 
-      if (!pedidoBtn || !overlay) return;
-      pedidoBtn.addEventListener('click', function(e){
-        console.log(nombre.textContent);
-        if(nombre == "" || fecha == "" || parroquia == "") {
-          const mensaje = document.createElement('p');
-          mensaje.style.color = 'red';
-          mensaje.style.fontSize = '14px';
-          mensaje.style.marginTop = '10px';
-          mensaje.textContent = "Por favor, completa todos los campos para habilitar el botón de pedido.";
-          pedidoBtn.parentNode.appendChild(mensaje);
-        } else {
-          e.preventDefault();
-          overlay.style.display = 'flex';
+      if(nombre.value == "" || fecha.value == "" || parroquia.value == ""){
+          if(perror.style.visibility ==  'hidden')
+          {
+              perror.style.visibility = 'visible';
+          }
+        return;
+      } 
+      overlay.style.display = 'flex';
+    }
+
+    document.addEventListener('keyup', (e) => {
+      if(perror.style.visibility ==  'visible') {
+            perror.style.visibility = 'hidden';
         }
-        
-      });
-      if (closeBtn) closeBtn.addEventListener('click', function(){ overlay.style.display = 'none'; });
-      overlay.addEventListener('click', function(e){ if (e.target === overlay) overlay.style.display = 'none'; });
-    })();
+    });
 
+    function procesarInfo() {
+      const nombre = document.getElementById('nombre').value;
+      const fecha = document.getElementById('fecha').value;
+      const parroquia = document.getElementById('parroquia').value;
+      const mail = document.getElementById('mail').value;
 
+      console.log(nombre, fecha, parroquia, mail);
+      
+    }
 
   </script>
 </body>
