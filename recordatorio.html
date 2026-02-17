@@ -14,6 +14,14 @@
     #overlay .modal p{margin:0 0 12px;color:#333}
     #overlay .modal button{padding:8px 14px;border-radius:6px;border:none;background:#4b5745;color:#fff;cursor:pointer}
   </style>
+  <div id="overlay" style="display:none;">
+    <div class="modal">
+      <p>Tu pedido ha sido recibido. En menos de 24h recibirás un email con el diseño final y las instrucciones de pago.</p>
+      <div style="margin-top:12px;">
+        <button type="button" id="overlay-close-btn">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </head>
 <body class="main-layout">
   <nav class = "navbar navbar-expand-lg menuBar">
@@ -30,7 +38,7 @@
         </div>
         <div class="ms-auto">
           <div class="fixed-bar">
-            <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
+            <button href="index.html"><img src="images/avatar.png" alt="#"></button>
           </div>
         </div>
         <div class="ms-auto">
@@ -76,7 +84,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form id="recordatorio-form" action="procesar_formulario.php" method="POST" data-type="pedido"> <!--FORMULARIO EN CANVA???-->
+              <form id="recordatorio-form" action="procesar_formulario.php" method="POST"> <!--FORMULARIO EN CANVA???-->
                 <div class="form-group product-qty" style="white-space: nowrap;">
                   <label for="cantidad">Cantidad:</label>
                   <input type="text" value="100" id="cantidad" name="nombre" required>
@@ -85,19 +93,19 @@
                 <span style="display:flex; height: 25px;"></span>
                 <div class="form-group">
                   <label for="Nombre">Nombre (Apellido opcional):</label>
-                  <input type="text" id="nombre" name="nombre"> <!--poner el required-->
+                  <input type="text" id="nombre" name="nombre" required> <!--poner el required-->
                 </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="Fecha">Fecha:</label>
-                      <input type="text" id="fecha" name="fecha">
+                      <input type="text" id="fecha" name="fecha" required>
                     </div>
                   </div>
                   <div class="col-md-8">
                     <div class="form-group" style="padding-left:0;">
                       <label for="Parroquia">Parroquia:</label>
-                      <input type="text" id="parroquia" name="parroquia">
+                      <input type="text" id="parroquia" name="parroquia" required>
                     </div>
                   </div>
                 </div>
@@ -106,9 +114,12 @@
                   <input type="text" id="texto" name="texto" value="Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.">
                 </div>
                 <span style="display:flex; height: 25px;"></span>
-                <button type="submit" href="pedido.html"><img src="images/pedido_button.png"></button>
-                <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
             </form>
+            <button id="pedido-btn" onclick="document.getElementById('email-modal-overlay').style.display='flex'"><img src="images/pedido_button.png"></button>
+            <!--div >
+                <a class="btn" id="pedido-btn" href="#email-modal-overlay" style="text-align:left; margin-left: 5px;"><img src="images/pedido_button.png" style="width: 75%;"></a>
+            </div-->
+            <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
           </div>
         </div>
       </div>
@@ -157,7 +168,7 @@
         <div class="col-md-6">
           <div class="game_box">
             <!--figure><img src="images/contact.png"/></figure-->
-            <form action="procesar_formulario.php" method="POST" data-type="contacto">
+            <form action="procesar_formulario.php" method="POST">
               <!--div class="form-group">
                 <label for="Nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -181,12 +192,8 @@
   <!-- END PERSONALIZACION -->
   </div>
   <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-init.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/polyfills.js"></script>
-  <script src="js/plugin.js"></script>
   <script src="js/custom.js"></script>
-  <script src="js/sheets-form.js"></script>
   <style>
     #email-modal-overlay {
       position: fixed;
@@ -261,7 +268,7 @@
         <input type="email" id="email-input" placeholder="tu@email.com" required>
       </form>
       <div class="modal-buttons">
-        <button class="btn-confirm" type="button" id="email-confirm-btn">Confirmar</button>
+        <button class="btn-confirm" type="submit" id="email-confirm-btn">Confirmar</button>
         <button class="btn-cancel" type="button" id="email-cancel-btn">Cancelar</button>
       </div>
     </div>
@@ -368,128 +375,37 @@
       document.getElementById('subtotal').textContent = subtotal;
     }
 
-    // Modal de email
-    const emailModalOverlay = document.getElementById('email-modal-overlay');
-    const emailInput = document.getElementById('email-input');
-    const emailConfirmBtn = document.getElementById('email-confirm-btn');
-    const emailCancelBtn = document.getElementById('email-cancel-btn');
-    
-    /* Event listener para el formulario de producto (identificado por id)
-    const productForm = document.getElementById('recordatorio-form');
-    if (productForm) {
-      productForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Abrir modal para pedir email antes de procesar
-        emailModalOverlay.style.display = 'flex';
-        emailInput.focus();
-      });
-    }*/
+    // Overlay (pedido) open/close handlers
+    (function(){
+      const pedidoBtn = document.getElementById('pedido-btn');
+      const overlay = document.getElementById('overlay');
+      const closeBtn = document.getElementById('overlay-close-btn');
 
-    // Confirmar email -> recopilar datos del formulario y enviar a Google Apps Script
-    emailConfirmBtn.addEventListener('click', function() {
-      const email = emailInput.value.trim();
-      if (!(email && email.includes('@'))) {
-        alert('Por favor, introduce un email válido.');
-        emailInput.focus();
-        return;
-      }
+      const nombre = document.getElementById('nombre');
+      const fecha = document.getElementById('fecha');
+      const parroquia = document.getElementById('parroquia');
 
-      // Tomar los datos directamente del formulario 'recordatorio-form'
-      const formEl = document.getElementById('recordatorio-form');
-      const formDataObj = {};
-      if (formEl) {
-        const fd = new FormData(formEl);
-        // Copiar campos del formulario a objeto
-        for (const [k, v] of fd.entries()) {
-          formDataObj[k] = v;
+      if (!pedidoBtn || !overlay) return;
+      pedidoBtn.addEventListener('click', function(e){
+        console.log(nombre.textContent);
+        if(nombre == "" || fecha == "" || parroquia == "") {
+          const mensaje = document.createElement('p');
+          mensaje.style.color = 'red';
+          mensaje.style.fontSize = '14px';
+          mensaje.style.marginTop = '10px';
+          mensaje.textContent = "Por favor, completa todos los campos para habilitar el botón de pedido.";
+          pedidoBtn.parentNode.appendChild(mensaje);
+        } else {
+          e.preventDefault();
+          overlay.style.display = 'flex';
         }
-      }
-
-      // Añadir/asegurar campos adicionales
-      formDataObj.email = email;
-      formDataObj.tipo = 'pedido';
-      // Asegurar subtotal/producto si no vienen en el formulario
-      formDataObj.producto = formDataObj.producto || (document.getElementById('product-title') ? document.getElementById('product-title').textContent : '');
-      formDataObj.precio = formDataObj.precio || (document.getElementById('product-price') ? document.getElementById('product-price').textContent : '');
-      formDataObj.subtotal = formDataObj.subtotal || (document.getElementById('subtotal') ? document.getElementById('subtotal').textContent : '');
-
-      const appsScriptUrl = window.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbx9y8OQs93LLV8MKZ9nzxlG5WZwxEIsJmGmwUmzzH29OQz97iTmuuibHtoX09klH6vbNg/exec';
-
-      fetch(appsScriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(formDataObj)
-      }).then(() => {
-        localStorage.setItem('userEmail', email);
-        emailModalOverlay.style.display = 'none';
-        alert('✓ Pedido enviado correctamente.\\n\\nRecibirás un email en menos de 24h con el diseño final.');
-        setTimeout(() => window.location.href = 'pedido.html', 1000);
-      }).catch(() => {
-        // En modo no-cors el then/catch no es fiable; asumir éxito para el usuario
-        localStorage.setItem('userEmail', email);
-        emailModalOverlay.style.display = 'none';
-        alert('✓ Pedido enviado correctamente.\\n\\nRecibirás un email en menos de 24h con el diseño final.');
-        setTimeout(() => window.location.href = 'pedido.html', 1000);
+        
       });
-    });
-    
-    // Cancelar
-    emailCancelBtn.addEventListener('click', function() {
-      emailModalOverlay.style.display = 'none';
-      emailInput.value = '';
-    });
-    
-    // Cerrar modal al hacer click fuera
-    emailModalOverlay.addEventListener('click', function(e) {
-      if(e.target === emailModalOverlay) {
-        emailModalOverlay.style.display = 'none';
-        emailInput.value = '';
-      }
-    });
-    
-    // Permitir envío con Enter
-    emailInput.addEventListener('keypress', function(e) {
-      if(e.key === 'Enter') {
-        emailConfirmBtn.click();
-      }
-    });
+      if (closeBtn) closeBtn.addEventListener('click', function(){ overlay.style.display = 'none'; });
+      overlay.addEventListener('click', function(e){ if (e.target === overlay) overlay.style.display = 'none'; });
+    })();
 
-    // Enviar formulario de contacto / consulta (botón Send)
-    const sendBtn = document.getElementById('send-btn');
-    if(sendBtn) {
-      sendBtn.addEventListener('click', function() {
-        const contactEmail = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
-        const mensaje = document.getElementById('mensaje') ? document.getElementById('mensaje').value.trim() : '';
-        if(!contactEmail || !contactEmail.includes('@')) {
-          alert('Introduce un email válido.');
-          return;
-        }
-        const payload = {
-          type: 'contact',
-          email: contactEmail,
-          mensaje: mensaje,
-          // Adjuntar información del producto si existe
-          productTitle: document.getElementById('product-title') ? document.getElementById('product-title').textContent : '',
-          productPrice: document.getElementById('product-price') ? document.getElementById('product-price').textContent : '',
-          cantidad: document.getElementById('cantidad') ? document.getElementById('cantidad').value : ''
-        };
-        fetch('procesar_formulario.php', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(payload)
-        }).then(r => r.json()).then(resp => {
-          if(resp && resp.success) {
-            alert('Mensaje enviado. Gracias. Tu número de referencia: ' + resp.order_number);
-            // limpiar campos
-            if(document.getElementById('email')) document.getElementById('email').value = '';
-            if(document.getElementById('mensaje')) document.getElementById('mensaje').value = '';
-          } else {
-            alert('Error al enviar. Inténtalo de nuevo.');
-          }
-        }).catch(() => alert('Error al conectar con el servidor.'));
-      });
-    }
+
 
   </script>
 </body>
