@@ -121,10 +121,15 @@
 
     <!-- Lista de 5 elementos -->
     <ul class="order-list">
-      <li><strong>Correo electrónico:</strong> <span id="user-email">-</span></li>
-      <li><strong>Producto:</strong> Recordatorio de comunión Vintage</li>
-      <li><strong>Cantidad:</strong> 100 unidades</li>
-      <li><strong>Precio unitario:</strong> €1.50</li>
+      <li>
+        <strong>Recordatorio de comunión:   </strong>
+        <p id="modelo" style="display: inline; font-weight: 500; vertical-align: bottom;">Modelo</p>
+      </li>
+      <li>
+        <strong>Cantidad:   </strong>
+        <p id="cantidad" style="display: inline; font-weight: 500;">Cantidad</p>
+      </li>
+      <!--li><strong>Precio unitario:</strong> €1.50</li-->
       <li><strong>Entrega:</strong> Dentro de 48 horas</li>
     </ul>
 
@@ -146,16 +151,10 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script>
-    // Recuperar y mostrar email del localStorage
-    window.addEventListener('DOMContentLoaded', function() {
-      const userEmail = localStorage.getItem('userEmail');
-      const emailSpan = document.getElementById('user-email');
-      if(userEmail) {
-        emailSpan.textContent = userEmail;
-      } else {
-        emailSpan.textContent = 'No disponible';
-      }
-    });
+    const pedido = JSON.parse(sessionStorage.getItem("datosPedido"));
+
+    document.getElementById('modelo').textContent = pedido.modelo;
+    document.getElementById('cantidad').textContent = pedido.cantidad;
     
     // Botones de acción
     document.querySelectorAll('.order-buttons button').forEach(function(btn, index) {

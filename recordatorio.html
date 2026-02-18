@@ -408,13 +408,20 @@
     });
 
     function procesarInfo() {
+      //Gererar ID de usuario y guardarlo en localStorage
+      const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
+      localStorage.setItem("idUsuario", idUsuario);
+
       const nombre = document.getElementById('nombre').value;
       const fecha = document.getElementById('fecha').value;
       const parroquia = document.getElementById('parroquia').value;
       const mail = document.getElementById('mail').value;
       const texto = document.getElementById('texto').value;
+      const modelo = document.getElementById('product-title').textContent;
+      const cantidad = document.getElementById('cantidad').value;
 
-      console.log(nombre, fecha, parroquia, mail, texto);
+
+      console.log(idUsuario, nombre, fecha, parroquia, mail, texto, modelo, cantidad);
 
       if(mail === "") {
         perror.textContent = "Por favor, ingresa tu correo electrónico.";
@@ -425,11 +432,14 @@
 
       const datos = 
       {
+        idUsuario: idUsuario.toString(),
         email: mail,
         nombre: nombre,
         fecha: fecha,
         parroquia: parroquia,
-        texto: texto
+        texto: texto,
+        modelo: modelo,
+        cantidad: cantidad
       };
 
       fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
@@ -441,7 +451,11 @@
         mode: "no-cors"
       });
       console.log("Formulario enviado correctamente");
-      this.reset();
+      
+      //window.location.href = "pedido.html";
+      //this.reset();
+      sessionStorage.setItem("datosPedido", JSON.stringify(datos));
+      window.location.replace("pedido.html");
     }
 
   </script>
