@@ -414,7 +414,7 @@
       const mail = document.getElementById('mail').value;
       const texto = document.getElementById('texto').value;
 
-      console.log(nombre, fecha, parroquia, mail);
+      console.log(nombre, fecha, parroquia, mail, texto);
 
       if(mail === "") {
         perror.textContent = "Por favor, ingresa tu correo electrónico.";
@@ -434,14 +434,11 @@
 
       fetch("https://script.google.com/macros/s/AKfycbxTJQ6xz--eGcg5TrCBaYIXf35s-Fq8fkyh7vjOl3eC9aFozrye8dSlN-9tYvnO5EhG_Q/exec", {
         method: "POST",
-        body: JSON.stringify(datos)
-      })
-      .then(res => res.text())
-      .then(data => {
-        console.log("Enviado correctamente");
-        this.reset();
+        mode: "no-cors",
+        body: datos
       });
-      
+      console.log("Formulario enviado correctamente");
+      this.reset();
     }
 
   </script>
