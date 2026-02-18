@@ -435,6 +435,9 @@
       fetch("https://script.google.com/macros/s/AKfycbxTJQ6xz--eGcg5TrCBaYIXf35s-Fq8fkyh7vjOl3eC9aFozrye8dSlN-9tYvnO5EhG_Q/exec", {
         method: "POST",
         mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(datos)
       });
       console.log("Formulario enviado correctamente");
