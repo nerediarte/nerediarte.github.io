@@ -84,7 +84,7 @@
             </div>
             <div class="game_box">
               <!--figure><img src="images/contact.png"/></figure-->
-              <form id="recordatorio-form"> <!--FORMULARIO EN CANVA???-->
+              <div id="recordatorio-form"> <!--FORMULARIO EN CANVA???-->
                 <div class="form-group product-qty" style="white-space: nowrap;">
                   <label for="cantidad">Cantidad:</label>
                   <input type="text" value="100" id="cantidad" name="nombre" required>
@@ -114,7 +114,7 @@
                   <input type="text" id="texto" name="texto" value="Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.">
                 </div>
                 <span style="display:flex; height: 25px;"></span>
-            </form>
+              </div>
             <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>
             <!--div >
                 <a class="btn" id="pedido-btn" href="#email-modal-overlay" style="text-align:left; margin-left: 5px;"><img src="images/pedido_button.png" style="width: 75%;"></a>
@@ -263,7 +263,7 @@
   </style>
   <div id="email-modal-overlay">
     <div class="email-modal">
-      <h3>Dirección de correo</h3>
+      <h3 id="title-mail">Dirección de correo</h3>
       <input type="text" id="mail"> 
         <!--input id="email-input"-->
 
@@ -412,8 +412,35 @@
       const fecha = document.getElementById('fecha').value;
       const parroquia = document.getElementById('parroquia').value;
       const mail = document.getElementById('mail').value;
+      const texto = document.getElementById('texto').value;
 
       console.log(nombre, fecha, parroquia, mail);
+
+      if(mail === "") {
+        perror.textContent = "Por favor, ingresa tu correo electrónico.";
+        document.getElementById('title-mail').appendChild(perror);
+        perror.style.visibility = 'visible';
+        return;
+      }
+
+      const datos = 
+      {
+        email: mail,
+        nombre: nombre,
+        fecha: fecha,
+        parroquia: parroquia,
+        texto: texto
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbxTJQ6xz--eGcg5TrCBaYIXf35s-Fq8fkyh7vjOl3eC9aFozrye8dSlN-9tYvnO5EhG_Q/exec", {
+        method: "POST",
+        body: JSON.stringify(datos)
+      })
+      .then(res => res.text())
+      .then(data => {
+        console.log("Enviado correctamente");
+        this.reset();
+      });
       
     }
 
