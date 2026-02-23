@@ -1859,6 +1859,35 @@ a.article:hover {
     .order-buttons .btn-secondary:hover {
       background: #d0d0d0;
     }
+/* END PEDIDO HTML*/
+
+/* LOADER */
+.loading {
+    position: fixed;
+    top: 45%; /* Baja el borde superior al 50% de la pantalla */
+    left: 47%; /* Mueve el borde izquierdo al 50% de la pantalla */
+    transform: translate(-50%, -50%); /* Centra el objeto ajustándolo por su propia altura/anchura */
+        
+    z-index: 9999; /* Asegura que esté por encima de todo */
+        
+    /* Opcional: estilos para verlo mejor */
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+    border: 16px solid #f3f3f3;  /*Light grey */
+    border-top: 16px solid #4b5745; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 /* 
 .qty-input {

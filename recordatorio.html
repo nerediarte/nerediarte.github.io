@@ -197,18 +197,23 @@
   <style>
   
   </style>
+  <!-- PESTAÑA CORREO ELECTRÓNICO-->
   <div id="email-modal-overlay">
     <div class="email-modal">
       <h3 id="title-mail">Dirección de correo</h3>
       <input type="text" id="mail"> 
         <!--input id="email-input"-->
-
       <div class="modal-buttons">
         <button class="btn-confirm" id="email-confirm-btn" onclick="procesarInfo()">Confirmar</button>
         <button class="btn-cancel" id="email-cancel-btn">Cancelar</button>
       </div>
     </div>
   </div>
+  <!-- END PESTAÑA CORREO -->
+
+  <!-- LOADING -->
+  <div id = "loading" class = "loading" style = "display: none;"></div>
+
   <script>
     const products = {
       jesusito: {
@@ -379,6 +384,8 @@
         modelo: modelo,
         cantidad: cantidad
       };
+
+      document.getElementById('loading').style.display = 'flex';
 
       fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
         method: "POST",
