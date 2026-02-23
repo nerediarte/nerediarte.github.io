@@ -1,4 +1,134 @@
+/* --- Mejoras responsivas personalizadas para index.html --- */
+@media (max-width: 932px) {
+    .titlepage h2 {
+        font-size: 1.3em !important;
+        line-height: 1.2 !important;
+    }
 
+    .titlepage p{
+        font-size: 12px !important;
+        margin: 0 !important;
+    }
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.show {
+        display: block !important;
+        width: 100vw !important;
+        background: #fff !important;
+        position: fixed !important;
+        top: 75px !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 99999 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        min-height: calc(100vh - 75px);
+        overflow-y: auto;
+    }
+    html, body {
+        height: 100% !important;
+        overflow-x: hidden !important;
+    }
+    .menuBar {
+        min-width: unset !important;
+        flex-direction: column !important;
+        max-height: unset !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        z-index: 9999 !important;
+        background: #fff !important;
+        padding: 0 !important;
+        display: flex !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    body {
+        padding-top: 70px !important;
+        position: relative !important;
+    }
+    .menuBar .container-fluid, .menuBar .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navbar-nav {
+        flex-direction: column !important;
+        text-align: center;
+        align-items: stretch !important;
+        width: 100%;
+    }
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    .fixed-bar {
+        font-size: 16px;
+        padding: 12px 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+    .banner_main img {
+        top: 0;
+        margin-left:10px !important;
+        object-fit: cover;
+    }
+    .banner_main button {
+        left: 0 !important;
+        margin-left: -1.75rem !important; 
+        transform: scale(50%) !important;
+        justify-content: left !important;
+    }
+    .banner_main button img {
+        width: auto;
+        text-align: left;
+        height: auto !important;
+    }
+
+    .whatsapp_btn, .btn{
+        width: 120px !important;
+        height: 30px !important;
+        margin: 5px auto 5px auto !important;
+    }
+
+    .btn{
+        margin-bottom:20px !important;
+    }
+
+    .spanTitle{
+        width: 85% !important;
+    }
+
+    .customer .avatar-container{
+        position: relative;  
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+
+    .customer .titlepage{
+        margin: 0 45px !important;
+    }
+
+
+    .licens .carousel-item, .licens .carousel-control-prev, .licens .carousel-control-next {
+        padding: 10px !important;
+    }
+    .footer {
+        margin: 10px !important;
+
+    }
+
+
+    .licens .row > div[class^="col-"], .licens .row > div[class*=" col-"] {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .licens .row img {
+        max-width: 100px !important;
+    }
+}
 
 /*---------------------------------------------------------------------
     File Name: style.css
@@ -401,7 +531,7 @@ button:hover{
 
 .menuBar{
     display: flex; 
-    min-width: 710px;
+    min-width: auto;
     max-height: 75px;
     position: fixed;
     top: 0;
@@ -412,10 +542,11 @@ button:hover{
 
 .menuBar .container{
     justify-content: center;
+    
 }
 
 #content {
-    padding-top: 70px; /*LO Q HACE Q LA BARRA NO SE ESCONDA*/
+    
 }
 
 .ms-auto {
@@ -503,7 +634,7 @@ button:hover{
     font-weight: bold;
     color: #fff;
     line-height: 66px;
-    font-size: 36px;
+    font-size: 42px;
     text-align: center;
     background-color: #fff;
     -webkit-background-clip: text;
@@ -523,6 +654,7 @@ button:hover{
 }
 
 .titlepage p{
+    font-size: 21px;
     color: #fff;
     text-align: center;
     margin-top: 5px;
@@ -1107,10 +1239,12 @@ input[type="message"]{
 .licens .carousel-item {
     position: relative;
     display: flex; 
+    width: 520px;
+    height: auto;
     align-items: center; 
     justify-content: center;
     background-color: #4b5745;
-    padding: 10px;
+    padding: 20px;
 }
 
 
@@ -1152,10 +1286,11 @@ input[type="message"]{
 .licens .carousel-control-prev,
 .licens .carousel-control-next {
     position:inherit;
-    width: auto;
+    width: 315px;
+    height: auto;
     background-color: #4b5745;
-    margin: 40px;
-    padding: 10px;
+    margin: 20px;
+    padding: 15px;
 }
 
 .lorem {
@@ -1351,8 +1486,9 @@ border-radius: inherit;}
 /** footer section **/
 
 .footer {
+    width: auto;
     background: #fff;
-    padding: 10px 80px;
+    margin: 10px 80px;
 }
 
 .footer .icon{
@@ -1886,6 +2022,13 @@ a.article:hover {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* ABOUT ME SECTION*/
+.customer .avatar-container{
+    position: inherit;  
+    margin-right: 40px; 
+    text-align:right;
 }
 
 
