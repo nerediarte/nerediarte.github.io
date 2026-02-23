@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>cs</title>
+      <title>@nerediarte</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -18,14 +18,14 @@
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
       <link rel="stylesheet" href="css/responsive.css">
-       <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="images/avatarPortfolio.png" type="image/png" />
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <!-- fevicon -->
-      <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='16' font-size='16' fill='%234b5745'>N</text></svg>" />
+      <!--link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='16' font-size='16' fill='%234b5745'>N</text></svg>" /-->
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -41,53 +41,28 @@
       </div>
       <div class="wrapper">
          <!-- end loader -->
-         <div class="sidebar">
-            <!-- Sidebar  -->
-            <nav id="sidebar">
-               <div id="dismiss">
-                  <i class="fa fa-arrow-right"></i>
-               </div>
-               <ul class="list-unstyled components">
-                  <li class="active">
-                     <a href="index.html">Home</a>
-                  </li>
-                  <li>
-                     <a href="#about">About</a>
-                  </li>
-                  <li>
-                     <a href="#game">Game</a>
-                  </li>
-                  <li>
-                     <a href="#customer">Our customer</a>
-                  </li>
-                  <li>
-                     <a href="#contact">Conatct</a>
-                  </li>
-               </ul>
-            </nav>
-         </div>
          <nav class = "navbar navbar-expand-lg menuBar">
             <div class="container">
                <div class="row">
                   <div class="ms-auto">
-                     <a class="fixed-bar" href="">INICIO</a>
+                     <a class="fixed-bar" href="index.html">INICIO</a>
                   </div>
                   <div class="ms-auto">
-                     <a class="fixed-bar" href="shop.html">TIENDA</a>
+                     <a class="fixed-bar" href="/shop.html">TIENDA</a>
                   </div>
                   <div class="ms-auto">
-                        <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
+                     <a class="fixed-bar" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a>               
                   </div>
                   <div class="ms-auto">
                      <div class="fixed-bar">
-                        <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
+                        <button href="index.html"><img src="images/avatar.png" alt="#"></button>
                      </div>
                   </div>
                   <div class="ms-auto">
                      <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
                   </div>
                   <div class="ms-auto">
-                     <a class="fixed-bar" href="">NEREDIARTE</a>
+                     <a class="fixed-bar" href="#customer">NEREDIARTE</a>
 
                </div>
             </div>
@@ -162,7 +137,7 @@
                   </div>
                </div>
                <div class="text-center">
-                  <a href="shop.html#comuniones" class="btn" style="margin:30px 0; width: auto;"><img src="images/more_button.png"></a>
+                  <a href="shop.html?category=comuniones" class="btn" style="margin:30px 0; width: auto;"><img src="images/more_button.png"></a>
                   <!--button href="shop.html" style="margin:30px 0; background-color: transparent; width: 70%;"><img src="images/more_button.png"></button-->
                </div>
                <div class="container-flex" style="height:15px; background-color: #4b5745;"></div>
@@ -254,7 +229,7 @@
                   <div class="col-md-6">
                      <div class="titlepage">
                         <h2>¡HOLA, SOY NEREA!</h2>
-                        <p>Soy una pequeña ilustradora y diseñadora gráfica, en Madrid.</p>
+                        <p>Una pequeña ilustradora y diseñadora gráfica, en Madrid.</p>
                         <p>Una imagen vale más que mil palabras, y por eso, intento plasmar un pedacito de la infinita belleza de la fe en artículos que puedan servir a su vez para tener al Señor presente en el día a día.</p>
                         <p>Esto no sería posible sin tu ayuda y apoyo así que gracias.</p>
                         <p>¡No dudes en contactar conmigo para lo que necesites!</p>
@@ -346,6 +321,7 @@
          right: 2
       };
       
+      /*
       function rotateCarousel() {
          // Desplazar índices
          currentIndices.left = (currentIndices.left + 1) % carouselImages.length;
@@ -363,7 +339,7 @@
 
       function selectCategory(id) {
          window.location.href = 'shop.html?' + id;
-    }
+    }*/
       </script>
      
    </body>

@@ -32,13 +32,13 @@
     <div class="container">
       <div class="row">
         <div class="ms-auto">
-          <a class="fixed-bar" href="">INICIO</a>
+          <a class="fixed-bar" href="index.html">INICIO</a>
         </div>
         <div class="ms-auto">
-          <a class="fixed-bar" href="">TIENDA</a>
+          <a class="fixed-bar" href="shop.html">TIENDA</a>
         </div>
         <div class="ms-auto">
-          <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
+          <a class="fixed-bar" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a>               
         </div>
         <div class="ms-auto">
           <div class="fixed-bar">
@@ -49,7 +49,7 @@
           <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
         </div>
         <div class="ms-auto">
-          <a class="fixed-bar" href="">NEREDIARTE</a>
+          <a class="fixed-bar" href="#customer">NEREDIARTE</a>
         </div>
       </div>
     </div>
@@ -64,12 +64,7 @@
   <section class="recordatorios">
     <div class="container-fluid" style="padding:0;">
       <img src="images/recordatorios_caract.png"></img>
-        <!--div class="row" style="position: relative;"> CUANDO TENGA TIEMPO AÑADIR LETRA "REAL" PARA Q SE VEA MEJOR
-          <div class="ms-auto">
-            <h1 class="caract">Diseño personalizable</h1>
-          </div>
-        </div-->
-      </div>
+    </div>
   </section>
   <!--PRODUCTOS-->
   <section class="spanTitle" style="padding-bottom:0;">
@@ -84,60 +79,33 @@
       </div>
     </div>
   </section>
-  <div class="products">
-    <div class="row">
-      <div class="col-md-2">
-        <h1 id="todas" class="category selected" onclick="selectCategory('todas')" style="cursor: pointer;">Todo</h1>
-        <h1 id="bautizos" class="category" onclick="selectCategory('bautizos')" style="cursor: pointer;">Bautizos</h1>
-        <h1 id="comuniones" class="category" onclick="selectCategory('comuniones')" style="cursor: pointer;">Comuniones</h1>
-        <!--h2 id="confirmaciones">Confirmaciones</h2-->
+  <!-- CARRUSEL -->
+  <div class="container-flex">
+    <div id="carousel_basic" class="carousel_basic">
+      <div class="carousel_group">
+        <div class="card"><img src="images/bautizo1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/bautizo2_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion2_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion3_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/bautizo1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/bautizo2_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion2_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion3_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/bautizo1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/bautizo2_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion1_0.png" height="512" width="512"></div>
+        <div class="card"><img src="images/comunion2_0.png" height="512" width="512"></div>
       </div>
-      <div class="col-md-10">
-        <div id="bautizos-products" class="products-content row" style="display:none;">
-          <div class="col-md-4">
-            <div class="preview" onclick="goToProduct('jesusito')" style="cursor: pointer;">
-              <img src="images/bautizo1.png">
-              <h3> NIÑO JESÚS</h3>
-              <h5>€35 EUR </h5>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="preview" onclick="goToProduct('almudena')" style="cursor: pointer;">
-              <img src="images/bautizo2.png">
-              <h3>VIRGEN DE LA ALMUDENA</h3>
-              <h5>€35 EUR </h5>
-            </div>
-          </div>
-        </div>
-        <div id="comuniones-products" class="products-content row" style="display:none;">
-          <div class="col-md-4">
-            <div class="preview" onclick="goToProduct('clasico')" style="cursor: pointer;">
-              <img src="images/comunion2_0.png">
-              <h3>CLÁSICO</h3>
-              <h5>€35  EUR</h5>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="preview" onclick="goToProduct('vintage')" style="cursor: pointer;">
-              <img src="images/comunion1_0.png">
-              <h3>VINTAGE</h3>
-              <h5>€35  EUR</h5>
-              
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="preview" onclick="goToProduct('virgencita')" style="cursor: pointer;">
-              <img src="images/comunion3_0.png">
-              <h3>VIRGENCITA</h3>
-              <h5>€35  EUR</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+    </div>
+    <div class="text-center">
+      <a href="shop.html?category=comuniones" class="btn" style="margin:30px 0; width: auto;"><img style="width: 90%" src="images/more_button.png"></a>
+      <div class="container-flex" style="height:15px; background-color: #fff;"></div>
     </div>
   </div>
-    <!-- PERSONALIZACION -->
+  
+  <!-- PERSONALIZACION -->
   <div id="personalizacion">
   <section class="greenSection">
     <div class="container">
@@ -162,7 +130,7 @@
         </div>
       </div>
     </div>
-    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
+    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="width:75%;">
   </section>
   <section class="formsSection">
     <div class="container-fluid">
@@ -179,22 +147,15 @@
         <div class="virgencita"><img src="images/drawDecoI.png"></div>
         <div class="col-md-6">
           <div class="game_box">
-            <!--figure><img src="images/contact.png"/></figure-->
-            <form action="procesar_formulario.php" method="POST" data-type="contacto">
-              <!--div class="form-group">
-                <label for="Nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div-->
-              <div class="form-group">
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
+                <input type="email" id="mail" name="email">
+            </div>
+            <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
-                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
-              </div>
-              <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
-            </form>
+                <textarea id="message" name="mensaje" rows="6"></textarea>
+            </div>
+            <div id="send_btn" class="send_btn"><button onclick="procesarInfo()"><img src="images/send_button.png"></button></div>
           </div>
         </div>
       </div>
@@ -207,51 +168,6 @@
   <script src="js/jquery-init.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script>
-    function selectCategory(cat) {
-      // Remove selected from all categories
-      document.querySelectorAll('.category').forEach(el => el.classList.remove('selected'));
-      // Add selected to clicked
-      document.getElementById(cat).classList.add('selected');
-      // Hide all products
-      document.querySelectorAll('.products-content').forEach(el => el.style.display = 'none');
-      // Show selected products
-      if (cat === 'todas') {
-        document.querySelectorAll('.products-content').forEach(el => el.style.display = 'flex');
-      } else {
-        document.getElementById(cat + '-products').style.display = 'flex';
-      }
-    }
-    // Initialize with todas selected
-    selectCategory('todas');
-    // Hover effect for images
-    document.querySelectorAll('.preview').forEach(preview => {
-      const img = preview.querySelector('img');
-      if (img) {
-        const normalSrc = img.src;
-        let hoverSrc;
-        if (normalSrc.includes('comunion2_0.png')) {
-          hoverSrc = 'images/comunion2_1.png';
-        } else if (normalSrc.includes('comunion1_0.png')){
-          hoverSrc ='images/comunion1_1.png';
-        } else if (normalSrc.includes('comunion3_0.png')){
-          hoverSrc ='images/comunion3_1.png';
-        } else if (normalSrc.includes('bautizo1.png')){
-          hoverSrc = 'images/bautizo1_2.png';
-        } else if (normalSrc.includes('bautizo2.png')){
-          hoverSrc = 'images/bautizo2_2.png';
-        } else {
-          //hoverSrc = normalSrc.replace('.png', '_hover.png');
-        }
-        preview.addEventListener('mouseenter', () => {
-          img.src = hoverSrc;
-          img.style.transition = 'ease-in-out 0.9s';
-        });
-        preview.addEventListener('mouseleave', () => img.src = normalSrc);
-      }
-    });
-    function goToProduct(id) {
-      window.location.href = 'recordatorio.html?product=' + id;
-    }
     // Hover effect for menuBar transparency on slider image
     const sliderImg = document.querySelector('.banner_main img');
     const menuBar = document.querySelector('.menuBar');
@@ -267,6 +183,63 @@
       });
     });
     observer.observe(sliderSection);
+
+    /*INFORMACIOND DE CONTACTO*/
+    /* Completar campos:*/
+    const perror = document.createElement('p');
+    perror.style.height = '10px';
+    perror.style.color = 'white';
+    perror.style.fontSize = '14px';
+    perror.style.marginBottom = '10px';
+    perror.style.marginLeft = '20px';
+    perror.textContent = "Por favor, debe completar todos los campos.";
+    document.getElementById('send_btn').prepend(perror);
+    perror.style.visibility = 'hidden';
+
+    function procesarInfo() {
+      //Gererar ID de usuario y guardarlo en localStorage
+      const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
+      localStorage.setItem("idUsuario", idUsuario);
+
+      const mail = document.getElementById('mail').value;
+      const message = document.getElementById('message').value;
+
+      console.log(idUsuario, mail, message);
+
+      if (mail == "" || message == "") {
+        perror.style.visibility = 'visible';
+      }
+
+      console.log(idUsuario, mail, message);
+
+      const datos = 
+      {
+        type: "encargo",
+        idUsuario: idUsuario.toString(),
+        email: mail,
+        message: message
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datos),
+        mode: "no-cors"
+      });
+      console.log("Formulario enviado correctamente");
+      
+      //window.location.href = "pedido.html";
+      //this.reset();
+      /*window.location.replace("pedido.html"); PESTAÑA DE CONFIRMACION DE ENVIO FORMULARIO*/
+    }
+    document.addEventListener('keyup', (e) => {
+      if(perror.style.visibility ==  'visible') {
+            perror.style.visibility = 'hidden';
+        }
+    });
+
   </script>
   <script src="js/polyfills.js"></script>
   <script src="js/plugin.js"></script>

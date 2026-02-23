@@ -13,90 +13,7 @@
       background: #f9f9f9;
       padding: 40px 20px;
     }
-    .order-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .order-image {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .order-image img {
-      max-width: 25%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .order-title {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .order-title h1 {
-      color: #4b5745;
-      font-size: 28px;
-      margin: 0;
-    }
-    .order-subtitle {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #666;
-      font-size: 16px;
-    }
-    .order-list {
-      margin: 30px 0;
-      padding: 0 20px;
-    }
-    .order-list li {
-      margin-bottom: 15px;
-      color: #333;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .order-separator {
-      height: 2px;
-      background: #e0e0e0;
-      margin: 30px 0;
-    }
-    .order-text {
-      text-align: center;
-      margin: 30px 0;
-      color: #333;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .order-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .order-buttons button {
-      padding: 12px 30px;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .order-buttons .btn-primary {
-      background: #4b5745;
-      color: #fff;
-    }
-    .order-buttons .btn-primary:hover {
-      background: #3a4232;
-    }
-    .order-buttons .btn-secondary {
-      background: #e0e0e0;
-      color: #333;
-    }
-    .order-buttons .btn-secondary:hover {
-      background: #d0d0d0;
-    }
+    
   </style>
 </head>
 <body>
@@ -108,42 +25,68 @@
 
     <!-- Título y subtítulo -->
     <div class="order-title">
-      <h1>¡Pedido reallizado con éxito!</h1>
+      <h1>¡Pedido realizado con éxito!</h1>
     </div>
     <div class="order-subtitle">
       <p>Detalles de tu compra</p>
     </div>
-
-    <!-- Segunda imagen -->
-    <div class="order-image">
-      <img src="images/drawDecoI.png" alt="Decoración">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="order-image">
+          <img id="product-image" style="max-width: 100%;" alt="Decoración">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <ul class="order-list">
+          <li style="vertical-align: bottom;">
+            <p style="font-weight: 500; display: inline;">RECORDATORIO DE COMUNIÓN </p>
+            <p id="modelo" style="font-weight: 500; display: inline;">Modelo</p>
+            <p id="precio-unitario" style="font-weight: 500; display: inline; margin-left: 30px;">precio</p>
+            <p style="font-weight: 500; display:inline">€</p>
+          </li>
+          <li>
+            <h3 style="margin-bottom: 5px; color: #495057">Personalización: </h3>
+            <ul class="details">
+              <li>Nombre: <p id="nombre" style="display: inline;">nombre</p></li>
+              <li>Fecha: <p id="fecha" style="display: inline;">fecha</p></li>
+              <li>Parroquia: <p id="parroquia" style="display: inline;">parroquia</p></li>
+              <li>Texto: <p id="texto" style="display: inline;">texto</p></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
 
+    <p style="display: inline;">Cantidad:  </p>
+    <p id="cantidad" style="display: inline; font-weight: 500;">  Cantidad</p>
+    <div class="order-separator"></div>
+    <div style="text-align:center; margin-top: 20px;">
+      <p style="display: inline; font-weight: 600;">TOTAL:  </p>
+      <p id="total" style="display: inline; font-weight: 500;">  Total</p>
+      <p style="display: inline; font-weight: 500;">€</p>
+    </div>
+    
+    <!-- Segunda imagen -->
+    
+
     <!-- Lista de 5 elementos -->
-    <ul class="order-list">
-      <li>
-        <strong>Recordatorio de comunión:   </strong>
-        <p id="modelo" style="display: inline; font-weight: 500; vertical-align: bottom;">Modelo</p>
-      </li>
-      <li>
-        <strong>Cantidad:   </strong>
-        <p id="cantidad" style="display: inline; font-weight: 500;">Cantidad</p>
-      </li>
+    
       <!--li><strong>Precio unitario:</strong> €1.50</li-->
-      <li><strong>Entrega:</strong> Dentro de 48 horas</li>
-    </ul>
+      <!--li><strong>Entrega:</strong> Dentro de 48 horas</li-->
+    
 
     <!-- Separador -->
     <div class="order-separator"></div>
 
     <!-- Texto -->
     <div class="order-text">
-      <p>Gracias por tu compra. Recibirás un email de confirmación en breve con los detalles del pedido e instrucciones de pago.</p>
+      <p style="font-weight: 500; margin-bottom: 10px; color: #4b5745">¡Gracias por tu compra!</p>
+      <p>Recibirás un correo de confirmación en breve con los detalles del envío e instrucciones de pago.</p>
     </div>
 
     <!-- Dos botones -->
     <div class="order-buttons">
-      <button class="btn-primary">Confirmar Pedido</button>
+      <button class="btn-primary">Volver al inicio</button>
       <button class="btn-secondary">Continuar Comprando</button>
     </div>
   </div>
@@ -153,18 +96,27 @@
   <script>
     const pedido = JSON.parse(sessionStorage.getItem("datosPedido"));
 
-    document.getElementById('modelo').textContent = pedido.modelo;
+    //MODELO:
+    document.getElementById('product-image').src = pedido.modelo.image;
+    document.getElementById('modelo').textContent = pedido.modelo.title;
+    //PERSONALIZACION:
+    document.getElementById('nombre').textContent = pedido.nombre;
+    document.getElementById('fecha').textContent = pedido.fecha;
+    document.getElementById('parroquia').textContent = pedido.parroquia;
+    document.getElementById('texto').textContent = pedido.texto;
+    document.getElementById('precio-unitario').textContent = pedido.modelo.price;
     document.getElementById('cantidad').textContent = pedido.cantidad;
+
+    document.getElementById('total').textContent = (pedido.modelo.price * pedido.cantidad).toFixed(2);
+    
     
     // Botones de acción
     document.querySelectorAll('.order-buttons button').forEach(function(btn, index) {
       btn.addEventListener('click', function() {
         if(index === 0) {
-          // Confirmar Pedido - aquí irías al pago
-          alert('Redirigiendo a PayPal o tu pasarela de pago...');
+          window.location.replace('index.html');
         } else {
-          // Continuar Comprando
-          window.location.href = 'index.html';
+          window.location.replace('shop.html');
         }
       });
     });

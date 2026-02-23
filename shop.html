@@ -22,32 +22,33 @@
       </div>
     </div>
   </header-->
-  <nav class = "navbar navbar-expand-lg menuBar">
-    <div class="container">
-      <div class="row">
-        <div class="ms-auto">
-          <a class="fixed-bar" href="">INICIO</a>
-        </div>
-        <div class="ms-auto">
-          <a class="fixed-bar" href="">TIENDA</a>
-        </div>
-        <div class="ms-auto">
-          <div class="fixed-bar"><a href="">PORTFOLIO</a></div>                    
-        </div>
-        <div class="ms-auto">
-          <div class="fixed-bar">
-            <button href="index_closed.html"><img src="images/avatar.png" alt="#"></button>
-          </div>
-        </div>
-        <div class="ms-auto">
-          <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
-        </div>
-        <div class="ms-auto">
-          <a class="fixed-bar" href="">NEREDIARTE</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- end loader -->
+         <nav class = "navbar navbar-expand-lg menuBar">
+            <div class="container">
+               <div class="row">
+                  <div class="ms-auto">
+                     <a class="fixed-bar" href="index.html">INICIO</a>
+                  </div>
+                  <div class="ms-auto">
+                     <a class="fixed-bar" href="/shop.html">TIENDA</a>
+                  </div>
+                  <div class="ms-auto">
+                     <a class="fixed-bar" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a>               
+                  </div>
+                  <div class="ms-auto">
+                     <div class="fixed-bar">
+                        <button href="index.html"><img src="images/avatar.png" alt="#"></button>
+                     </div>
+                  </div>
+                  <div class="ms-auto">
+                     <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
+                  </div>
+                  <div class="ms-auto">
+                     <a class="fixed-bar" href="#customer">NEREDIARTE</a>
+
+               </div>
+            </div>
+         </nav>
   <!-- Categories -->
   <!--PRODUCTOS-->
   <div class="products" style="margin-top: 100px;">
@@ -60,6 +61,57 @@
         <!--h2 id="confirmaciones">Confirmaciones</h2-->
       </div>
       <div class="col-md-10">
+        <div id="all-products" class="products-content row" style="display:none;">
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProducto('calendario')" style="cursor: pointer;">
+              <img src="images/calendarioII.png">
+              <h3>CALENDARIO 2026</h3>
+              <h5>€10 EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToProducto('agenda')" style="cursor: pointer;">
+              <img src="images/agendaI.png">
+              <h3>AGENDA 2026</h3>
+              <h5>€20 EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToRecordatorio('jesusito')" style="cursor: pointer;">
+              <img src="images/bautizo1.png">
+              <h3> NIÑO JESÚS</h3>
+              <h5>€35 EUR </h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToRecordatorio('almudena')" style="cursor: pointer;">
+              <img src="images/bautizo2.png">
+              <h3>VIRGEN DE LA ALMUDENA</h3>
+              <h5>€35 EUR </h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToRecordatorio('clasico')" style="cursor: pointer;">
+              <img src="images/comunion2_0.png">
+              <h3>CLÁSICO</h3>
+              <h5>€35  EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToRecordatorio('vintage')" style="cursor: pointer;">
+              <img src="images/comunion1_0.png">
+              <h3>VINTAGE</h3>
+              <h5>€35  EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="preview" onclick="goToRecordatorio('virgencita')" style="cursor: pointer;">
+              <img src="images/comunion3_0.png">
+              <h3>VIRGENCITA</h3>
+              <h5>€35  EUR</h5>
+            </div>
+          </div>
+        </div>
         <div id="papeleria-products" class="products-content row" style="display:none;">
           <div class="col-md-4">
             <div class="preview" onclick="goToProducto('calendario')" style="cursor: pointer;">
@@ -116,81 +168,70 @@
             </div>
           </div>
         </div>
-      </div>
-      
+      </div>  
     </div>
   </div>
-    <!-- PERSONALIZACION -->
-  <div id="personalizacion">
-  <section class="greenSection">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="paragraph">
-            <h2>¿Quieres un diseño personalizado?</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="images/designprocess.png" class="img_caracteristicas">
-  </section>
-  <section class="greenSection" style="background-color: #fff;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="paragraph">
-            <h2 style="color: #4b5745;">Cómo trabajo</h2>
-            <span class="starSpan"><img src="images/separador.png"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
-  </section>
-  <section class="formsSection">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div>
-            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
-            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
-            <p> Me pondré en contacto lo antes posible.</p>
-            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
-          </div>
-          
-        </div>
-        <div class="virgencita"><img src="images/drawDecoI.png"></div>
-        <div class="col-md-6">
-          <div class="game_box">
-            <!--figure><img src="images/contact.png"/></figure-->
-            <form action="procesar_formulario.php" method="POST" data-type="contacto">
-              <!--div class="form-group">
-                <label for="Nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div-->
-              <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="mensaje">Mensaje:</label>
-                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
-              </div>
-              <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  </div>
-  <!-- END PERSONALIZACION -->
+  <!-- customer -->
+         <div id="customer"  class="customer">
+            <div class="container-flex">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div style="position: inherit;  margin-right: 40px; text-align:right;"><img src="images/avatarPortfolio.png" style="width: 50%;"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="titlepage">
+                        <h2>¡HOLA, SOY NEREA!</h2>
+                        <p>Una pequeña ilustradora y diseñadora gráfica, en Madrid.</p>
+                        <p>Una imagen vale más que mil palabras, y por eso, intento plasmar un pedacito de la infinita belleza de la fe en artículos que puedan servir a su vez para tener al Señor presente en el día a día.</p>
+                        <p>Esto no sería posible sin tu ayuda y apoyo así que gracias.</p>
+                        <p>¡No dudes en contactar conmigo para lo que necesites!</p>
+                        <p>~ Nerea</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end customer -->
+         <!--  footer -->
+         <footer>
+            <div class="footer">
+               <div class="container-flex">
+                  <div class="row">
+                     <div class="col-ms-auto">
+                        <div class="icon">
+                           <a href="https://www.instagram.com/nerediarte/"><img src="icon/insta.png"></a>
+                        </div>
+                     </div>
+                     <div class="col-ms-auto">
+                        <div class="icon">
+                           <a href="https://whatsapp.com/channel/0029Vb6nOZSKLaHlBjwOo83k"><img src="icon/whats.png"></a>
+                        </div>
+                     </div>
+                     <div class="col-md-10"></div>
+                     <div class="col-ms-auto">
+                        <div class="contact">
+                           <h2>CONTACT</h2>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- end footer -->
   
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-init.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/polyfills.js"></script>
   <script>
+
+    /*INICIO PAGINA*/
+    const queryString = window.location.search; // Esto devuelve "?id=123&usuario=juan"
+
+    // 2. Crear un objeto URLSearchParams
+    const urlParams = new URLSearchParams(queryString);
+
+    selectCategory(urlParams.get('category') || 'todas');
+
     function selectCategory(cat) {
       // Remove selected from all categories
       document.querySelectorAll('.category').forEach(el => el.classList.remove('selected'));
@@ -200,13 +241,13 @@
       document.querySelectorAll('.products-content').forEach(el => el.style.display = 'none');
       // Show selected products
       if (cat === 'todas') {
-        document.querySelectorAll('.products-content').forEach(el => el.style.display = 'flex');
+        //document.querySelectorAll('.products-content').forEach(el => el.style.display = 'flex');
+        document.getElementById('all-products').style.display = 'flex';
       } else {
         document.getElementById(cat + '-products').style.display = 'flex';
       }
     }
 
-    selectCategory('todas');
     // Hover effect for images
     document.querySelectorAll('.preview').forEach(preview => {
       const img = preview.querySelector('img');

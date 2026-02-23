@@ -195,71 +195,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
   <style>
-    #email-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-    }
-    #email-modal-overlay .email-modal {
-      background: #fff;
-      padding: 40px;
-      border-radius: 8px;
-      width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      text-align: left;
-    }
-    #email-modal-overlay .email-modal h3 {
-      color: #4b5745;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-    #email-modal-overlay .email-modal input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    #email-modal-overlay .email-modal input:focus {
-      outline: none;
-      border-color: #4b5745;
-      box-shadow: 0 0 0 3px rgba(75, 87, 69, 0.1);
-    }
-    #email-modal-overlay .email-modal .modal-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
-    #email-modal-overlay .email-modal button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    #email-modal-overlay .email-modal .btn-confirm {
-      background: #4b5745;
-      color: #fff;
-      flex: 1;
-    }
-    #email-modal-overlay .email-modal .btn-confirm:hover {
-      background: #3a4232;
-    }
-    #email-modal-overlay .email-modal .btn-cancel {
-      background: #e0e0e0;
-      color: #333;
-      flex: 1;
-    }
-    #email-modal-overlay .email-modal .btn-cancel:hover {
-      background: #d0d0d0;
-    }
+  
   </style>
   <div id="email-modal-overlay">
     <div class="email-modal">
@@ -417,7 +353,8 @@
       const parroquia = document.getElementById('parroquia').value;
       const mail = document.getElementById('mail').value;
       const texto = document.getElementById('texto').value;
-      const modelo = document.getElementById('product-title').textContent;
+      //const modelo = document.getElementById('product-title').textContent;
+      const modelo = products[productId];
       const cantidad = document.getElementById('cantidad').value;
 
 
@@ -432,6 +369,7 @@
 
       const datos = 
       {
+        type: "producto",
         idUsuario: idUsuario.toString(),
         email: mail,
         nombre: nombre,
@@ -449,13 +387,16 @@
         },
         body: JSON.stringify(datos),
         mode: "no-cors"
+      })
+      .then(() => {
+        console.log("Formulario enviado correctamente");
+        sessionStorage.setItem("datosPedido", JSON.stringify(datos));
+        window.location.replace("pedido.html");
+      })
+      .catch(() => {
+        perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";
+        perror.style.visibility = 'visible';
       });
-      console.log("Formulario enviado correctamente");
-      
-      //window.location.href = "pedido.html";
-      //this.reset();
-      sessionStorage.setItem("datosPedido", JSON.stringify(datos));
-      window.location.replace("pedido.html");
     }
 
   </script>
