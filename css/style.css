@@ -689,7 +689,6 @@ button:hover{
 }
 
 .titlepage p{
-    font-size: 18px;
     color: #fff;
     text-align: center;
     margin-top: 5px;
@@ -911,7 +910,7 @@ button:hover{
 }
 
 .greenSection .img_caracteristicas{
-    width: 85%;
+    width: auto;
     margin-top: 20px;
     padding: 0 150px;
     margin-bottom: 60px;
@@ -932,26 +931,36 @@ button:hover{
     
 }
 
-.formsSection{
+.formsSection-base{
     background-color: #4b5745;
     padding-top: 60px;
+    
+}
+
+.formsSection{
+    margin: 0 240px;
+    justify-content: center;
+}
+
+.formsSection .text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: right;
 }
 
 .formsSection p{
-    text-align: left;
+    display:inline-block;
+    text-align: right;
     color: #fff;
-    margin-left: 260px;
-    margin-right: 80px;
 }
 
 .formsSection h2{
     text-align: left;
     color: #fff;
-    margin-left: 260px;
-    margin-right: 80px;
     font-weight: bold;
     line-height: 66px;
-    font-size: 36px;
+    font-size: 34px;
     background-color: #fff;
     -webkit-background-clip: text;
 }
@@ -960,16 +969,15 @@ button:hover{
 }
 
 .formsSection .game_box{
-    margin-top: 20px;
-    margin-right: 150px;
-    margin-left: 150px;
+    margin: 0 20px;
+}
+.formsSection .virgencita{
+    justify-content: left;
 }
 
-.formsSection .virgencita{
-    position: absolute;
-    width: 20%;
-    margin-left: 700px;
-    margin-top: 20px;
+.formsSection .virgencita img{
+    width: auto;
+    margin-top: 15px;
 }
 
 .formsSection input{
@@ -978,7 +986,7 @@ button:hover{
 }
 
 .formsSection textarea{
-    height: 150px; 
+    height: 94px; 
     width: 100%; 
     resize: vertical; 
     font-family: 'Montserrat', sans-serif; 
@@ -1081,28 +1089,33 @@ button:hover{
 /** HTML PRODUCTO**/
 .product-section{
     margin: 40px 0px;
+    margin-top: 120px;
 
 }
 
 .product-section .thumbnail{
     cursor: pointer;
+    margin-bottom: 20px;
+    /*
     width:75%; 
     margin-left: 25%;
-    margin-top: 20px;
+    margin-top: 20px;*/
 }
 
 .product-section .titlepage{
+    margin-top: 10px;
     margin-left:20px; 
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .product-section .titlepage h2{
+    
     color: #4b5745;
     text-align: left;
 }
 
 .product-section .titlepage h3{
-    font-family: 'Montserrat-bold';
+    font-family: 'Montserrat';
     color: #969696;
 }
 
@@ -1236,6 +1249,7 @@ input[type="email"],
 input[type="message"]{
     width: 100%;
     font-family: 'Montserrat';
+    font-weight: 200;
     font-size: 14px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -1245,9 +1259,9 @@ input[type="message"]{
 }
 
 .product-qty{
-    width:14%;
+    width:96px;
     input[type="text"]{
-        font-size: 16px;
+        font-size: 18px;
         max-height:35px;
         text-align: center;
     }
