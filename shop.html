@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calendarios</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>@nerediarte</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/avatarPortfolio.png" type="image/png" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!-- fevicon -->
+      <!--link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='16' font-size='16' fill='%234b5745'>N</text></svg>" /-->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
+<style>
+  @media (max-width: 932px) {
+    .products{
+      margin:20px !important;
+      display: flex !important;
+    }
+    .category{
+      display:inline;
+      font-size: 18px !important;
+      padding: 0 5px !important;
+      
+    }
+  }
+</style>
 <body class="main-layout">
   <!--header>
     <div class="container">
@@ -23,39 +58,31 @@
     </div>
   </header-->
   <!-- end loader -->
-         <nav class = "navbar navbar-expand-lg menuBar">
-            <div class="container">
-               <div class="row">
-                  <div class="ms-auto">
-                     <a class="fixed-bar" href="index.html">INICIO</a>
-                  </div>
-                  <div class="ms-auto">
-                     <a class="fixed-bar" href="/shop.html">TIENDA</a>
-                  </div>
-                  <div class="ms-auto">
-                     <a class="fixed-bar" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a>               
-                  </div>
-                  <div class="ms-auto">
-                     <div class="fixed-bar">
-                        <button href="index.html"><img src="images/avatar.png" alt="#"></button>
-                     </div>
-                  </div>
-                  <div class="ms-auto">
-                     <a class="fixed-bar" href="">FINES SOLIDARIOS</a>
-                  </div>
-                  <div class="ms-auto">
-                     <a class="fixed-bar" href="#customer">NEREDIARTE</a>
-
-               </div>
-            </div>
-         </nav>
+  <nav class="navbar navbar-expand-lg menuBar">
+    <div class="container-fluid px-2 d-flex align-items-center justify-content-between" style="padding: 15px; height: 75px;">
+      <img src="images/avatar.png" alt="Logo" style="height: 50px;" class="d-lg-none d-block" />
+      <button class="navbar-toggler lg-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border:none;background:transparent;">
+        <span class="navbar-toggler-icon d-flex align-items-center justify-content-center"><img src="images/menu_icon.png" alt="Menú" style="height: 36px;"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto d-flex justify-content-center align-items-center flex-wrap" style="float:none;gap:2.2rem;">
+              <li class="nav-item"><a class="fixed-bar nav-link" href="index.html">INICIO</a></li>
+              <li class="nav-item"><a class="fixed-bar nav-link" href="shop.htmlS">TIENDA</a></li>
+              <li class="nav-item"><a class="fixed-bar nav-link" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a></li>
+              <li class="nav-item"><div class="fixed-bar nav-link p-0"><button style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
+              <li class="nav-item"><a class="fixed-bar nav-link" href="">FINES SOLIDARIOS</a></li>
+              <li class="nav-item"><a class="fixed-bar nav-link" href="#customer">NEREDIARTE</a></li>
+          </ul>
+      </div>
+    </div>
+  </nav>
   <!-- Categories -->
   <!--PRODUCTOS-->
   <div class="products" style="margin-top: 100px;">
     <div class="row">
       <div class="col-md-2">
-        <h1 id="todas" class="category selected" onclick="selectCategory('todas')" style="cursor: pointer;">Todo</h1>
-        <h1 id="papeleria" class="category selected" onclick="selectCategory('papeleria')" style="cursor: pointer;">Papelería</h1>
+        <h1 id="todas" class="category" onclick="selectCategory('todas')" style="cursor: pointer;">Todo</h1>
+        <h1 id="papeleria" class="category" onclick="selectCategory('papeleria')" style="cursor: pointer;">Papelería</h1>
         <h1 id="bautizos" class="category" onclick="selectCategory('bautizos')" style="cursor: pointer;">Bautizos</h1>
         <h1 id="comuniones" class="category" onclick="selectCategory('comuniones')" style="cursor: pointer;">Comuniones</h1>
         <!--h2 id="confirmaciones">Confirmaciones</h2-->
@@ -79,36 +106,36 @@
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('jesusito')" style="cursor: pointer;">
               <img src="images/bautizo1.png">
-              <h3> NIÑO JESÚS</h3>
-              <h5>€35 EUR </h5>
+              <h3>NIÑO JESÚS</h3>
+              <h5>€1,75 EUR </h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('almudena')" style="cursor: pointer;">
               <img src="images/bautizo2.png">
               <h3>VIRGEN DE LA ALMUDENA</h3>
-              <h5>€35 EUR </h5>
+              <h5>€1,75 EUR </h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('clasico')" style="cursor: pointer;">
               <img src="images/comunion2_0.png">
-              <h3>CLÁSICO</h3>
-              <h5>€35  EUR</h5>
+              <h3>EUCARISTÍA CLÁSICO</h3>
+              <h5>€1,50  EUR</h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('vintage')" style="cursor: pointer;">
               <img src="images/comunion1_0.png">
-              <h3>VINTAGE</h3>
-              <h5>€35  EUR</h5>
+              <h3>EUCARISTÍA VINTAGE</h3>
+              <h5>€1,50  EUR</h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('virgencita')" style="cursor: pointer;">
               <img src="images/comunion3_0.png">
-              <h3>VIRGENCITA</h3>
-              <h5>€35  EUR</h5>
+              <h3>VIRGEN DEL ROSARIO</h3>
+              <h5>€1,75  EUR</h5>
             </div>
           </div>
         </div>
@@ -132,15 +159,15 @@
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('jesusito')" style="cursor: pointer;">
               <img src="images/bautizo1.png">
-              <h3> NIÑO JESÚS</h3>
-              <h5>€35 EUR </h5>
+              <h3>NIÑOS JESÚS</h3>
+              <h5>€1,75 EUR </h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('almudena')" style="cursor: pointer;">
               <img src="images/bautizo2.png">
               <h3>VIRGEN DE LA ALMUDENA</h3>
-              <h5>€35 EUR </h5>
+              <h5>€1,75 EUR </h5>
             </div>
           </div>
         </div>
@@ -148,23 +175,23 @@
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('clasico')" style="cursor: pointer;">
               <img src="images/comunion2_0.png">
-              <h3>CLÁSICO</h3>
-              <h5>€35  EUR</h5>
+              <h3>EUCARISTÍA CLÁSICO</h3>
+              <h5>€1,50  EUR</h5>
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('vintage')" style="cursor: pointer;">
               <img src="images/comunion1_0.png">
-              <h3>VINTAGE</h3>
-              <h5>€35  EUR</h5>
+              <h3>EUCARISTÍA VINTAGE</h3>
+              <h5>€1,50  EUR</h5>
               
             </div>
           </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToRecordatorio('virgencita')" style="cursor: pointer;">
               <img src="images/comunion3_0.png">
-              <h3>VIRGENCITA</h3>
-              <h5>€35  EUR</h5>
+              <h3>VIRGEN DEL ROSARIO</h3>
+              <h5>€1,75  EUR</h5>
             </div>
           </div>
         </div>
@@ -176,15 +203,15 @@
             <div class="container-flex">
                <div class="row">
                   <div class="col-md-6">
-                     <div style="position: inherit;  margin-right: 40px; text-align:right;"><img src="images/avatarPortfolio.png" style="width: 50%;"></div>
+                     <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 50%;"></div>
                   </div>
                   <div class="col-md-6">
                      <div class="titlepage">
                         <h2>¡HOLA, SOY NEREA!</h2>
-                        <p>Una pequeña ilustradora y diseñadora gráfica, en Madrid.</p>
-                        <p>Una imagen vale más que mil palabras, y por eso, intento plasmar un pedacito de la infinita belleza de la fe en artículos que puedan servir a su vez para tener al Señor presente en el día a día.</p>
-                        <p>Esto no sería posible sin tu ayuda y apoyo así que gracias.</p>
-                        <p>¡No dudes en contactar conmigo para lo que necesites!</p>
+                        <p>Una pequeña ilustradora y diseñadora gráfica en Madrid.</p>
+                        <p>Una imagen vale más que mil palabras; por eso intento plasmar un pedacito de la infinita belleza de la fe en artículos que, a su vez, ayuden a tener al Señor presente en el día a día.</p>
+                        <p>Nada de esto sería posible sin tu apoyo y tu ayuda, así que gracias</p>
+                        <p>¡No dudes en ponerte en contacto conmigo para lo que necesites!</p>
                         <p>~ Nerea</p>
                      </div>
                   </div>
@@ -196,21 +223,18 @@
          <footer>
             <div class="footer">
                <div class="container-flex">
-                  <div class="row">
+                  <div class="justify-content-between d-flex align-items-center flex-wrap" style="display:flex;">
                      <div class="col-ms-auto">
-                        <div class="icon">
+                        <div class="icon" style="display: inline;">
                            <a href="https://www.instagram.com/nerediarte/"><img src="icon/insta.png"></a>
                         </div>
-                     </div>
-                     <div class="col-ms-auto">
-                        <div class="icon">
+                        <div class="icon" style="display: inline;">
                            <a href="https://whatsapp.com/channel/0029Vb6nOZSKLaHlBjwOo83k"><img src="icon/whats.png"></a>
                         </div>
                      </div>
-                     <div class="col-md-10"></div>
                      <div class="col-ms-auto">
                         <div class="contact">
-                           <h2>CONTACT</h2>
+                           <h2>CONTACT</h2> <!--Falta pantalla de contacto (puede ser en nerediarte un about me y contacto para ir desde las otras seciones)-->
                         </div>
                      </div>
                   </div>
@@ -219,10 +243,54 @@
          </footer>
          <!-- end footer -->
   
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-init.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script>
+  <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script type="text/javascript">
+             // Force Bootstrap collapse toggle for navbar toggler
+             $(document).ready(function() {
+                $('.navbar-toggler').on('click', function() {
+                   $('#navbarNav').collapse('toggle');
+                });
+             });
+         $(document).ready(function() {
+             $("#sidebar").mCustomScrollbar({
+                 theme: "minimal"
+             });
+         
+             $('#dismiss, .overlay').on('click', function() {
+                 $('#sidebar').removeClass('active');
+                 $('.overlay').removeClass('active');
+             });
+         
+             $('#sidebarCollapse').on('click', function() {
+                 $('#sidebar').addClass('active');
+                 $('.overlay').addClass('active');
+                 $('.collapse.in').toggleClass('in');
+                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+             });
+         });
+         $(document).ready(function() {
+             $(".fancybox").fancybox({
+                 openEffect: "none",
+                 closeEffect: "none"
+             });
+         
+             $(".zoom").hover(function() {
+         
+                 $(this).addClass('transition');
+             }, function() {
+         
+                 $(this).removeClass('transition');
+             });
+         });
+
+      //document.getElementById('material').addEventListener('hover', function() {});
 
     /*INICIO PAGINA*/
     const queryString = window.location.search; // Esto devuelve "?id=123&usuario=juan"

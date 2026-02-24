@@ -25,6 +25,23 @@
         min-height: calc(100vh - 75px);
         overflow-y: auto;
     }
+    /* Transición suave para el despliegue de la navbar */
+    .navbar-collapse {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.05s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: max-height, opacity;
+    }
+    .navbar-collapse.show {
+        max-height: 220px; /* Ajusta según el contenido real */
+        opacity: 1;
+        transition: max-height 0.05s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .navbar-collapse.collapsing {
+        max-height: 0 !important;
+        opacity: 0.2;
+    }
     html, body {
         height: 100% !important;
         overflow-x: hidden !important;
@@ -143,20 +160,37 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet');
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet');
 
 @font-face {
     font-family: 'Eyesome Script';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/Eyesome\ Script.otf') format('eyesome'),
+    src: url('../fonts/Eyesome\ Script.otf') format('eyesome');
 }
 @font-face{
     font-family: 'Blushes';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/Blushes-Regular.ttf') format('truetype'),
+    src: url('../fonts/Blushes-Regular.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
 }
 
 
@@ -256,7 +290,7 @@ h4 {
 }
 
 h5 {
-    font-size: 14px
+    font-size: 17px
 }
 
 h6 {
@@ -296,6 +330,7 @@ ol {
 
 p {
     font-family: 'Montserrat';
+    font-style: light;
     margin: 0px;
     font-weight: 300;
     font-size: 17px;
@@ -654,7 +689,7 @@ button:hover{
 }
 
 .titlepage p{
-    font-size: 21px;
+    font-size: 18px;
     color: #fff;
     text-align: center;
     margin-top: 5px;
@@ -947,6 +982,7 @@ button:hover{
     width: 100%; 
     resize: vertical; 
     font-family: 'Montserrat', sans-serif; 
+    font-style: light;
     font-size: 14px; 
     padding: 10px; 
     border: 1px solid #ccc; 
@@ -1023,6 +1059,7 @@ button:hover{
 
 .preview h3 {
     font-family: 'Montserrat';
+    font-style: bold;
     font-weight: 700;
     color: #4b5745;
     display: flex;
@@ -1032,10 +1069,11 @@ button:hover{
 
 .products h5{
     font-family: 'Montserrat';
+    font-style: normal;
     color: #969696;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 /** end HTML CELEBRACIONES **/
@@ -1064,7 +1102,7 @@ button:hover{
 }
 
 .product-section .titlepage h3{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat-bold';
     color: #969696;
 }
 
