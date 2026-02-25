@@ -1,7 +1,7 @@
-/* --- Mejoras responsivas personalizadas para index.html --- */
+/* --- Mejoras para móviles --- */
 @media (max-width: 932px) {
     .titlepage h2 {
-        font-size: 1.3em !important;
+        /*font-size: 1.3em !important;*/
         line-height: 1.2 !important;
     }
 
@@ -87,33 +87,13 @@
     }
     .banner_main img {
         top: 0;
-        margin-left:10px !important;
-        object-fit: cover;
-    }
-    .banner_main button {
-        left: 0 !important;
-        margin-left: -1.75rem !important; 
-        transform: scale(50%) !important;
-        justify-content: left !important;
-    }
-    .banner_main button img {
-        width: auto;
-        text-align: left;
-        height: auto !important;
-    }
-
-    .whatsapp_btn, .btn{
-        width: 120px !important;
-        height: 30px !important;
-        margin: 5px auto 5px auto !important;
+        height: 516px !important;
+        object-fit: cover !important;
+        /*object-position: 85%;*/
     }
 
     .btn{
         margin-bottom:20px !important;
-    }
-
-    .spanTitle{
-        width: 85% !important;
     }
 
     .customer .avatar-container{
@@ -121,9 +101,13 @@
         margin: 0 auto !important;
         text-align: center !important;
     }
+    .customer .avatar-container img {
+        width: 50% !important;
+    }
 
     .customer .titlepage{
-        margin: 0 45px !important;
+        margin: 0 40px !important;
+        justify-content: center !important;
     }
 
 
@@ -146,6 +130,11 @@
         max-width: 100px !important;
     }
 }
+
+/* Mejoras para tablets */
+@media (max-width: 1180px){
+}
+
 
 /*---------------------------------------------------------------------
     File Name: style.css
@@ -620,13 +609,15 @@ button:hover{
     z-index: 1;
 
 }
-.banner_main button{
-    position: absolute;
-    top: 650px;
-    left:250px;
-    z-index: 2;
-    height: 75px;
-    width: 200px;
+
+.portfolio_btn{
+    position:absolute; 
+    left:0; 
+    margin-left: 7.75rem;
+    top:75%;
+    height:60px;
+    width:220px;
+    min-width:120px;
     background-color: transparent;
 }
 
@@ -694,7 +685,6 @@ button:hover{
     margin-top: 5px;
 }
 .titlepage .whatsapp_btn{
-    height: 75px;
     position: relative;
     width: 200px;
     margin: 20px auto 0 auto;
@@ -769,8 +759,25 @@ button:hover{
 /* ----------------------------------
    Clickable game box styles
    ---------------------------------- */
+.spanTitle {
+    padding: 60px 0;
+}
+
+.spanTitle .titlepage h2{
+    color: #4b5745;
+}
+.sections{
+    display: flex; /* Activa flexbox */
+    flex-direction: row; /* Elementos en fila (valor por defecto) */
+    justify-content: center; /* Espaciado entre elementos */
+    gap: 25px;
+}
+
 .game-link {
-    display: block;
+    width: 350px;
+    height: 476px;
+    display: flex;
+    justify-content: center;
     text-decoration: none;
     color: inherit;
 }
@@ -786,13 +793,36 @@ button:hover{
         font-weight: bold;
     }
 }
+.game-link .game_box, .proximamente .game_box{
+    background-color: #f2f5f6;
+    border: #4b5745 solid 4px;
+    padding: 10px 10px;
+    border-radius: 10%;
+    justify-content: center;
+}
+.game-link .game-box img{
+    width: 85%;
+}
+.game-link .game_box h3, .proximamente .game_box h3{
+    margin-top: 20px;
+    font-size: 17px;
+    color: #4b5745;
+    text-align: center;
+}
+.game-link .game_box p, .proximamente .game_box p{
+    color: #4b5745;
+    text-align: center;
+    margin-top: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
 
 .proximamente {
-    display: block;
+    width: 350px;
+    height: 476px;
+    display: flex;
     text-decoration: none;
     color: inherit;
-}
-.proximamente {
     position: relative;
     cursor: pointer;
     transition: transform 0.2s ease, font-size 0.8s;
@@ -822,32 +852,28 @@ button:hover{
     transform: translateX(-50%) translateY(-6px);
 }
 
-.spanTitle {
-    padding: 60px 0;
-}
 
 
-.spanTitle .titlepage h2{
-    color: #4b5745;
-}
-
+/*
 .spanTitle .game_box{
     background-color: #f2f5f6;
     border: #4b5745 solid 4px;
     padding: 10px 10px;
     border-radius: 10%;
     justify-content: center;
+    display: flex;
 }
 
 
 
 .spanTitle .game_box figure{
-    width: 75%;
+    width: auto;
     position: relative;
     margin: 20px auto 0 auto;
 }
 
 .spanTitle .game_box img{
+    width: 85%;
     background-color: transparent;
 }
 
@@ -872,7 +898,7 @@ button:hover{
     margin-top: 5px;
     padding: 5px;
     margin-bottom: 20px;
-}
+}*/
 
 
 
@@ -916,6 +942,13 @@ button:hover{
     margin-bottom: 60px;
 }
 
+.greenSection .img_work{
+    width: 75%;
+    margin-top: 20px;
+    padding: 0 150px;
+    margin-bottom: 60px;
+}
+
 .correo{
     color:white;
     font-weight: 700;
@@ -931,19 +964,14 @@ button:hover{
     
 }
 
-.formsSection-base{
-    background-color: #4b5745;
-    padding-top: 60px;
-    
-}
-
 .formsSection{
-    margin: 0 240px;
-    justify-content: center;
+    background-color: #4b5745;
+    padding: 0 240px;
 }
 
 .formsSection .text{
     display: flex;
+    width: 450px;
     flex-direction: column;
     align-items: flex-end;
     justify-content: right;
@@ -969,14 +997,15 @@ button:hover{
 }
 
 .formsSection .game_box{
-    margin: 0 20px;
+    width: 450px;
+    margin-top: 15px;
 }
 .formsSection .virgencita{
     justify-content: left;
 }
 
 .formsSection .virgencita img{
-    width: auto;
+    width: 300px;
     margin-top: 15px;
 }
 
@@ -999,6 +1028,23 @@ button:hover{
     display: block; 
     line-height: 1.5;
 }
+.send_btn{
+    max-height: 35px;
+    margin: 0 15px;
+}
+
+.send_btn button{    
+    background-color: transparent;
+    text-align: left;
+    
+}
+.send_btn button img{
+    width: 45%;
+}
+
+.send_btn img:hover{
+    transform: scale(1.05);
+}
 
 .note{
     margin-top: 15px;
@@ -1007,6 +1053,7 @@ button:hover{
     color: #4b5745;
 }
 
+/*
 .send_btn button{
     position: relative;
     padding: 15px 20px;
@@ -1020,7 +1067,7 @@ button:hover{
 
 .send_btn img:hover{
     transform: scale(1.05);
-}
+}*/
 
 /** HTML CELEBRACIONES **/
 .recordatorios{
@@ -1419,6 +1466,9 @@ ul.spinit li a:hover {
     background-color: #4b5745;
     padding: 50px 0;
 }
+.customer .titlepage{
+    margin-right: 180px;
+}
 .customer .titlepage h2{
     text-align: left;
     margin: 20px 0; 
@@ -1427,7 +1477,6 @@ ul.spinit li a:hover {
 
 .customer .titlepage p{
     text-align: left;
-    margin-right: 240px;
     margin-bottom: 10px;
 }
 
