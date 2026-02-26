@@ -129,14 +129,6 @@
     .licens .row img {
         max-width: 100px !important;
     }
-    .casino {
-        padding: 20px !important;
-    }
-    .casino img{
-        content: url(/images/recordatorios_caract_vMobile.png);
-        width: 85%;
-        margin-left: 25px;
-    }
     .greenSection{
         padding: 40px 0;
     }
@@ -202,7 +194,7 @@
 }
 
 /* Mejoras para tablets */
-@media only screen and (min-width: 481px) and (max-width: 1200px){
+@media only screen and (min-width: 481px) and (max-width: 1024px){
     .casino{
         padding-top: 0px;
     }
