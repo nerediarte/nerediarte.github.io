@@ -129,10 +129,64 @@
     .licens .row img {
         max-width: 100px !important;
     }
+
+    .formsSection{
+        display: flex !important;
+        flex-direction: row !important;
+        padding: 20px !important;
+        width: 100%;
+        flex-wrap: nowrap;
+        align-items:start !important;
+    }
+    .formsSection .text{
+        width: 460px !important;
+    }
+    .formsSection .text h2{
+        font-size: 15px;
+        margin-bottom: 0 !important;
+    }
+    .formsSection .text p{
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .formsSection .virgencita{
+        display: none;
+    }
+    .formsSection .game_box{
+        margin-top: 20px;
+    }
+    .formsSection .form-group{
+        padding-right: 0 !important;
+    }
+    input[type="email"]{
+        padding: 0 !important;
+    }
+    .formsSection textarea{
+        height: 60px !important;
+    }
+    .perror_msg{
+        font-size: 7.5px !important;
+        margin-bottom: 0 !important;
+    }
+    .send_btn img{
+        width: 80px !important;
+    }
 }
 
 /* Mejoras para tablets */
 @media (max-width: 1180px){
+    .formsSection .text h2{
+        font-size: 28px;
+    }
+    .formsSection .text p{
+        font-size: 14px;
+    }
+    .formsSection .game_box{
+        margin-top: 20px;
+    }
+    .formsSection .virgencita img{
+        margin-top: 55px !important;
+    }
 }
 
 
@@ -966,7 +1020,11 @@ button:hover{
 
 .formsSection{
     background-color: #4b5745;
-    padding: 0 240px;
+    padding: 0 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    /*d-wrap, flex-wrap*/
 }
 
 .formsSection .text{
@@ -998,15 +1056,11 @@ button:hover{
 
 .formsSection .game_box{
     width: 450px;
-    margin-top: 15px;
-}
-.formsSection .virgencita{
-    justify-content: left;
 }
 
 .formsSection .virgencita img{
     width: 300px;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 .formsSection input{
@@ -1015,7 +1069,7 @@ button:hover{
 }
 
 .formsSection textarea{
-    height: 94px; 
+    height: 80px; 
     width: 100%; 
     resize: vertical; 
     font-family: 'Montserrat', sans-serif; 
@@ -1030,20 +1084,26 @@ button:hover{
 }
 .send_btn{
     max-height: 35px;
-    margin: 0 15px;
-}
-
-.send_btn button{    
+    margin: 0 20px;
     background-color: transparent;
     text-align: left;
-    
-}
-.send_btn button img{
-    width: 45%;
+    transform-origin: left center;
+    transition: transform 0.2s ease;
 }
 
-.send_btn img:hover{
+.send_btn img{
+    max-width: 120px;
+}
+
+.send_btn:hover{
     transform: scale(1.05);
+}
+.perror_msg{
+    height:'10px';
+    color: white;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 .note{
