@@ -60,17 +60,20 @@
   </section>
   <!-- Categories -->
   <!-- WELLCOME -->
-  <img src="images/decorationSectionI.png" style="position: absolute; width: 100%;">
+  <!--img src="images/decorationSectionI.png" style="position: absolute; width: 100%;"-->
   <section id="game" class="greenSection">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="paragraph">
+          <div class="titlepage" style="padding-bottom: 0;">
             <h2>«El arte de acompañar»</h2>
-            <p>Si buscas algo personal para ti o para los tuyos, has llegado al lugar indicado.</p>
-            <p>Láminas, libretas, grabados en madera… todo diseñado con ilustraciones cristianas, llenas de significado y belleza.</p>
-            <p>Cuéntame lo que necesitas y juntos lo haremos realidad.</p>
-            <p style="font-style: italic;"><br>Atención: No realizo retratos de personas reales; todo el trabajo se centra en motivos cristianos y personajes bíblicos.</p>
+            <span></span>
+            <div class="paragraph">
+              <p>Si buscas algo personal para ti o para los tuyos, has llegado al lugar indicado.</p>
+              <p>Láminas, libretas, grabados en madera… todo diseñado con ilustraciones cristianas, llenas de significado y belleza.</p>
+              <p>Cuéntame lo que necesitas y juntos lo haremos realidad.</p>
+              <p style="font-style: italic;"><br>Atención: No realizo retratos de personas reales; todo el trabajo se centra en motivos cristianos y personajes bíblicos.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -103,7 +106,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="paragraph">
+          <div class="titlepage">
             <h2>¿Quieres un diseño personalizado?</h2>
           </div>
         </div>
@@ -116,29 +119,23 @@
       <div class="row">
         <div class="col-md-12">
           <div class="paragraph">
-            <h2 style="color: #4b5745;">Cómo trabajo</h2>
-            <span class="starSpan"><img src="images/separador.png"></span>
+            <h2 style="color: #4b5745; font-size: 42px;">Cómo trabajo</h2>
+            <span class="starSpan"><img src="images/separador.png" style="width: 65%;"></span>
           </div>
         </div>
       </div>
     </div>
-    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="width:75%;">
+    <img src="images/comoTrabajo.png" class="img_work">
   </section>
   <section class="formsSection">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div>
+        <div class="text">
             <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
             <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
             <p> Me pondré en contacto lo antes posible.</p>
             <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
-          </div>
-          
         </div>
         <div class="virgencita"><img src="images/drawDecoI.png"></div>
-        <div class="col-md-6">
-          <div class="game_box">
+        <div class="game_box">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="mail" name="email">
@@ -147,21 +144,54 @@
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="message" name="mensaje" rows="6"></textarea>
             </div>
-            <div id="send_btn" class="send_btn"><button onclick="procesarInfo()"><img src="images/send_button.png"></button></div>
-          </div>
-        </div>
-      </div>
-    </div>
+            <p id="perror" class="perror_msg" style="visibility: hidden;">Por favor, debe completar todos los campos.</p>
+            <button id="send_btn" class="send_btn" onclick="procesarInfo()"><img src="images/send_button.png"></button>
+        </div>          
   </section>
   </div>
   <!-- END PERSONALIZACION -->
 
+  <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-init.js"></script>
+  <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/polyfills.js"></script>
-  <script src="js/plugin.js"></script>
+  <!-- sidebar -->
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
   <script src="js/custom.js"></script>
-  <script src="js/sheets-form.js"></script>
+  <script type="text/javascript">
+    // Force Bootstrap collapse toggle for navbar toggler
+    $(document).ready(function() {
+      $('.navbar-toggler').on('click', function() {
+        $('#navbarNav').collapse('toggle');
+      });
+    });
+    $(document).ready(function() {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+      $('#dismiss, .overlay').on('click', function() {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+      });
+      $('#sidebarCollapse').on('click', function() {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+    $(document).ready(function() {
+      $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+      });
+      $(".zoom").hover(function() {
+        $(this).addClass('transition');
+      }, function() {
+         $(this).removeClass('transition');
+      });
+    });
+  </script>
 </body>
 </html>

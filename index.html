@@ -35,15 +35,14 @@
    </head>
    <style> 
       /*<!-- elementos que solo están en este index-->*/
-      @media (max-width: 932px){
+      @media only screen and (max-width: 480px){
          .banner_main img {
             object-position: 85%;
          }
          .portfolio_btn{
-            margin-left: 0.25rem !important;
+            margin-left:0;
             top: 10% !important;
             transform: scale(50%) !important;
-            justify-content: left !important;
             background-color: #ffffff9a !important;
             border-radius: 25%;
          }
@@ -74,9 +73,9 @@
          } 
 
       }
-      @media (max-width: 1180px){
+      @media (min-width: 481px) and (max-width: 1024px){
          .spanTitle{
-            padding: 60px 60px !important;
+            padding: 60px 20px !important;
          }
       }
 
@@ -273,8 +272,8 @@
          <div id="customer"  class="customer">
             <div class="container-flex">
                <div class="row">
-                  <div class="col-md-6">
-                     <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 420px; margin-top: 0px;"></div>
+                  <div class="col-md-6" style="display: flex; justify-content: right; align-items: center;">
+                     <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 450px; margin-top: 0px;"></div>
                   </div>
                   <div class="col-md-6">
                      <div class="titlepage">

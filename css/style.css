@@ -1,5 +1,5 @@
 /* --- Mejoras para móviles --- */
-@media (max-width: 932px) {
+@media only screen and (max-width: 480px) {
     .titlepage h2 {
         /*font-size: 1.3em !important;*/
         line-height: 1.2 !important;
@@ -129,6 +129,30 @@
     .licens .row img {
         max-width: 100px !important;
     }
+    .casino {
+        padding: 20px !important;
+    }
+    .casino img{
+        content: url(/images/recordatorios_caract_vMobile.png);
+        width: 85%;
+        margin-left: 25px;
+    }
+    .greenSection{
+        padding: 40px 0;
+    }
+    .greenSection .titlepage{
+        padding-bottom: 20px;
+    }
+    .img_caracteristicas {
+        content: url(/images/designprocess_vMobile.png);
+        margin:0!important;
+        padding: 0 60px !important;
+    }
+    .img_work {
+        content: url(/images/comoTrabajo_vMobile.png);
+        margin:0!important;
+        padding: 20px !important;
+    }
 
     .formsSection{
         display: flex !important;
@@ -142,11 +166,11 @@
         width: 460px !important;
     }
     .formsSection .text h2{
-        font-size: 15px;
+        font-size: 12px;
         margin-bottom: 0 !important;
     }
     .formsSection .text p{
-        font-size: 12px;
+        font-size: 10px;
         line-height: 14px;
     }
     .formsSection .virgencita{
@@ -157,6 +181,7 @@
     }
     .formsSection .form-group{
         padding-right: 0 !important;
+        margin-bottom: 0 !important;
     }
     input[type="email"]{
         padding: 0 !important;
@@ -165,18 +190,31 @@
         height: 60px !important;
     }
     .perror_msg{
-        font-size: 7.5px !important;
+        font-size: 6.2px !important;
         margin-bottom: 0 !important;
     }
     .send_btn img{
         width: 80px !important;
     }
+    .label{
+        font-size: 10px,;
+    }
 }
 
 /* Mejoras para tablets */
-@media (max-width: 1180px){
+@media only screen and (min-width: 481px) and (max-width: 1200px){
+    .casino{
+        padding-top: 0px;
+    }
+    .greenSection .img_caracteristicas{
+        padding: 0 60px !important;
+    }
+    .img_work {
+        margin:0!important;
+        padding: 20px !important;
+    }
     .formsSection .text h2{
-        font-size: 28px;
+        font-size: 28px !important;
     }
     .formsSection .text p{
         font-size: 14px;
@@ -187,6 +225,13 @@
     .formsSection .virgencita img{
         margin-top: 55px !important;
     }
+    .perror_msg{
+        margin-bottom: 0 !important;
+    }
+    .send_btn img{
+        width: 96px !important;
+    }
+    
 }
 
 
@@ -2190,6 +2235,7 @@ a.article:hover {
     position: inherit;  
     margin-right: 40px; 
     text-align:right;
+    
 }
 
 
