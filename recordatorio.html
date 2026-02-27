@@ -123,7 +123,7 @@
                 </div>
                 <div class="form-group">
                   <label for="Texto">Texto:</label>
-                  <input type="text" id="texto" name="texto" value="Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.">
+                  <input type="text" id="product-text" name="texto">
                 </div>
                 <span style="display:flex; height: 15px;"></span>
               </div>
@@ -157,7 +157,7 @@
         <div class="col-md-12">
           <div class="paragraph">
             <h2 style="color: #4b5745; font-size: 42px;">Cómo trabajo</h2>
-            <span class="starSpan"><img src="images/separador.png" style="width: 65%;"></span>
+            <span class="starSpan"><img src="images/separador.png" style="width: 35%;"></span>
           </div>
         </div>
       </div>
@@ -217,15 +217,23 @@
         title: "NIÑO JESÚS",
         image: "images/bautizo1.png",
         image0: "images/bautizo1_0.png",
-        image1: "images/bautizo1_2.png",
-        price: "€35 EUR",
+        image1: "images/bautizo1_1.png",
+        image2: "images/bautizo1_2.png",
+        image3: "images/bautizo1_3.png",
+        image4: "images/bautizo1_4.png",
+        price: "1.75",
+        text: "Ángel de mi guarda, mi dulce compañía, no me desampares, ni de noche ni de día, hasta que me entregues en los brazos de Jesús, José y María. Con tus alas me persigno y me abrazo de la cruz, y en mi corazón me llevo al dulcísimo Jesús.Con Dios me acuesto, con Dios me levanto, con la Virgen María y el Espíritu Santo.Amén.",
       },
       almudena: {
         title: "VIRGEN DE LA ALMUDENA",
         image: "images/bautizo2.png",
         image0: "images/bautizo2_0.png",
-        image1: "images/bautizo2_2.png",
-        price: "€35 EUR",
+        image1: "images/bautizo2_1.png",
+        image2: "images/bautizo2_2.png",
+        image3: "images/bautizo2_3.png",
+        image4: "images/bautizo2_4.png",
+        price: "1.75",
+        text: "Nacido para dar testimonio de la Luz",
       },
       clasico: {
         title: "EUCARISTÍA CLÁSICO",
@@ -236,6 +244,7 @@
         image3: "images/comunion2_3.png",
         image4: "images/comunion2_4.png",
         price: "1.50",
+        text:"Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.",
       },
       vintage: {
         title: "EUCARISTÍA VINTAGE",
@@ -246,6 +255,7 @@
         image3: "images/comunion1_3.png",
         image4: "images/comunion1_4.png",
         price: "1.50",
+        text: "Tú que eres luz, ilumina mis pasos. Tú que eres amor, guía mi corazón.",
       },
       virgencita: {
         title: "VIRGENCITA",
@@ -256,6 +266,7 @@
         image3: "images/comunion1_3.png",
         image4: "images/comunion3_4.png",
         price: "1.75",
+        text: "Alma de Cristo, santifícame..."
       }
     };
     function getQueryParam(param) {
@@ -273,6 +284,7 @@
       document.getElementById('product-image3').src = product.image3;
       document.getElementById('product-image4').src = product.image4;
       document.getElementById('product-price').textContent = product.price;
+      document.getElementById('product-text').value = product.text;
       updateSubtotal()
     } else {
       document.getElementById('product-title').textContent = "Producto no encontrado";
