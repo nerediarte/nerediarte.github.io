@@ -120,7 +120,7 @@
                 </div>
                 <div class="form-group">
                   <label for="envio">Tipo de envío:</label>
-                  <label class="checkbox"><input type="checkbox" id="ord" /> Ordinario(+3,70€)</label>
+                  <label class="checkbox" ><input type="checkbox" id="ord" /> Ordinario(+3,70€)</label>
                   <label class="checkbox"><input type="checkbox" id="crf"/> Certificado(+8,48€)</label>
                   <label class="checkbox"><input type="checkbox" id="int"/> Fuera de la Península Ibérica</label>
                 </div>
@@ -129,7 +129,7 @@
                   <input type="text" id="comentario" name="comentario">
                 </div>
               </div> <!-- end product-form-->
-              <p id="email-error" class="email-error" style="visibility: hidden;">Por favor, completa todos los campos.</p>
+              <p id="info-error" class="info-error" style="visibility: hidden;">Por favor, completa todos los campos.</p>
               <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>  
               <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
             </div>
@@ -188,7 +188,7 @@
               </div-->
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email-contact" name="email" required>
               </div>
               <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
@@ -207,8 +207,9 @@
   <!-- PESTAÑA CORREO ELECTRÓNICO-->
   <div id="email-modal-overlay">
     <div class="email-modal">
-      <h3 id="title-mail">Dirección de correo</h3>
-      <input type="text" id="mail"> 
+      <h3 id="title-mail" style = "margin-bottom: 10px;">Dirección de correo</h3>
+      <p id="email-error" class="info-error" style="visibility: hidden; padding-left:0;">Por favor, ingresa tu correo electrónico.</p>
+      <input type="text" id="email-buy"> 
         <!--input id="email-input"-->
       <div class="modal-buttons">
         <button class="btn-confirm" id="email-confirm-btn" onclick="procesarInfo()">Confirmar</button>
@@ -217,6 +218,8 @@
     </div>
   </div>
   <!-- END PESTAÑA CORREO -->
+   <div id = "loading" class = "loading" style = "display: none;"></div>
+
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -315,7 +318,6 @@
       setTimeout(() => this.classList.remove('clicked'), 300);
     });
     
-    
     function updateSubtotal(qty){
       console.log("Qty:", qty);
       const precio = parseFloat(document.getElementById('product-price').textContent);
@@ -328,7 +330,7 @@
 
     /*QUANTITY INPUT*/
     var QtyInput = (function () {
-	    var $qtyInputs = $(".qty-input");
+	    var $qtyInputs = $(".qty-input"); 
 
 	  if (!$qtyInputs.length) {
 		  return;
@@ -397,31 +399,25 @@
 
     })();
   
-  const perror = document.getElementById('email-error');
-  const chk = "false";
+  var perror = document.getElementById('info-error');
   function enterEmail(){
-      const overlay = document.getElementById('email-modal-overlay');
+    const overlay = document.getElementById('email-modal-overlay');
       
-      const nombre = document.getElementById('nombre');
-      const dir = document.getElementById('direccion');
-      const cp = document.getElementById('cp');
-      const loc = document.getElementById('localidad');
-      
-      console.log(nombre.value, dir.value, cp.value, loc.value, chk);
-      
+    const nombre = document.getElementById('nombre');
+    const dir = document.getElementById('direccion');
+    const cp = document.getElementById('cp');
+    const loc = document.getElementById('localidad');
+    var envio = function(){
+      return Boolean(document.getElementById('ord').checked || document.getElementById('crf').checked || document.getElementById('int').checked);
+    }
 
-      if(document.getElementById('ord').checked | document.getElementById('crf').checked | document.getElementById('int').checked)
-      {
-        chk.textContent = "true";
-      }
-
-      if(nombre.value == "" || dir.value == "" || cp.value == "" || loc.value == "" || chk.textContent =="false"){
-          if(perror.style.visibility ==  'hidden')
-          {
-              perror.style.visibility = 'visible';
-          }
-        return;
-      } 
+    if(nombre.value == "" || dir.value == "" || cp.value == "" || loc.value == "" || !envio()){
+        if(perror.style.visibility ==  'hidden')
+        {
+          perror.style.visibility = 'visible';
+        }
+      return;
+    } 
       overlay.style.display = 'flex';
   }
   document.addEventListener('keyup', (e) => {
@@ -430,48 +426,50 @@
         }
   });
   function procesarInfo() {
-      //Gererar ID de usuario y guardarlo en localStorage
-      const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
-      localStorage.setItem("idUsuario", idUsuario);
+    const mailBuy = document.getElementById('email-buy').value;
+    perror = document.getElementById('email-error');
+    //Gererar ID de usuario y guardarlo en localStorage
+    const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
+    localStorage.setItem("idUsuario", idUsuario);
 
-      const ckb = 'ordinario';
-      if(document.getElementById('crf'))
+    const nombre = document.getElementById('nombre').value;
+    const direccion = document.getElementById('direccion').value;
+    const codigoPostal = document.getElementById('cp').value;
+    const localidad = document.getElementById('localidad').value;
+    const cantidad = $(".qty-input").find(".limited-qty").val();
+
+    var tipoEnvio = function(){
+        if(document.getElementById('crf')) return "certificado";
+        else if (document.getElementById('int')) return "internacional";
+        else return "ordinario";
+    }
+
+    const modelo = products[productId];
+
+    if(mailBuy === "") {
+      perror.style.visibility = 'visible';
+      return;
+    }
+
+    const datos = 
       {
-        ckb='certificado';
-      } else if (document.getElementById('int')){
-        ckb='internacional';
-      }
-      const modelo = products[productId];
-
-
-      console.log(idUsuario, nombre, fecha, parroquia, mail, texto, modelo, cantidad);
-
-      if(mail === "") {
-        perror.textContent = "Por favor, ingresa tu correo electrónico.";
-        document.getElementById('title-mail').appendChild(perror);
-        perror.style.visibility = 'visible';
-        return;
-      }
-
-
-
-      const datos = 
-      {
-        type: "producto",
+        type: "papeleria",
         idUsuario: idUsuario.toString(),
-        email: document.getElementById('mail').value,
-        nombre: document.getElementById('nombre').value,
-        direccion: document.getElementById('dir').value,
-        codigoPostal: document.getElementById('cp').value,
-        localidad: document.getElementById('loc').value,
-        envio: ckb,
+        email: mailBuy,
+        nombre: nombre,
+        direccion: direccion,
+        codigoPostal: codigoPostal,
+        localidad: localidad,
+        envio: tipoEnvio(),
         modelo: modelo,
-        cantidad: document.getElementById('limited-qty').value
+        cantidad: cantidad
       };
+
+      console.log(datos);
 
       document.getElementById('loading').style.display = 'flex';
 
-      fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwrvhnvuqkWITw0NYYJoES83vnknXEUpP9ky89abICYiC3iBu_g-CULKxzMgXpHHjsf/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -482,7 +480,7 @@
       .then(() => {
         console.log("Formulario enviado correctamente");
         sessionStorage.setItem("datosPedido", JSON.stringify(datos));
-        window.location.replace("pedido.html");
+        window.location.replace("pedidoPr.html");
       })
       .catch(() => {
         perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";

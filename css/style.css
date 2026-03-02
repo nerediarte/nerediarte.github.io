@@ -1336,7 +1336,7 @@ input[type="checkbox"]:hover{
     width: 75%;
 }
 
-.email-error{
+.info-error{
     color: red;
     font-size: 14px;
     margin-top: 10px;
@@ -2164,20 +2164,27 @@ a.article:hover {
       margin: 10px 0;
       text-align: left;
     }
-    .details li{
-        list-style: circle !important;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 5px !important;
-    }
-    .details p{
-        font-size: 14px;        
+    .order-list h3 {
+        font-size: 15px;
     }
     .order-list li {
       margin-bottom: 15px;
       color: #495057;
       font-size: 15px;
       line-height: 1.6;
+    }
+    .order-list p{
+        font-size: 21px;
+    }
+    
+    .details li{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 5px !important;
+    }
+    
+    .details p{
+        font-size: 14px;        
     }
     .order-separator {
       height: 2px;

@@ -122,6 +122,7 @@
                 </div>
                 <span style="display:flex; height: 15px;"></span>
               </div>
+              <p id="info-error" class="info-error" style="visibility: hidden;">Por favor, completa todos los campos.</p>
               <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>
               <!--div >
                 <a class="btn" id="pedido-btn" href="#email-modal-overlay" style="text-align:left; margin-left: 5px;"><img src="images/pedido_button.png" style="width: 75%;"></a>
@@ -170,7 +171,7 @@
         <div class="game_box">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="mail" name="email">
+                <input type="email" id="mail2" name="email">
             </div>
             <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
@@ -186,8 +187,9 @@
   <!-- PESTAÑA CORREO ELECTRÓNICO-->
   <div id="email-modal-overlay">
     <div class="email-modal">
-      <h3 id="title-mail">Dirección de correo</h3>
-      <input type="text" id="mail"> 
+      <h3 id="title-mail" style = "margin-bottom: 10px;">Dirección de correo</h3>
+      <p id="email-error" class="info-error" style="visibility: hidden; padding-left:0;">Por favor, ingresa tu correo electrónico.</p>
+      <input type="text" id="mail1"> 
         <!--input id="email-input"-->
       <div class="modal-buttons">
         <button class="btn-confirm" id="email-confirm-btn" onclick="procesarInfo()">Confirmar</button>
@@ -314,7 +316,7 @@
       document.getElementById('product-image3').src = product.image3;
       document.getElementById('product-image4').src = product.image4;
       document.getElementById('product-price').textContent = product.price;
-      document.getElementById('product-text').value = product.text;
+      document.getElementById('product-text').textContent = product.text;
       updateSubtotal();
     } else {
       document.getElementById('product-title').textContent = "Producto no encontrado";
@@ -354,16 +356,8 @@
       const subtotal = (cantidad * precio).toFixed(2);
       document.getElementById('subtotal').textContent = subtotal;
     }
-
-    const perror = document.createElement('p');
-    perror.style.height = '10px';
-    perror.style.color = 'red';
-    perror.style.fontSize = '14px';
-    perror.style.marginTop = '10px';
-    perror.textContent = "Por favor, completa todos los campos para habilitar el botón de pedido.";
-    document.getElementById('texto').parentNode.appendChild(perror);
-    perror.style.visibility = 'hidden';
     
+    var perror = document.getElementById('info-error');
     function enterEmail(){
       const overlay = document.getElementById('email-modal-overlay');
 
@@ -388,6 +382,8 @@
     });
 
     function procesarInfo() {
+      perror = document.getElementById('email-error');
+
       //Gererar ID de usuario y guardarlo en localStorage
       const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
       localStorage.setItem("idUsuario", idUsuario);
@@ -395,8 +391,8 @@
       const nombre = document.getElementById('nombre').value;
       const fecha = document.getElementById('fecha').value;
       const parroquia = document.getElementById('parroquia').value;
-      const mail = document.getElementById('mail').value;
-      const texto = document.getElementById('texto').value;
+      const mail = document.getElementById('mail1').value;
+      const texto = document.getElementById('product-text').value;
       //const modelo = document.getElementById('product-title').textContent;
       const modelo = products[productId];
       const cantidad = document.getElementById('cantidad').value;
@@ -404,29 +400,27 @@
 
       console.log(idUsuario, nombre, fecha, parroquia, mail, texto, modelo, cantidad);
 
-      if(mail === "") {
-        perror.textContent = "Por favor, ingresa tu correo electrónico.";
-        document.getElementById('title-mail').appendChild(perror);
+      if(mail == "") {
         perror.style.visibility = 'visible';
         return;
       }
 
       const datos = 
       {
-        type: "recordatorio",
+        type: "producto",
         idUsuario: idUsuario.toString(),
         email: mail,
         nombre: nombre,
         fecha: fecha,
         parroquia: parroquia,
         texto: texto,
-        modelo: modelo,
+        modelo: modelo.title,
         cantidad: cantidad
       };
 
       document.getElementById('loading').style.display = 'flex';
 
-      fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwrvhnvuqkWITw0NYYJoES83vnknXEUpP9ky89abICYiC3iBu_g-CULKxzMgXpHHjsf/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -437,7 +431,7 @@
       .then(() => {
         console.log("Formulario enviado correctamente");
         sessionStorage.setItem("datosPedido", JSON.stringify(datos));
-        window.location.replace("pedido.html");
+        window.location.replace("pedidoRec.html");
       })
       .catch(() => {
         perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";
