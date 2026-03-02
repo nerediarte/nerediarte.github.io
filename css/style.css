@@ -191,6 +191,25 @@
     .label{
         font-size: 10px,;
     }
+
+    /* PRODUCTS SHOP*/
+    .product-section {
+      margin-top: 40px !important;
+    }
+    .thumbnails {
+      margin-bottom: 10px !important;
+      display: flex !important;
+      justify-content: right !important;
+    }
+    .thumbnail{
+      max-height: 64px !important;
+      max-width: 64px !important;
+      margin-left: 5px !important;
+      margin-bottom: 0 !important;
+    }
+    .main-image {
+      margin-bottom: 20px !important;
+    }
 }
 
 /* Mejoras para tablets */
@@ -1290,21 +1309,23 @@ button:hover{
 }
 
 .product-section .game_box .checkbox{
-    font-family: 'Montserrat';
-    font-weight: 400;
+    font-family: 'Montserrat'; 
+    font-weight: 300; 
+    font-size: 14px;
     color: #4e4e4e;
-    font-size: 17px;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-left: 20px;
     text-align: left;
 }
-
-.checkbox:hover{
+.product-section .game_box .checkbox:hover{
+    cursor:default;
+}
+input[type="checkbox"]:hover{
     cursor: pointer;
 }   
 
 .product-section .game_box button{
-    margin-top: 30px;
+    margin-top: 5px;
     margin-left: 0;
     padding-left: 20px;
     background-color: transparent;
@@ -1313,6 +1334,13 @@ button:hover{
 
 .product-section .game_box button img{
     width: 75%;
+}
+
+.email-error{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    padding-left: 20px;
 }
 
 /** HTML ENCARGOS **/
@@ -2231,57 +2259,60 @@ a.article:hover {
 }
 
 
-/* 
+
 .qty-input {
 	color: #4b5745;
 	background: #fff;
-	display: flex;
+	display: inline;
+    padding: 7px;
 	align-items: center;
 	overflow: hidden;
+    border: 1px solid #4b574586;
+    border-radius: 10px;
 
-	.product-qty,
+	.limited-qty,
     .qty-count {
 		background: transparent;
 		color: inherit;
-		font-weight: bold;
-		font-size: inherit;
-		border: none;
-		display: inline-block;
-		min-width: 0;
-		height: 2.5rem;
-		line-height: 1;
-		
-
-		&:focus {
-			outline: none;
-		}
+        font-family: 'Montserrat';
+        font-weight: 200;
+        font-size: 18px;
+        max-height:35px;
+        text-align: center;
+        border:none;
+        vertical-align: middle;
+    }
+	&:focus {
+		outline: none;
 	}
+}
 
-	.product-qty {
-		width: 50px;
-		min-width: 0;
-		display: inline-block;
-		text-align: center;
-		appearance: textfield;		
+.limited-qty {
+	width: 50px;
+	min-width: 0;
+	display: inline-block;
+	text-align: center;
+	appearance: textfield;	
 		
-		&::-webkit-outer-spin-button,
-		&::-webkit-inner-spin-button {
-			appearance: none;
-			margin: 0;
-		}
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		appearance: none;
+		margin: 0;
 	}
+}
 
-	.qty-count-minus {
-		padding: 0;
-		cursor: pointer;
-		width: 2.5rem;
-		font-size: 1.25em;
-		text-indent: -100px;
-		overflow: hidden;
-		position: relative;
+.qty-count-minus {
+    margin-top: 0 !important;
+	padding: 0;
+	cursor: pointer;
+	/*width: 2.5rem;*/
+	font-size: 1.25em;
+	text-indent: -100px;
+	overflow: hidden;
+	position: relative;
 		
-		&:before, 
-		&:after {
+	&:before, 
+	&:after {
 			content: "";
 			height: 2px;
 			width: 10px;
@@ -2293,32 +2324,31 @@ a.article:hover {
 			left: 0;
 			right: 0;
 			margin: auto;
-		}
-	
-		
-		&:disabled {
-			color: #ccc;
-			background: #f2f2f2;
-			cursor:auto;
-			border-color: transparent;
+	}
+	&:disabled {
+		color: #ccc;
+		background: #f2f2f2;
+		cursor:auto;
+		border-color: transparent;
 			
-			&:before,
-			&:after {
-				background: #ccc;
-			}
+		&:before,
+		&:after {
+			background: #ccc;
 		}
 	}
+}
 
-    .qty-count-add {
+.qty-count-add {
+        margin-top: 0 !important;
 		padding: 0;
 		cursor: pointer;
-		width: 2.5rem;
+		/*width: 2.5rem;*/
 		font-size: 1.25em;
 		text-indent: -100px;
 		overflow: hidden;
 		position: relative;
 		
-		&:before {
+	    &:before {
 			content: "";
 			height: 10px;
 			width: 2px;
@@ -2344,5 +2374,4 @@ a.article:hover {
 			right: 0;
 			margin: auto;
 		}
-	}
-}*/
+}

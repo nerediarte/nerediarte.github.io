@@ -34,23 +34,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <style>
-  @media (max-width: 932px) {
-    .product-section {
-      margin-top: 40px !important;
-    }
-    .thumbnails {
-      margin-bottom: 10px !important;
-      display: flex !important;
-      justify-content: right !important;
-    }
-    .thumbnail{
-      max-height: 64px !important;
-      max-width: 64px !important;
-    }
-    .main-image {
-      margin-bottom: 20px !important;
-    }
-  }
 </style>
 <body class="main-layout">
   <!-- end loader -->
@@ -86,48 +69,70 @@
           <div class="col-md-5">
             <div class="titlepage" style="margin-right: 50px;">
               <h2 id="product-title">Producto</h2>
-              <h3 id="product-price"></h3>
+              <span style="margin:0; white-space: nowrap;">
+                <h3>€</h3>
+                <h3 id="product-price"></h3>
+                <h3 style="margin-left: 5px;"> EUR</h3>
+              </span>
               <p id="product-subtitle" style="font-weight: 400;"></p>
               <p id="product-description" style="text-align: justify;"></p>
-              <p>Cada mes incluye:</p>
+              <p style="margin-top: 10px;">Cada mes incluye:</p>
               <div>
                 <ul>
-                  <li><p style="margin-top: 5px;" id="product-caract1"></p></li>
-                  <li><p style="margin-top: 5px;" id="product-caract2"></p></li>
-                  <li><p style="margin-top: 5px;" id="product-caract3"></p></li>
+                  <li><p style="margin-top: 2px;" id="product-caract1"></p></li>
+                  <li><p style="margin-top: 2px;" id="product-caract2"></p></li>
+                  <li><p style="margin-top: 2px;" id="product-caract3"></p></li>
                 </ul>
               </div>
-              <p style="font-weight: 400;">¿No sabes como gestionar la impresión o prefieres no preocuparte?</p>
-              <p>Yo me encargo de todo: impresión y el envío, asesorándote para elegir la opción que mejor se adapte a ti. Recibirás tus recordatorios directamente en casa.</p>
             </div>
-            <div class="game_box">
-              <!--figure><img src="images/contact.png"/></figure-->
-              <form action="procesar_formulario.php" method="POST" data-type="pedido">
+            <div class="game_box" style="margin-right: 50px;">
+              <div id="product-form">
                 <div class="form-group">
-                  <label for="Nombre">Nombre (Apellido opcional):</label>
+                  <label for="cantidad">Cantidad:</label>
+                  <div class="qty-input">
+	                  <button class="qty-count qty-count-minus" data-action="minus" type="button">-</button>
+	                  <input class="limited-qty" type="number" id="cantidad" name="nombre" min="0" max="10" value="1">
+	                  <button class="qty-count qty-count-add" data-action="add" type="button">+</button>
+                  </div>
+                  <p>Subtotal: €<span id="subtotal">0</span> EUR</p>
+                </div>
+                <div class="form-group">
+                  <label for="Nombre">Nombre completo:</label>
                   <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="Dirección">Dirección de envío:</label>
+                  <input type="text" id="direccion" name="nombre" value="C/, nº, apartamento" required>
                 </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="Fecha">Fecha:</label>
-                      <input type="text" id="fecha" name="fecha" required>
+                      <label for="CP">Código postal:</label>
+                      <input type="text" id="cp" name="nombre" required>
                     </div>
                   </div>
                   <div class="col-md-8">
-                    <div class="form-group" style="padding-left:0;">
-                      <label for="Parroquia">Parroquia:</label>
-                      <input type="text" id="parroquia" name="parroquia" required>
+                    <div class="form-group">
+                      <label for="Localidad">Localidad:</label>
+                      <input type="text" id="localidad" name="localidad" required>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="Texto">Texto:</label>
-                  <input type="text" id="texto" name="texto" required>
+                  <label for="envio">Tipo de envío:</label>
+                  <label class="checkbox"><input type="checkbox" id="ord" /> Ordinario(+3,70€)</label>
+                  <label class="checkbox"><input type="checkbox" id="crf"/> Certificado(+8,48€)</label>
+                  <label class="checkbox"><input type="checkbox" id="int"/> Fuera de la Península Ibérica</label>
                 </div>
-                <label><input type="checkbox" id="checkbox" class="checkbox"/> Solicitar impresión y envío</label>
-                <button type="submit"><img src="images/buy_button.png" alt="Agregar al carrito"></button>
-            </form>
+                <div class="form-group">
+                  <label for="Comentarios">Comentarios:</label>
+                  <input type="text" id="comentario" name="comentario">
+                </div>
+              </div> <!-- end product-form-->
+              <p id="email-error" class="email-error" style="visibility: hidden;">Por favor, completa todos los campos.</p>
+              <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>  
+              <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -199,6 +204,19 @@
   </div>
   <!-- END PERSONALIZACION -->
   </div>
+  <!-- PESTAÑA CORREO ELECTRÓNICO-->
+  <div id="email-modal-overlay">
+    <div class="email-modal">
+      <h3 id="title-mail">Dirección de correo</h3>
+      <input type="text" id="mail"> 
+        <!--input id="email-input"-->
+      <div class="modal-buttons">
+        <button class="btn-confirm" id="email-confirm-btn" onclick="procesarInfo()">Confirmar</button>
+        <button class="btn-cancel" id="email-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <!-- END PESTAÑA CORREO -->
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -245,13 +263,13 @@
       calendario: {
         title: "CALENDARIO 2026",
         subtitle: "Calendario de pared A4 horizontal (A3 abierto)",
-        description: "Prepárate para acompañar a María durante todo el año, y poder admirarla cada mes con una ilustración que te llevará a lo más profundo de su corazón. Mirándola a ella podremos descubrir todos sus síes al Señor en el amor, en la paciencia, en la humildad... Y así contagiarnos aunque sea un poquito para poder llevarlo a nuestro día a día.",
+        description: "Acompaña a María durante todo el año con este calendario ilustrado cada mes con una imagen diferente de Nuestra Madre.",
         caract1: "Santo de cada día.",
         caract2: "Festivos y solemnidades.",
         caract3: "Color litúrgico de cada día.",
         image: "images/calendarioII.png",
         image0: "images/calendarioIII.png",
-        price: "€10 EUR",
+        price: "10",
       },
       agenda: {
         title: "AGENDA 2026",
@@ -262,7 +280,7 @@
         caract3: "Planificación semanal con objetivos diarios.",
         image: "images/agendaI.png",
         image0: "images/calendarioIII.png",
-        price: "€20 EUR",
+        price: "20",
       },
     };
     function getQueryParam(param) {
@@ -281,6 +299,7 @@
       document.getElementById('product-image').src = product.image;
       document.getElementById('product-image0').src = product.image0;
       document.getElementById('product-price').textContent = product.price;
+      updateSubtotal(1);
     } else {
       document.getElementById('product-title').textContent = "Producto no encontrado";
     }
@@ -295,6 +314,181 @@
       this.classList.add('clicked');
       setTimeout(() => this.classList.remove('clicked'), 300);
     });
+    
+    
+    function updateSubtotal(qty){
+      console.log("Qty:", qty);
+      const precio = parseFloat(document.getElementById('product-price').textContent);
+      console.log("Precio: ", precio);
+      const subtotal = (qty * precio).toFixed(2);
+      console.log(subtotal);
+      document.getElementById('subtotal').textContent = subtotal;
+    }
+      
+
+    /*QUANTITY INPUT*/
+    var QtyInput = (function () {
+	    var $qtyInputs = $(".qty-input");
+
+	  if (!$qtyInputs.length) {
+		  return;
+	  }
+
+	  var $inputs = $qtyInputs.find(".limited-qty");
+	  var $countBtn = $qtyInputs.find(".qty-count");
+	  var qtyMin = parseInt($inputs.attr("min"));
+	  var qtyMax = parseInt($inputs.attr("max"));
+
+	  $inputs.change(function () {
+		  var $this = $(this);
+		  var $minusBtn = $this.siblings(".qty-count-minus");
+		  var $addBtn = $this.siblings(".qty-count-add");
+		  var qty = parseInt($this.val());
+
+		  if (isNaN(qty) || qty <= qtyMin) {
+			  $this.val(qtyMin);
+			  $minusBtn.attr("disabled", true);
+		  } else {
+			  $minusBtn.attr("disabled", false);
+			
+			  if(qty >= qtyMax){
+				  $this.val(qtyMax);
+				  $addBtn.attr('disabled', true);
+			  } else {
+				  $this.val(qty);
+				  $addBtn.attr('disabled', false);
+			  }
+		  }
+
+      updateSubtotal(qty);
+	  });
+
+	  $countBtn.click(function () {
+		  var operator = this.dataset.action;
+		  var $this = $(this);
+		  var $input = $this.siblings(".limited-qty");
+		  var qty = parseInt($input.val());
+
+		  if (operator == "add") {
+			  qty += 1;
+			  if (qty >= qtyMin + 1) {
+				  $this.siblings(".qty-count-minus").attr("disabled", false);
+			  }
+
+			  if (qty >= qtyMax) {
+				  $this.attr("disabled", true);
+			  }
+		  } else {
+			  qty = qty <= qtyMin ? qtyMin : (qty -= 1);
+			
+			  if (qty == qtyMin) {
+				  $this.attr("disabled", true);
+			  }
+
+			  if (qty < qtyMax) {
+				  $this.siblings(".qty-count-add").attr("disabled", false);
+			  }
+		  }
+
+		  $input.val(qty);
+      updateSubtotal(qty);
+	  });
+
+
+    })();
+  
+  const perror = document.getElementById('email-error');
+  const chk = "false";
+  function enterEmail(){
+      const overlay = document.getElementById('email-modal-overlay');
+      
+      const nombre = document.getElementById('nombre');
+      const dir = document.getElementById('direccion');
+      const cp = document.getElementById('cp');
+      const loc = document.getElementById('localidad');
+      
+      console.log(nombre.value, dir.value, cp.value, loc.value, chk);
+      
+
+      if(document.getElementById('ord').checked | document.getElementById('crf').checked | document.getElementById('int').checked)
+      {
+        chk.textContent = "true";
+      }
+
+      if(nombre.value == "" || dir.value == "" || cp.value == "" || loc.value == "" || chk.textContent =="false"){
+          if(perror.style.visibility ==  'hidden')
+          {
+              perror.style.visibility = 'visible';
+          }
+        return;
+      } 
+      overlay.style.display = 'flex';
+  }
+  document.addEventListener('keyup', (e) => {
+      if(perror.style.visibility ==  'visible') {
+            perror.style.visibility = 'hidden';
+        }
+  });
+  function procesarInfo() {
+      //Gererar ID de usuario y guardarlo en localStorage
+      const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
+      localStorage.setItem("idUsuario", idUsuario);
+
+      const ckb = 'ordinario';
+      if(document.getElementById('crf'))
+      {
+        ckb='certificado';
+      } else if (document.getElementById('int')){
+        ckb='internacional';
+      }
+      const modelo = products[productId];
+
+
+      console.log(idUsuario, nombre, fecha, parroquia, mail, texto, modelo, cantidad);
+
+      if(mail === "") {
+        perror.textContent = "Por favor, ingresa tu correo electrónico.";
+        document.getElementById('title-mail').appendChild(perror);
+        perror.style.visibility = 'visible';
+        return;
+      }
+
+
+
+      const datos = 
+      {
+        type: "producto",
+        idUsuario: idUsuario.toString(),
+        email: document.getElementById('mail').value,
+        nombre: document.getElementById('nombre').value,
+        direccion: document.getElementById('dir').value,
+        codigoPostal: document.getElementById('cp').value,
+        localidad: document.getElementById('loc').value,
+        envio: ckb,
+        modelo: modelo,
+        cantidad: document.getElementById('limited-qty').value
+      };
+
+      document.getElementById('loading').style.display = 'flex';
+
+      fetch("https://script.google.com/macros/s/AKfycbwGP4h4vLOHtv8XDE2vGbZYlgw5kZF4qneIvs_arRXW1YawUBVrTBoxZqsKSMlxCJUl/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datos),
+        mode: "no-cors"
+      })
+      .then(() => {
+        console.log("Formulario enviado correctamente");
+        sessionStorage.setItem("datosPedido", JSON.stringify(datos));
+        window.location.replace("pedido.html");
+      })
+      .catch(() => {
+        perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";
+        perror.style.visibility = 'visible';
+      });
+    }
   </script>
 </body>
 </html>
