@@ -38,17 +38,22 @@
       <p>Detalles de tu compra</p>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="order-image">
           <img id="product-image" style="max-width: 100%;" alt="Decoración">
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <ul class="order-list">
-          <li style="vertical-align: bottom;">
-            <p id="modelo" style="font-weight: 500;">Modelo</p>
-            <!--p id="precio-unitario" style="font-weight: 500; display: inline-flex; justify-content: space-between;">precio</p>
-            <p style="font-weight: 500; display: inline-flex; justify-content: space-between;">€</p-->
+          <li style="vertical-align: bottom; display: flex; justify-content: space-between;">
+            <p id="modelo" style="font-weight: 500; display: inline;">Modelo</p>
+            <p style="font-weight: 500; display: inline;">_</p>
+            <p style="font-weight: 500; display: inline;">_</p>
+            <p style="font-weight: 500; display: inline;">_</p>
+            <div>
+              <p id="precio-unitario" style="font-weight: 500; display: inline;"></p>
+              <p style="font-weight: 500; display: inline;">€</p>
+            </div>
           </li>
           <li>
             <h3 style="margin-bottom: 5px; color: #495057">Detalles del envío: </h3>
@@ -60,19 +65,20 @@
               </li>
               <li>Cantidad: <p id="cantidad" style="display: inline;"></p></li>
               <li>Envío <p id="envio" style="display: inline;">
-                        <p id="precio-envio" style="display: inline;"></p>
-              
+                        <p id="precio-envio" style="display: inline;"></p>  
             </ul>
           </li>
         </ul>
+        <div class="order-separator" style="margin-top: 50px;"></div>
+        <div style="text-align:center; margin-top: 20px;">
+          <p style="display: inline; font-weight: 600;">SUBTOTAL:  </p>
+          <p id="total" style="display: inline; font-weight: 500;"> Total</p>
+          <p style="display: inline; font-weight: 500;">€</p>
+        </div>
+        <div class="order-separator"></div>
       </div>
     </div>
-    <div class="order-separator" style="margin-top: 10px;"></div>
-    <div style="text-align:center; margin-top: 20px;">
-      <p style="display: inline; font-weight: 600;">TOTAL:  </p>
-      <p id="total" style="display: inline; font-weight: 500;">  Total</p>
-      <p style="display: inline; font-weight: 500;">€</p>
-    </div>
+    
     
     <!-- Segunda imagen -->
     
@@ -84,12 +90,12 @@
     
 
     <!-- Separador -->
-    <div class="order-separator"></div>
+    
 
     <!-- Texto -->
     <div class="order-text">
       <p style="font-weight: 500; margin-bottom: 10px; color: #4b5745">¡Gracias por tu compra!</p>
-      <p>Recibirás un correo de confirmación en breve con los detalles del envío e instrucciones de pago.</p>
+      <p>Recibirás un correo de confirmación en breve con las instrucciones de pago.</p>
     </div>
 
     <!-- Dos botones -->
@@ -107,6 +113,7 @@
     //MODELO:
     document.getElementById('product-image').src = pedido.modelo.image;
     document.getElementById('modelo').textContent = pedido.modelo.title;
+    document.getElementById('precio-unitario').textContent = pedido.modelo.price;
     //PERSONALIZACION:
     document.getElementById('nombre').textContent = pedido.nombre;
     document.getElementById('direccion').textContent = pedido.direccion;
@@ -119,10 +126,9 @@
       else if (pedido.envio == "internacional") return " ~ precio por determinar (me pondré en contacto contigo lo antes posible)."
       else return " (+3,70€)"
     })();
-    document.getElementById('precio-unitario').textContent = pedido.modelo.price;
-    document.getElementById('cantidad').textContent = pedido.cantidad;
-
-    document.getElementById('total').textContent = (pedido.modelo.price * pedido.cantidad).toFixed(2);
+    
+    let floatValue = parseFloat(document.getElementById('precio-envio').textContent.replace(/[^\d,-]/g, '').replace(',', '.'));
+    document.getElementById('total').textContent = (pedido.modelo.price * pedido.cantidad + floatValue).toFixed(2);
     
     
     // Botones de acción

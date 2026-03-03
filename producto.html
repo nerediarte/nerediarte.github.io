@@ -131,80 +131,52 @@
               </div> <!-- end product-form-->
               <p id="info-error" class="info-error" style="visibility: hidden;">Por favor, completa todos los campos.</p>
               <button id="pedido-btn" onclick="enterEmail()"><img src="images/pedido_button.png"></button>  
-              <p class="form-group note">*Recibirás un email en menos de 24h con el diseño final y las instrucciones de pago.</p>
+              <p class="form-group note">*Recibirás un email en menos de 24h con las instrucciones de pago.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
-  <!-- PERSONALIZACION -->
-  <div id="personalizacion">
-  <section class="greenSection">
-    <div class="container">
+  <!-- about me -->
+  <div id="customer"  class="customer">
+    <div class="container-flex">
       <div class="row">
-        <div class="col-md-12">
-          <div class="paragraph">
-            <h2>¿Quieres un diseño personalizado?</h2>
-          </div>
+        <div class="col-md-6" style="display: flex; justify-content: right; align-items: center;">
+          <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 450px; margin-top: 0px;"></div>
         </div>
-      </div>
-    </div>
-    <img src="images/designprocess.png" class="img_caracteristicas">
-  </section>
-  <section class="greenSection" style="background-color: #fff;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="paragraph">
-            <h2 style="color: #4b5745;">Cómo trabajo</h2>
-            <span class="starSpan"><img src="images/separador.png"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="images/comoTrabajo.png" class="img_caracteristicas" style="padding: 0 600px;">
-  </section>
-  <section class="formsSection">
-    <div class="container-fluid">
-      <div class="row">
         <div class="col-md-6">
-          <div>
-            <h2 style="margin-bottom: 20px;">¿Listo para comenzar a crear?</h2>
-            <p>Puedes rellenar el formulario de consulta o enviar un correo electrónico directamente a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
-            <p> Me pondré en contacto lo antes posible.</p>
-            <p style="font-style: italic; margin-top: 20px;">No olvides revisar tu carpeta de correo no deseado.</p>
-          </div>
-          
-        </div>
-        <div class="virgencita"><img src="images/drawDecoI.png"></div>
-        <div class="col-md-6">
-          <div class="game_box">
-            <!--figure><img src="images/contact.png"/></figure-->
-            <form action="procesar_formulario.php" method="POST" data-type="contacto">
-              <!--div class="form-group">
-                <label for="Nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div-->
-              <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email-contact" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="mensaje">Mensaje:</label>
-                <input type="message" style="height: 150px;" id="mensaje" name="mensaje" rows="4" required>
-              </div>
-              <div class="send_btn"><button type="submit"><img src="images/send_button.png"></button></div>
-            </form>
+          <div class="titlepage">
+            <h2>¡HOLA, SOY NEREA!</h2>
+              <p>Una pequeña ilustradora y diseñadora gráfica en Madrid.</p>
+              <p>Una imagen vale más que mil palabras; por eso intento plasmar un pedacito de la infinita belleza de la fe en artículos que, a su vez, ayuden a tener al Señor presente en el día a día.</p>
+              <p>Nada de esto sería posible sin tu apoyo y tu ayuda, así que gracias</p>
+              <p>¡No dudes en ponerte en contacto conmigo para lo que necesites!</p>
+              <p>~ Nerea</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  </div>
-  <!-- END PERSONALIZACION -->
-  </div>
-  <!-- PESTAÑA CORREO ELECTRÓNICO-->
+    <!--  footer -->
+         <footer>
+            <div class="footer">
+              <div class="icons">
+                <div class="icon" style="padding-right: 20px;">
+                  <a href="https://www.instagram.com/nerediarte/"><img src="icon/insta.png"></a>
+                </div>
+                <div class="icon">
+                  <a href="https://whatsapp.com/channel/0029Vb6nOZSKLaHlBjwOo83k"><img src="icon/whats.png"></a>
+                </div>
+              </div>
+              <div class="contact">
+                <h2>CONTACT</h2> <!--Falta pantalla de contacto (puede ser en nerediarte un about me y contacto para ir desde las otras seciones)-->
+              </div>
+            </div>
+         </footer>
+         <!-- end footer -->
+  <!-- END aabout me -->
+    <!-- PESTAÑA CORREO ELECTRÓNICO-->
   <div id="email-modal-overlay">
     <div class="email-modal">
       <h3 id="title-mail" style = "margin-bottom: 10px;">Dirección de correo</h3>
@@ -411,7 +383,7 @@
       return Boolean(document.getElementById('ord').checked || document.getElementById('crf').checked || document.getElementById('int').checked);
     }
 
-    if(nombre.value == "" || dir.value == "" || cp.value == "" || loc.value == "" || !envio()){
+    if(nombre.value == "" || dir.value == "" || dir.value == "C/, nº, apartamento" || cp.value == "" || loc.value == "" || !envio()){
         if(perror.style.visibility ==  'hidden')
         {
           perror.style.visibility = 'visible';
@@ -437,6 +409,7 @@
     const codigoPostal = document.getElementById('cp').value;
     const localidad = document.getElementById('localidad').value;
     const cantidad = $(".qty-input").find(".limited-qty").val();
+    const comentario = document.getElementById('comentario').value;
 
     var tipoEnvio = function(){
         if(document.getElementById('crf')) return "certificado";
@@ -462,14 +435,15 @@
         localidad: localidad,
         envio: tipoEnvio(),
         modelo: modelo,
-        cantidad: cantidad
+        cantidad: cantidad,
+        comentario: comentario
       };
 
       console.log(datos);
 
       document.getElementById('loading').style.display = 'flex';
 
-      fetch("https://script.google.com/macros/s/AKfycbwrvhnvuqkWITw0NYYJoES83vnknXEUpP9ky89abICYiC3iBu_g-CULKxzMgXpHHjsf/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzuvDSH5ZgAaDjaALGYexrPJPSDv6KVdhUn6A2y9YQNmvQhf5NTERS2HZN_KOhht8B2/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

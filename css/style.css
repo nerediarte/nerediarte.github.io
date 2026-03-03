@@ -114,10 +114,6 @@
     .licens .carousel-item, .licens .carousel-control-prev, .licens .carousel-control-next {
         padding: 10px !important;
     }
-    .footer {
-        margin: 10px !important;
-
-    }
 
 
     .licens .row > div[class^="col-"], .licens .row > div[class*=" col-"] {
@@ -174,16 +170,20 @@
     .formsSection .form-group{
         padding-right: 0 !important;
         margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
     }
     input[type="email"]{
-        padding: 0 !important;
+        font-size: 10px !important;
+        padding: 0 10px !important;
     }
     .formsSection textarea{
-        height: 60px !important;
+        height: 55px !important;
+        font-size: 10px !important;
     }
     .perror_msg{
         font-size: 6.2px !important;
         margin-bottom: 0 !important;
+        height: 3px !important;
     }
     .send_btn img{
         width: 80px !important;
@@ -210,6 +210,42 @@
     .main-image {
       margin-bottom: 20px !important;
     }
+
+    /* EMAIL OVERLAY*/
+    .email-modal{
+        margin: 20px !important;
+    }
+    .email-modal .info-error{
+        font-size: 12px !important;
+    }
+
+    /* MSG OVERLAY*/
+    .msg-modal{
+        margin: 20px !important;
+    }
+    .msg-modal .pcursive{
+        font-size: 10px !important;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 5px 10px !important;
+    }
+    .footer .icon{
+        padding: 5px !important;
+    }
+    .footer .icon img{
+        width:20% !important;
+    }
+    .footer .contact{
+        padding: 0 !important;
+        padding-right: 10px !important;
+    }
+    .footer .contact h2{
+        font-size: 18px !important;
+        
+    }
+    
 }
 
 /* Mejoras para tablets */
@@ -242,6 +278,8 @@
     .send_btn img{
         width: 96px !important;
     }
+
+    
     
 }
 
@@ -1125,15 +1163,16 @@ button:hover{
 }
 
 .formsSection textarea{
+    width: 100%;
+    font-family: 'Montserrat';
+    font-weight: 200;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     height: 80px; 
-    width: 100%; 
+
     resize: vertical; 
-    font-family: 'Montserrat', sans-serif; 
-    font-style: light;
-    font-size: 14px; 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 6px; 
     box-sizing: border-box; 
     display: block; 
     line-height: 1.5;
@@ -1712,21 +1751,31 @@ border-radius: inherit;}
 /** footer section **/
 
 .footer {
+    display: flex;
+    justify-content: space-between;
     width: auto;
     background: #fff;
-    margin: 10px 80px;
+    padding: 0px 80px;
+    align-items: center;
 }
 
-.footer .icon{
+.footer .icons{
+    display: inline;
+    text-align: left;
     padding: 10px;
-    text-align: center;
-    width: 85%;
-
+}
+.footer .icon{
+    display: inline;
+}
+.footer .icon img {
+    width: 35%;
 }
 .footer .contact{
-    padding: 10px;
+    padding-right: 10px;
     text-align: right;
-    
+}
+.footer .contact h2{
+    color: #4b5745;
 }
 
 .newtetter {
@@ -2122,6 +2171,69 @@ a.article:hover {
     flex: 1;
 }
 #email-modal-overlay .email-modal .btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+/* END EMAIL OVERLAY */
+
+/* MSG CONFIRMATION OVERLAY*/
+#msg-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+#msg-modal-overlay .msg-modal {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: left;
+}
+#msg-modal-overlay .msg-modal h3 {
+    color: #4b5745 ;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+#msg-modal-overlay .msg-modal p{
+    font-size: 14px; 
+    display:flex;
+    justify-content: center;
+}
+#msg-modal-overlay .msg-modal .modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+#msg-modal-overlay .msg-modal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+#msg-modal-overlay .msg-modal .btn-confirm {
+    background: #4b5745;
+    color: #fff;
+    flex: 1;
+}
+#msg-modal-overlay .msg-modal .btn-confirm:hover {
+    background: #3a4232;
+}
+#msg-modal-overlay .msg-modal .btn-cancel {
+    background: #e0e0e0;
+    color: #333;
+    flex: 1;
+}
+#msg-modal-overlay .msg-modal .btn-cancel:hover {
     background: #d0d0d0;
 }
 

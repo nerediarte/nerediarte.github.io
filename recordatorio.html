@@ -183,6 +183,23 @@
   </section>
   </div>
   <!-- END PERSONALIZACION -->
+   <!--  footer -->
+         <footer>
+            <div class="footer">
+              <div class="icons">
+                <div class="icon" style="padding-right: 20px;">
+                  <a href="https://www.instagram.com/nerediarte/"><img src="icon/insta.png"></a>
+                </div>
+                <div class="icon">
+                  <a href="https://whatsapp.com/channel/0029Vb6nOZSKLaHlBjwOo83k"><img src="icon/whats.png"></a>
+                </div>
+              </div>
+              <div class="contact">
+                <h2>CONTACT</h2> <!--Falta pantalla de contacto (puede ser en nerediarte un about me y contacto para ir desde las otras seciones)-->
+              </div>
+            </div>
+         </footer>
+         <!-- end footer -->
   </div>
   <!-- PESTAÑA CORREO ELECTRÓNICO-->
   <div id="email-modal-overlay">
@@ -414,13 +431,13 @@
         fecha: fecha,
         parroquia: parroquia,
         texto: texto,
-        modelo: modelo.title,
+        modelo: modelo,
         cantidad: cantidad
       };
 
       document.getElementById('loading').style.display = 'flex';
 
-      fetch("https://script.google.com/macros/s/AKfycbwrvhnvuqkWITw0NYYJoES83vnknXEUpP9ky89abICYiC3iBu_g-CULKxzMgXpHHjsf/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzuvDSH5ZgAaDjaALGYexrPJPSDv6KVdhUn6A2y9YQNmvQhf5NTERS2HZN_KOhht8B2/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

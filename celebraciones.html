@@ -174,6 +174,41 @@
   </section>
   </div>
   <!-- END PERSONALIZACION -->
+   <!--  footer -->
+         <footer>
+            <div class="footer">
+              <div class="icons">
+                <div class="icon" style="padding-right: 20px;">
+                  <a href="https://www.instagram.com/nerediarte/"><img src="icon/insta.png"></a>
+                </div>
+                <div class="icon">
+                  <a href="https://whatsapp.com/channel/0029Vb6nOZSKLaHlBjwOo83k"><img src="icon/whats.png"></a>
+                </div>
+              </div>
+              <div class="contact">
+                <h2>CONTACT</h2> <!--Falta pantalla de contacto (puede ser en nerediarte un about me y contacto para ir desde las otras seciones)-->
+              </div>
+            </div>
+         </footer>
+         <!-- end footer -->
+
+  <!-- PESTAÑA CONFIRMACION MENSAJE-->
+  <div id="msg-modal-overlay">
+    <div class="msg-modal">
+      <h3 id="title" style = "margin-bottom: 10px;">¡Mensaje enviado!</h3>
+      <p >Recibirás un correo en breves</p>
+      <p class="pcursive" style="font-size: 12px; font-style: italic;">No olvides revisar tu carpeta de correo no deseado.</p>
+      <div class="modal-buttons">
+        <button class="btn-confirm" id="email-back-btn" onclick="window.location.replace('celebraciones.html')">Volver</button>
+        <button class="btn-cancel" id="email-init-btn" onclick="window.location.replace('index.html')">Ir al inicio</button>
+      </div>
+    </div>
+  </div>
+  <!-- end pestaña confirmacion mensaje-->
+
+  <!-- LOADING -->
+   <div id = "loading" class = "loading" style = "display: none;"></div>
+
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -260,6 +295,7 @@
 
       if (mail == "" || message == "") {
         perror.style.visibility = 'visible';
+        return;
       }
 
       console.log(idUsuario, mail, message);
@@ -272,15 +308,26 @@
         message: message
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbwrvhnvuqkWITw0NYYJoES83vnknXEUpP9ky89abICYiC3iBu_g-CULKxzMgXpHHjsf/exec", {
+      document.getElementById('loading').style.display = 'flex';
+
+      fetch("https://script.google.com/macros/s/AKfycbzuvDSH5ZgAaDjaALGYexrPJPSDv6KVdhUn6A2y9YQNmvQhf5NTERS2HZN_KOhht8B2/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(datos),
         mode: "no-cors"
+      })
+      .then(() => {
+        document.getElementById('loading').style.display = 'none';
+        console.log("Formulario enviado correctamente");
+        msgConfirm();
+      })
+      .catch(() => {
+        perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";
+        perror.style.visibility = 'visible';
       });
-      console.log("Formulario enviado correctamente");
+      
       
       //window.location.href = "pedido.html";
       //this.reset();
@@ -291,6 +338,11 @@
             perror.style.visibility = 'hidden';
         }
     });
+
+    function msgConfirm(){
+      const overlay = document.getElementById('msg-modal-overlay');
+      overlay.style.display = 'flex';
+    }
 
   </script>
 </body>

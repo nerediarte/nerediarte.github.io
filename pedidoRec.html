@@ -41,11 +41,16 @@
       </div>
       <div class="col-md-8">
         <ul class="order-list">
-          <li style="vertical-align: bottom;">
+          <li style="vertical-align: bottom; display: flex; justify-content: space-between;">
             <p style="font-weight: 500; display: inline;">RECORDATORIO DE COMUNIÓN </p>
-            <p id="modelo" style="font-weight: 500; display: inline;">Modelo</p>
-            <p id="precio-unitario" style="font-weight: 500; display: inline; margin-left: 30px;">precio</p>
-            <p style="font-weight: 500; display:inline">€</p>
+            <!--p id="modelo" style="font-weight: 500; display: inline;">Modelo</p-->
+            <p style="font-weight: 500; display: inline;">_</p>
+            <p style="font-weight: 500; display: inline;">_</p>
+            <p style="font-weight: 500; display: inline;">_</p>
+            <div>
+              <p id="precio-unitario" style="font-weight: 500; display: inline;"></p>
+              <p style="font-weight: 500; display: inline;">€</p>
+            </div>
           </li>
           <li>
             <h3 style="margin-bottom: 5px; color: #495057">Personalización: </h3>
@@ -84,7 +89,8 @@
     <!-- Texto -->
     <div class="order-text">
       <p style="font-weight: 500; margin-bottom: 10px; color: #4b5745">¡Gracias por tu compra!</p>
-      <p>Recibirás un correo de confirmación en breve con los detalles del envío e instrucciones de pago.</p>
+      <p>Recibirás un correo de confirmación en breve con el diseño final,</p>
+      <p>los detalles del envío y las instrucciones de pago.</p>
     </div>
 
     <!-- Dos botones -->
@@ -101,7 +107,6 @@
 
     //MODELO:
     document.getElementById('product-image').src = pedido.modelo.image;
-    document.getElementById('modelo').textContent = pedido.modelo.title;
     //PERSONALIZACION:
     document.getElementById('nombre').textContent = pedido.nombre;
     document.getElementById('fecha').textContent = pedido.fecha;
