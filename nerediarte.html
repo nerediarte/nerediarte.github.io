@@ -38,9 +38,11 @@
             display: inline-block; /* Ajusta el contenedor al tamaño de la imagen */
             color: white;
         }
-        .aboveimage{
+        .core .aboveimage{
+            box-sizing: border-box !important;
+            width: 60%;
             position: absolute;
-            z-index: 20000;
+            z-index: 1;
             top: 25%; /* Posición vertical */
             left: 50%; /* Posición horizontal */
             transform: translate(-50%, -50%); /* Centrado exacto */
@@ -48,6 +50,46 @@
         }
         .aboveimage p{
             margin-top: 20px;;
+        }
+        .prtf{
+            display:flex;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+        .prtf button{
+            width: 180px;
+        }
+
+        /* MOBILE */
+        @media only screen and (max-width: 480px){
+            .banner_main img {
+                object-position: 10%;
+            }
+            .core span{
+                display: flex !important;
+            }
+            .core img {
+                content: url(/images/mispilares_vmobile.png);
+                margin:0!important;
+                object-position: center;
+            }
+            .aboveimage{
+                width: 100% !important;
+            }
+            .core p{
+                font-size: 10px !important;
+                margin-top: 20px !important;
+                
+            }
+            .prtf button{
+                margin-top: 20px;
+                width: 100px;
+            }
+        }
+        @media only screen and (min-width: 481px) and (max-width: 1024px){
+            .core span{
+                display: flex !important;
+            }
         }
     </style>
     <body class="main-layout">
@@ -67,7 +109,7 @@
                             <li class="nav-item"><a class="fixed-bar nav-link" href="shop.html">TIENDA</a></li>
                             <li class="nav-item"><a class="fixed-bar nav-link" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a></li>
                             <li class="nav-item"><div class="fixed-bar nav-link p-0"><button onclick="window.location.replace('index.html')" style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
-                            <li class="nav-item"><a class="fixed-bar nav-link" href="">FINES SOLIDARIOS</a></li>
+                            <li class="nav-item"><a class="fixed-bar nav-link" href="fines.html">FINES SOLIDARIOS</a></li>
                             <li class="nav-item"><a class="fixed-bar nav-link" href="nerediarte.html">NEREDIARTE</a></li>
                         </ul>
                     </div>
@@ -81,6 +123,7 @@
             </section>
             <section id="core">
                 <div class="core">
+                    <span style="display: none; height: 160px; background-color: #4b5745;"></span>
                     <div class="banner_main position-relative w-100" style="overflow:hidden;">
                         <img src="images/mispilares.png" alt="#" class="img-fluid w-100"/>
                     </div>
@@ -94,29 +137,31 @@
                 </div>
                 <!--div class="banner_main position-relative w-100" style="overflow:hidden;">
                   <img src="images/mispilares.png" alt="#" class="img-fluid w-100"/>
-                </div-->
-                
+                </div--> 
+                <div class="prtf">
+                    <button onclick="window.open('./portfolio.pdf');"><img src="images/portfolio_button.png"></button>
+                </div>   
             </section>
-        <div id="customer"  class="customer">
-            <div class="container-flex">
-               <div class="row">
-                  <div class="col-md-6" style="display: flex; justify-content: right; align-items: center;">
-                     <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 450px; margin-top: 0px;"></div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="titlepage">
-                        <h2>¡HOLA, SOY NEREA!</h2>
-                        <p>Una pequeña ilustradora y diseñadora gráfica en Madrid.</p>
-                        <p>Una imagen vale más que mil palabras; por eso intento plasmar un pedacito de la infinita belleza de la fe en artículos que, a su vez, ayuden a tener al Señor presente en el día a día.</p>
-                        <p>Nada de esto sería posible sin tu apoyo y tu ayuda, así que gracias</p>
-                        <p>¡No dudes en ponerte en contacto conmigo para lo que necesites!</p>
-                        <p>~ Nerea</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- end customer -->
+            <section class="formsSection">
+                <div class="text">
+                    <h2 style="margin-bottom: 20px;">Trabajemos juntos</h2>
+                    <p>No dudes en dejarme un mensaje a través del formulario, o contactar conmigo escribiendo a <a class="correo" href="mailto:nerediarte@gmail.com">nerediarte@gmail.com</a>.</p>
+                    <p style="margin: 20px 0;">Construyamos algo bonito e impactante.</p>
+                </div>
+                <div class="virgencita"><img src="images/drawDecoI.png"></div>
+                <div class="game_box">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="mail" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="message" name="mensaje" rows="6"></textarea>
+                    </div>
+                    <p id="perror" class="perror_msg" style="visibility: hidden;">Por favor, debe completar todos los campos.</p>
+                    <button id="send_btn" class="send_btn" onclick="procesarInfo()"><img src="images/send_button.png"></button>
+                </div>          
+            </section>
          <!--  footer -->
          <footer>
             <div class="footer">
@@ -135,5 +180,130 @@
          </footer>
          <!-- end footer -->
         </div> <!-- END WRAPPER -->
+
+        <!-- PESTAÑA CONFIRMACION MENSAJE-->
+        <div id="msg-modal-overlay">
+            <div class="msg-modal">
+            <h3 id="title" style = "margin-bottom: 10px;">¡Mensaje enviado!</h3>
+            <p >Recibirás un correo en breves</p>
+            <p class="pcursive" style="font-size: 12px; font-style: italic;">No olvides revisar tu carpeta de correo no deseado.</p>
+            <div class="modal-buttons">
+                <button class="btn-confirm" id="email-back-btn" onclick="window.location.replace('nerediarte.html')">Volver</button>
+                <button class="btn-cancel" id="email-init-btn" onclick="window.location.replace('index.html')">Ir al inicio</button>
+            </div>
+            </div>
+        </div>
+        <!-- end pestaña confirmacion mensaje-->
+
+        <!-- LOADING -->
+        <div id = "loading" class = "loading" style = "display: none;"></div>
+
+        <!-- Javascript files-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- sidebar -->
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script type="text/javascript">
+  // COLLAPSE NAVBAR
+  // Force Bootstrap collapse toggle for navbar toggler
+    $(document).ready(function() {
+      $('.navbar-toggler').on('click', function() {
+        $('#navbarNav').collapse('toggle');
+      });
+    });
+    $(document).ready(function() {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+      $('#dismiss, .overlay').on('click', function() {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+      });
+      $('#sidebarCollapse').on('click', function() {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+    $(document).ready(function() {
+      $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+      });
+      $(".zoom").hover(function() {
+        $(this).addClass('transition');
+      }, function() {
+        $(this).removeClass('transition');
+      });
+    });
+    // END COLLAPSE NAVBAR
+
+    function procesarInfo() {
+      //Gererar ID de usuario y guardarlo en localStorage
+      const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
+      localStorage.setItem("idUsuario", idUsuario);
+
+      const mail = document.getElementById('mail').value;
+      const message = document.getElementById('message').value;
+      const perror = document.getElementById('perror');
+
+      console.log(idUsuario, mail, message);
+
+      if (mail == "" || message == "") {
+        perror.style.visibility = 'visible';
+        return;
+      }
+
+      console.log(idUsuario, mail, message);
+
+      const datos = 
+      {
+        type: "encargo",
+        idUsuario: idUsuario.toString(),
+        email: mail,
+        message: message
+      };
+
+      document.getElementById('loading').style.display = 'flex';
+
+      fetch("https://script.google.com/macros/s/AKfycbzuvDSH5ZgAaDjaALGYexrPJPSDv6KVdhUn6A2y9YQNmvQhf5NTERS2HZN_KOhht8B2/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datos),
+        mode: "no-cors"
+      })
+      .then(() => {
+        document.getElementById('loading').style.display = 'none';
+        console.log("Formulario enviado correctamente");
+        msgConfirm();
+      })
+      .catch(() => {
+        perror.textContent = "Hubo un error al enviar el formulario. Intenta de nuevo.";
+        perror.style.visibility = 'visible';
+      });
+      
+      
+      //window.location.href = "pedido.html";
+      //this.reset();
+      /*window.location.replace("pedido.html"); PESTAÑA DE CONFIRMACION DE ENVIO FORMULARIO*/
+    }
+    document.addEventListener('keyup', (e) => {
+      if(perror.style.visibility ==  'visible') {
+            perror.style.visibility = 'hidden';
+        }
+    });
+
+    function msgConfirm(){
+      const overlay = document.getElementById('msg-modal-overlay');
+      overlay.style.display = 'flex';
+    }
+
+    </script>
    </body>
 </html>
