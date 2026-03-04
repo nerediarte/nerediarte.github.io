@@ -242,8 +242,9 @@
         caract1: "Santo de cada día.",
         caract2: "Festivos y solemnidades.",
         caract3: "Color litúrgico de cada día.",
-        image: "images/calendarioII.png",
-        image0: "images/calendarioIII.png",
+        image: "images/calendario.png",
+        image0: "images/calendarioI.png",
+        image1: "images/calendarioII.png",
         price: "10",
       },
       agenda: {
@@ -253,8 +254,9 @@
         caract1: "Un evangelio acompañado de una ilustración, una reflexión y un reto.",
         caract2: "Calendario con festivos marcados.",
         caract3: "Planificación semanal con objetivos diarios.",
-        image: "images/agendaI.png",
-        image0: "images/calendarioIII.png",
+        image: "images/agenda.png",
+        image0: "images/agendaI.png",
+        image1: "images/agendaII.png",
         price: "20",
       },
     };
@@ -273,6 +275,7 @@
       document.getElementById('product-caract3').textContent = product.caract3;
       document.getElementById('product-image').src = product.image;
       document.getElementById('product-image0').src = product.image0;
+      document.getElementById('product-image1').src = product.image1;
       document.getElementById('product-price').textContent = product.price;
       updateSubtotal(1);
     } else {
