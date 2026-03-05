@@ -35,13 +35,15 @@
    <style> 
       /*<!-- elementos que solo están en este index-->*/
       @media only screen and (max-width: 480px){
-         .banner_main img {
+         .banner_main .mobilee {
+            content: url(/images/main_vMobile.png);
             object-position: 85%;
          }
+         
          .portfolio_btn{
-            margin-left:0;
-            top: 10% !important;
-            transform: scale(50%) !important;
+            margin-left:-40px;
+            top: 52% !important;
+            transform: scale(44%) !important;
             background-color: #ffffff9a !important;
             border-radius: 25%;
          }
@@ -133,7 +135,7 @@
          <div id="content">
             <section class="slider_section">
                <div class="banner_main position-relative w-100" style="overflow:hidden;">
-                  <img src="images/main.png" alt="#" class="img-fluid w-100"/>
+                  <img src="images/main.png" alt="#" class="img-fluid w-100 mobilee"/>
                   <button onclick="window.open('./portfolio.pdf');" class="portfolio_btn"><img src="images/portfolio_button.png" style="width:100%;height:auto;"></button>
                   <!--div class="container-fluid padding3">
                      <div class="row">
