@@ -176,6 +176,22 @@
             </div>
          </footer>
          <!-- end footer -->
+  <!-- PESTAÑA CONFIRMACION MENSAJE-->
+  <div id="msg-modal-overlay">
+    <div class="msg-modal">
+      <h3 id="title" style = "margin-bottom: 10px;">¡Mensaje enviado!</h3>
+      <p >Recibirás un correo en breves</p>
+      <p class="pcursive" style="font-size: 12px; font-style: italic;">No olvides revisar tu carpeta de correo no deseado.</p>
+      <div class="modal-buttons">
+        <button class="btn-confirm" id="email-back-btn" onclick="window.location.reload()">Volver</button>
+        <button class="btn-cancel" id="email-init-btn" onclick="window.location.replace('index.html')">Ir al inicio</button>
+      </div>
+    </div>
+  </div>
+  <!-- end pestaña confirmacion mensaje-->
+
+  <!-- LOADING -->
+   <div id = "loading" class = "loading" style = "display: none;"></div>
 
   <!-- Javascript files-->
   <script src="js/jquery.min.js"></script>
@@ -219,6 +235,7 @@
       });
     });
 
+    var perror = document.getElementById('perror');
     function procesarInfo() {
       //Gererar ID de usuario y guardarlo en localStorage
       const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
@@ -226,7 +243,6 @@
 
       const mail = document.getElementById('mail').value;
       const message = document.getElementById('message').value;
-      const perror = document.getElementById('perror');
 
       console.log(idUsuario, mail, message);
 

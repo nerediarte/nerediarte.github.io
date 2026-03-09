@@ -199,7 +199,7 @@
       <p >Recibirás un correo en breves</p>
       <p class="pcursive" style="font-size: 12px; font-style: italic;">No olvides revisar tu carpeta de correo no deseado.</p>
       <div class="modal-buttons">
-        <button class="btn-confirm" id="email-back-btn" onclick="window.location.replace('celebraciones.html')">Volver</button>
+        <button class="btn-confirm" id="email-back-btn" onclick="window.location.reload()">Volver</button>
         <button class="btn-cancel" id="email-init-btn" onclick="window.location.replace('index.html')">Ir al inicio</button>
       </div>
     </div>
@@ -282,6 +282,7 @@
     document.getElementById('send_btn').prepend(perror);
     perror.style.visibility = 'hidden';*/
 
+    var perror = document.getElementById('perror');
     function procesarInfo() {
       //Gererar ID de usuario y guardarlo en localStorage
       const idUsuario = Date.now() + "-" + Math.floor(Math.random()*1000); // ejemplo
@@ -289,7 +290,6 @@
 
       const mail = document.getElementById('mail').value;
       const message = document.getElementById('message').value;
-      const perror = document.getElementById('perror');
 
       console.log(idUsuario, mail, message);
 
