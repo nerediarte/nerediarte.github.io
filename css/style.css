@@ -231,11 +231,15 @@
     .footer {
         padding: 5px 10px !important;
     }
+    .footer .icons{
+        width: 26%;
+    }
     .footer .icon{
         padding: 5px !important;
     }
-    .footer .icon img{
-        width:20% !important;
+    
+    .footer .therms a{
+        font-size: 12px !important;
     }
     .footer .contact{
         padding: 0 !important;
@@ -1769,6 +1773,23 @@ border-radius: inherit;}
 }
 .footer .icon img {
     width: 35%;
+}
+.footer .therms{
+    text-decoration: underline;
+}
+.footer .therms a{
+    font-family: 'Montserrat';
+    font-style: light;
+    margin: 0px;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 24px;
+    color:#4b5745;
+}
+.footer .therms a:hover{
+    cursor: pointer;
+    font-weight: 400;
+    transition: all .1s ease-in;
 }
 .footer .contact{
     padding-right: 10px;
