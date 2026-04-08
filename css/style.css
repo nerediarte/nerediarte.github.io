@@ -218,6 +218,9 @@
     .email-modal .info-error{
         font-size: 12px !important;
     }
+    .email-modal label{
+        font-size: 10px !important;
+    }
 
     /* MSG OVERLAY*/
     .msg-modal{
@@ -1774,9 +1777,6 @@ border-radius: inherit;}
 .footer .icon img {
     width: 35%;
 }
-.footer .therms{
-    text-decoration: underline;
-}
 .footer .therms a{
     font-family: 'Montserrat';
     font-style: light;
@@ -1788,6 +1788,7 @@ border-radius: inherit;}
 }
 .footer .therms a:hover{
     cursor: pointer;
+    font-size: 18px;
     font-weight: 400;
     transition: all .1s ease-in;
 }
@@ -2154,7 +2155,7 @@ a.article:hover {
 #email-modal-overlay .email-modal input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 14px;
