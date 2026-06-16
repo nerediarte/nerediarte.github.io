@@ -2155,7 +2155,7 @@ a.article:hover {
 #email-modal-overlay .email-modal input {
     width: 100%;
     padding: 10px;
-    /*margin-bottom: 20px;*/
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 14px;

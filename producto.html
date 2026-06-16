@@ -120,9 +120,9 @@
                 </div>
                 <div class="form-group">
                   <label for="envio">Tipo de envío:</label>
-                  <label class="checkbox"><input type="radio" name="envioTipo" checked /><p style = "display: inline;" id="envio-ordinario"></p></label>
-                  <label class="checkbox"><input type="radio" name="envioTipo" /><p style = "display: inline;" id="envio-certificado"></p></label>
-                  <label class="checkbox"><input type="radio" name="envioTipo" /><p style = "display: inline;" id="envio-internacional"></p></label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" id="e-o" checked /><p style = "display: inline;" id="envio-ordinario"></p></label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" id="e-c"/><p style = "display: inline;" id="envio-certificado"></p></label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" id="e-i"/><p style = "display: inline;" id="envio-internacional"></p></label>
                 </div>
                 <div class="form-group">
                   <label for="Comentarios">Comentarios:</label>
@@ -237,7 +237,7 @@
 
     const products = {
       visitaPapa: {
-        title: "VISTA DEL PAPA - España'26",
+        title: "VISTA DEL PAPA LEÓN",
         subtitle: "Recordatorio de la Vista del Papa León a España.",
         description: "Postal de la Virgen vestida en honor al Papa León durante el Corpus Christi en Madrid y la oración que rezó el Santo Padre a Nuestra Señora de la Almudena.",
         includes: "Incluye:",
@@ -394,7 +394,7 @@
 
 
       document.getElementById('envio-ordinario').textContent  = ` Ordinario (+${preciosEnvio[group].ordinario}€)`;
-      document.getElementById('envio-certificado').textContent  = ` Certificado (+${preciosEnvio[group].certificado}€)`;
+      document.getElementById('envio-certificado').textContent  = ` Certificado ~ con nº de seguimiento (+${preciosEnvio[group].certificado}€)`;
       document.getElementById('envio-internacional').textContent  = ` Fuera de la Península Ibérica`;
 
       /*
@@ -530,12 +530,17 @@
     const codigoPostal = document.getElementById('cp').value;
     const localidad = document.getElementById('localidad').value;
     const cantidad = $(".qty-input").find(".limited-qty").val();
+    const subtotal = document.getElementById('subtotal').value;
     const comentario = document.getElementById('comentario').value;
 
     var tipoEnvio = function(){
-        if(document.getElementById('envio-certificado').checked) return "certificado";
-        else if (document.getElementById('envio-internacional').checked) return "internacional";
-        else return "ordinario";
+      const qty = parseInt(document.getElementById('cantidad').value, 10) || 1;
+      const sg = getShippingGroup(productId, qty);
+      
+      if(document.getElementById('e-o').checked) return preciosEnvio[sg].ordinario;
+      else if (document.getElementById('e-c').checked) return preciosEnvio[sg].certificado;
+      else return 0;
+
     }
 
     const modelo = products[productId];
@@ -554,7 +559,7 @@
         direccion: direccion,
         codigoPostal: codigoPostal,
         localidad: localidad,
-        envio: tipoEnvio(),
+        envio: tipoEnvio().toString(),
         modelo: modelo,
         cantidad: cantidad,
         comentario: comentario
