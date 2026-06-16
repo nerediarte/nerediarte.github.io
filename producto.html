@@ -76,7 +76,7 @@
               </span>
               <p id="product-subtitle" style="font-weight: 400;"></p>
               <p id="product-description" style="text-align: justify;"></p>
-              <p style="margin-top: 10px;">Cada mes incluye:</p>
+              <p id="product-includes" style="margin-top: 10px;"></p>
               <div>
                 <ul>
                   <li><p style="margin-top: 2px;" id="product-caract1"></p></li>
@@ -120,9 +120,9 @@
                 </div>
                 <div class="form-group">
                   <label for="envio">Tipo de envío:</label>
-                  <label class="checkbox" ><input type="checkbox" id="ord" /> Ordinario(+3,70€)</label>
-                  <label class="checkbox"><input type="checkbox" id="crf"/> Certificado(+8,48€)</label>
-                  <label class="checkbox"><input type="checkbox" id="int"/> Fuera de la Península Ibérica</label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" checked /><p style = "display: inline;" id="envio-ordinario"></p></label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" /><p style = "display: inline;" id="envio-certificado"></p></label>
+                  <label class="checkbox"><input type="radio" name="envioTipo" /><p style = "display: inline;" id="envio-internacional"></p></label>
                 </div>
                 <div class="form-group">
                   <label for="Comentarios">Comentarios:</label>
@@ -236,10 +236,24 @@
     });
 
     const products = {
+      visitaPapa: {
+        title: "VISTA DEL PAPA - España'26",
+        subtitle: "Recordatorio de la Vista del Papa León a España.",
+        description: "Postal de la Virgen vestida en honor al Papa León durante el Corpus Christi en Madrid y la oración que rezó el Santo Padre a Nuestra Señora de la Almudena.",
+        includes: "Incluye:",
+        caract1: "Ilustración exclusiva",
+        caract2: "Tamaño A6",
+        caract3: "Sobre incluido",
+        image: "images/visitaPapa.png",
+        image0: "images/visitaPapa.png",
+        image1: "images/visitaPapaII.png",
+        price: "3.90",
+      },
       calendario: {
         title: "CALENDARIO 2026",
         subtitle: "Calendario de pared A4 horizontal (A3 abierto)",
         description: "Acompaña a María durante todo el año con este calendario ilustrado cada mes con una imagen diferente de Nuestra Madre.",
+        includes: "Cada mes incluye:",
         caract1: "Santo de cada día.",
         caract2: "Festivos y solemnidades.",
         caract3: "Color litúrgico de cada día.",
@@ -252,6 +266,7 @@
         title: "AGENDA 2026",
         subtitle: "Agenda anual 2026 (Enero-Diciembre) tamaño A5.",
         description: "Con estas agendas no solo podrás planificarte durante todo el curso a la perfección, sino que podrás hacerlo de la mano de Jesús y los apóstoles en una aventura que nos acercará juntos al corazón de Cristo.",
+        includes: "Cada mes incluye:",
         caract1: "Un evangelio acompañado de una ilustración, una reflexión y un reto.",
         caract2: "Calendario con festivos marcados.",
         caract3: "Planificación semanal con objetivos diarios.",
@@ -260,6 +275,32 @@
         image1: "images/agendaII.png",
         price: "20",
       },
+    };
+    const preciosEnvio = {
+      hasta20:{
+        ordinario: "0.96",
+        certificado: "5.74",
+      },
+      hasta50:{
+        ordinario: "1.15",
+        certificado: "5.93",
+      },
+      hasta100:{
+        ordinario: "1.75",
+        certificado: "6.53",
+      },
+      hasta500:{
+        ordinario: "3.70",
+        certificado: "8.48",
+      },
+      hasta1000:{
+        ordinario: "6.90",
+        certificado: "11.68",
+      },
+      mas1000:{
+        ordinario: "por determinar",
+        certificado: "por determinar",
+      }
     };
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -271,6 +312,7 @@
       document.getElementById('product-title').textContent = product.title;
       document.getElementById('product-subtitle').textContent = product.subtitle;
       document.getElementById('product-description').textContent = product.description;
+      document.getElementById('product-includes').textContent = product.includes;
       document.getElementById('product-caract1').textContent = product.caract1;
       document.getElementById('product-caract2').textContent = product.caract2;
       document.getElementById('product-caract3').textContent = product.caract3;
@@ -279,6 +321,7 @@
       document.getElementById('product-image1').src = product.image1;
       document.getElementById('product-price').textContent = product.price;
       updateSubtotal(1);
+      updateShippingInfo();
     } else {
       document.getElementById('product-title').textContent = "Producto no encontrado";
     }
@@ -302,7 +345,75 @@
       console.log(subtotal);
       document.getElementById('subtotal').textContent = subtotal;
     }
-      
+
+    function checkWeight(productId, qty){
+      if (productId === "visitaPapa") {
+        if (qty < 3) {
+          return "hasta20";
+        } else if (qty < 8) {
+          return "hasta50";
+        } else if (qty < 16) {
+          return 'hasta100';
+        } else if (qty < 83) {
+          return 'hasta500';
+        } else {
+          return 'hasta1000';
+        }
+      }
+      if (productId === "calendario") {
+        if (qty < 3) {
+          return "hasta500";
+        } else if (qty < 6) {
+          return "hasta1000";
+        } else {
+          return "mas1000";
+        }
+      }
+      if (productId === "agenda") {
+        if (qty < 2) {
+          return "hasta500";
+        } else if (qty < 3) {
+          return "hasta1000";
+        } else {
+          return "mas1000";
+        }
+      }
+      return null;
+    }
+
+    function getShippingGroup(productId, qty) {
+      return checkWeight(productId, qty);
+    }
+
+    function updateShippingInfo() {
+      const qty = parseInt(document.getElementById('cantidad').value, 10) || 1;
+      const group = getShippingGroup(productId, qty);
+      const groupText = document.getElementById('envio-grupo-text');
+      const costText = document.getElementById('envio-coste');
+      const selectedType = document.querySelector('input[name="envioTipo"]:checked');
+
+
+      document.getElementById('envio-ordinario').textContent  = ` Ordinario (+${preciosEnvio[group].ordinario}€)`;
+      document.getElementById('envio-certificado').textContent  = ` Certificado (+${preciosEnvio[group].certificado}€)`;
+      document.getElementById('envio-internacional').textContent  = ` Fuera de la Península Ibérica`;
+
+      /*
+      if (group) {
+        groupText.textContent = group;
+        if (groupText.textContent === 'envio-ordinario') {
+          costText.textContent = `+${preciosEnvio[group].ordinario}€`;
+        } else if (selectedType?.id === 'envio-certificado') {
+          costText.textContent = `+${preciosEnvio[group].certificado}€`;
+        } else if (selectedType?.id === 'envio-internacional') {
+          costText.textContent = `Envío internacional: ${preciosEnvio[group].certificado} EUR + gastos internacionales`;
+        } else {
+          costText.textContent = '';
+        }
+      } else {
+        groupText.textContent = '-';
+        costText.textContent = '';
+      }*/
+    }
 
     /*QUANTITY INPUT*/
     var QtyInput = (function () {
@@ -328,63 +439,69 @@
 			  $minusBtn.attr("disabled", true);
 		  } else {
 			  $minusBtn.attr("disabled", false);
-			
-			  if(qty >= qtyMax){
-				  $this.val(qtyMax);
-				  $addBtn.attr('disabled', true);
-			  } else {
-				  $this.val(qty);
-				  $addBtn.attr('disabled', false);
-			  }
-		  }
 
-      updateSubtotal(qty);
-	  });
+              if (qty >= qtyMax) {
+                  $this.val(qtyMax);
+                  $addBtn.attr('disabled', true);
+              } else {
+                  $this.val(qty);
+                  $addBtn.attr('disabled', false);
+              }
+          }
 
-	  $countBtn.click(function () {
-		  var operator = this.dataset.action;
-		  var $this = $(this);
-		  var $input = $this.siblings(".limited-qty");
-		  var qty = parseInt($input.val());
+          updateSubtotal(qty);
+          updateShippingInfo();
+      });
 
-		  if (operator == "add") {
-			  qty += 1;
-			  if (qty >= qtyMin + 1) {
-				  $this.siblings(".qty-count-minus").attr("disabled", false);
-			  }
+      $countBtn.click(function () {
+          var operator = this.dataset.action;
+          var $this = $(this);
+          var $input = $this.siblings(".limited-qty");
+          var qty = parseInt($input.val());
 
-			  if (qty >= qtyMax) {
-				  $this.attr("disabled", true);
-			  }
-		  } else {
-			  qty = qty <= qtyMin ? qtyMin : (qty -= 1);
-			
-			  if (qty == qtyMin) {
-				  $this.attr("disabled", true);
-			  }
+          if (operator == "add") {
+              qty += 1;
+              if (qty >= qtyMin + 1) {
+                  $this.siblings(".qty-count-minus").attr("disabled", false);
+              }
 
-			  if (qty < qtyMax) {
-				  $this.siblings(".qty-count-add").attr("disabled", false);
-			  }
-		  }
+              if (qty >= qtyMax) {
+                  $this.attr("disabled", true);
+              }
+          } else {
+              qty = qty <= qtyMin ? qtyMin : (qty -= 1);
 
-		  $input.val(qty);
-      updateSubtotal(qty);
-	  });
+              if (qty == qtyMin) {
+                  $this.attr("disabled", true);
+              }
 
+              if (qty < qtyMax) {
+                  $this.siblings(".qty-count-add").attr("disabled", false);
+              }
+          }
+
+          $input.val(qty);
+          updateSubtotal(qty);
+          updateShippingInfo();
+      });
 
     })();
-  
+
+    document.querySelectorAll('input[name="envioTipo"]').forEach(function(input) {
+      input.addEventListener('change', updateShippingInfo);
+    });
+
+    updateShippingInfo();
+
   var perror = document.getElementById('info-error');
   function enterEmail(){
     const overlay = document.getElementById('email-modal-overlay');
-      
     const nombre = document.getElementById('nombre');
     const dir = document.getElementById('direccion');
     const cp = document.getElementById('cp');
     const loc = document.getElementById('localidad');
     var envio = function(){
-      return Boolean(document.getElementById('ord').checked || document.getElementById('crf').checked || document.getElementById('int').checked);
+      return Boolean(document.querySelector('input[name="envioTipo"]:checked'));
     }
 
     if(nombre.value == "" || dir.value == "" || dir.value == "C/, nº, apartamento" || cp.value == "" || loc.value == "" || !envio()){
@@ -416,8 +533,8 @@
     const comentario = document.getElementById('comentario').value;
 
     var tipoEnvio = function(){
-        if(document.getElementById('crf')) return "certificado";
-        else if (document.getElementById('int')) return "internacional";
+        if(document.getElementById('envio-certificado').checked) return "certificado";
+        else if (document.getElementById('envio-internacional').checked) return "internacional";
         else return "ordinario";
     }
 

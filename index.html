@@ -41,7 +41,7 @@
          }
          
          .portfolio_btn{
-            margin-left:-40px;
+            margin-left:-45px;
             top: 52% !important;
             transform: scale(44%) !important;
             background-color: #ffffff9a !important;
@@ -55,8 +55,27 @@
             height: 45px !important;
             margin: 5px auto 5px auto !important;
          }
+
+         .novedades{
+            display: flex;
+            flex-direction: column !important;
+            gap: 20px;
+         }
          .carousel-side{
             display:none;
+         }
+         .resaltarImagen{
+            margin: 0 !important;
+            width: 100% !important;
+         }
+         .text-left{
+            margin-top: 0 !important;
+         }
+         .text-left p{
+            padding-right: 0 !important;
+         }
+         .yellow_button{
+            margin-top: 30px !important;
          }
          .showMore_btn{
             margin-bottom: 20px !important;
@@ -78,6 +97,7 @@
 
       }
       @media (min-width: 481px) and (max-width: 1024px){
+         
          .spanTitle{
             padding: 60px 20px !important;
          }
@@ -85,12 +105,12 @@
 
       /*CAROUSEL NOVEDADES*/
       .novedades{
-         margin: 10px 60px;
+         margin: 50px 60px;
          display: flex; /* Activa flexbox */
          flex-direction: row; /* Elementos en fila (valor por defecto) */
          justify-content: space-between; /* Espaciado entre elementos */
-         gap: 25px;
-         place-items: center;
+         gap: 40px;
+         /*place-items: center;*/
       }
       .carousel-center{
          padding: 10px;
@@ -105,6 +125,17 @@
          margin:50px 0; 
          width: auto;
       }
+      .resaltarImagen{
+         margin-left:220px;
+         width: 40%;
+         padding: 10px;
+         background-color: #e3c16f;
+      }
+      .yellow_button{
+            margin-top: 100px;
+            padding: 0;
+            width: 180px;
+         }
    </style>
    <!-- body -->
    <body class="main-layout">
@@ -174,11 +205,11 @@
                     </div>
                  </div>
               </div>
-              <div class="container-fluid" style="padding:0;"><img src="images/separador_SV.png" style="width:100%;"></div>
+              <div class="container-fluid" style="padding:0;"><img src="images/separador_SV2.png" style="width:100%;"></div>
            </section>
            
            <!-- licens -->
-         
+         <!-- RECORDATORIOS>
          <div class="licens">
             <div class="container-flex">
                <div class="text-center">
@@ -199,11 +230,28 @@
                </div>
                <div class="text-center">
                   <a href="shop.html?category=comuniones" class="btn showMore_btn"><img src="images/more_button.png"></a>
-                  <!--button href="shop.html" style="margin:30px 0; background-color: transparent; width: 70%;"><img src="images/more_button.png"></button-->
                </div>
                <div class="container-flex" style="height:15px; background-color: #4b5745;"></div>
             </div>
-         </div>
+         </div-->
+
+         <!-- visita del papa -->
+            <div class="container-flex">
+               <div class="novedades">
+                     <div class="resaltarImagen">
+                        <img src="images/visitaPapaII.png" style="transition:all 0.6s ease;">
+                     </div>
+                     <div class="text-left" style = "margin-top:40px;">
+                        <img src="images/visitaPapa_title.png">
+                        <p style="color:#e3c16f; font-size: 21px; font-style: italic; margin-top: 40px;">Alzad la mirada</p>
+                        <p style="margin-top: 20px; padding-right:240px;">Tras la visita del Santo Padre a España, queremos seguir alzando la mirada, y quién mejor que Nuestra Madre para recordárnoslo.</p>
+                        <p style="color:#e3c16f; font-size: 21px; font-style: bold; margin-top: 40px;">€3.90 EUR</p>
+                        <a href="producto.html?product=visitaPapa" class="btn yellow_button"><img src="images/yellow_button.png"></a>
+                     </div>
+                  
+               </div>
+               <div class="container-flex" style="height:15px; background-color: #e3c16f;"></div>
+            </div>
 
          <!-- end lLicens -->
          <!-- casino -->

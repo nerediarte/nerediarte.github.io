@@ -1354,7 +1354,7 @@ button:hover{
     padding: 0px;
 }
 
-.product-section .game_box .checkbox{
+.product-section .game_box .checkbox p{
     font-family: 'Montserrat'; 
     font-weight: 300; 
     font-size: 14px;

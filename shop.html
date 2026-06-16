@@ -96,6 +96,13 @@
       <div class="col-md-10">
         <div id="all-products" class="products-content row" style="display:none;">
           <div class="col-md-4">
+            <div class="preview" onclick="goToProducto('visitaPapa')" style="cursor: pointer;">
+              <img src="images/visitaPapa.png">
+              <h3>VISITA DEL PAPA - España'26</h3>
+              <h5>€2 EUR</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
             <div class="preview" onclick="goToProducto('calendario')" style="cursor: pointer;">
               <img src="images/calendario.png">
               <h3>CALENDARIO 2026</h3>
@@ -146,6 +153,11 @@
           </div>
         </div>
         <div id="papeleria-products" class="products-content row" style="display:none;">
+          <div class="preview" onclick="goToProducto('visitaPapa')" style="cursor: pointer;">
+              <img src="images/visitaPapa.png">
+              <h3>VISITA DEL PAPA - España'26</h3>
+              <h5>€3,40 EUR</h5>
+            </div>
           <div class="col-md-4">
             <div class="preview" onclick="goToProducto('calendario')" style="cursor: pointer;">
               <img src="images/calendarioII.png">
@@ -336,6 +348,8 @@
           hoverSrc = 'images/calendarioII.png';
         } else  if (normalSrc.includes('agenda.png')){
           hoverSrc = 'images/agendaII.png';
+        } else  if (normalSrc.includes('visitaPapa.png')){
+          hoverSrc = 'images/visitaPapaII.png';
         } else {
           //hoverSrc = normalSrc.replace('.png', '_hover.png');
         }
