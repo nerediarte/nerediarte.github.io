@@ -86,6 +86,7 @@
                   <li><p style="margin-top: 2px;" id="product-caract3"></p></li>
                 </ul>
               </div>
+              <p id="product-subparagraph" style="text-align: justify;"></p>
             </div>
             <div class="game_box" style="margin-right: 50px;">
               <div id="product-form">
@@ -122,6 +123,7 @@
                 </div>
                 <div class="form-group">
                   <label for="envio">Tipo de envío:</label>
+                  <label class="checkbox"><input type="radio" name="envioTipo"/><p style = "display: inline;" id="recogida">Recogida en Alcorcón</p></label>
                   <label class="checkbox"><input type="radio" name="envioTipo" id="e-o" checked /><p style = "display: inline;" id="envio-ordinario"></p></label>
                   <label class="checkbox"><input type="radio" name="envioTipo" id="e-c"/><p style = "display: inline;" id="envio-certificado"></p></label>
                   <label class="checkbox"><input type="radio" name="envioTipo" id="e-i"/><p style = "display: inline;" id="envio-internacional"></p></label>
@@ -251,7 +253,7 @@
         image1: "images/visitaPapaII.png",
         image2: "images/visitaPapaIII.png",
         price: "3.90",
-        subpargr:"¿Quieres más de 10 unidades? ¡Escribe la cantidad en los comentarios!",
+        subpargraph:"¿Quieres más de 10 unidades? ¡Escribe la cantidad en los comentarios!",
       },
       /*
       calendario: {
@@ -270,7 +272,7 @@
       agenda: {
         title: "AGENDA 2026/27",
         subtitle: "Agenda ESCOLAR 2026/27 tamaño A5.",
-        description: "Con estas agendas no solo podrás planificarte durante todo el curso a la perfección, sino que podrás hacerlo de la mano de Jesús y los apóstoles en una aventura que nos acercará juntos al corazón de Cristo.",
+        description: "Organiza, planifica, cumple tus metas... todo de la mano de la mano de Jesús, con estas agendas cristianas ilustradas por @nerediarte",
         includes: "Cada mes incluye:",
         caract1: "Un evangelio acompañado de una ilustración, una reflexión y un reto.",
         caract2: "Calendario con festivos marcados.",
@@ -280,7 +282,7 @@
         image1: "images/agendaII.png",
         image2: "images/agendaIII.png",
         price: "20",
-        subpargr:"¿Prefieres la agenda ANUAL(Enero-Diciembre 2027)? ¡Escribe 'ANUAL' en los comentarios!",
+        subpargraph:"¿Prefieres la agenda anual (enero-diciembre 2027)? ¡Escribe 'ANUAL' en los comentarios!",
       },
     };
     const preciosEnvio = {
@@ -328,6 +330,7 @@
       document.getElementById('product-image1').src = product.image1;
       document.getElementById('product-image2').src = product.image2;
       document.getElementById('product-price').textContent = product.price;
+      document.getElementById('product-subparagraph').textContent = product.subpargraph;
       updateSubtotal(1);
       updateShippingInfo();
     } else {
@@ -513,11 +516,12 @@
     const dir = document.getElementById('direccion');
     const cp = document.getElementById('cp');
     const loc = document.getElementById('localidad');
+    const recogida = document.querySelectorAll('input[name="envioTipo"]')[0];
     var envio = function(){
       return Boolean(document.querySelector('input[name="envioTipo"]:checked'));
     }
 
-    if(nombre.value == "" || dir.value == "" || dir.value == "C/, nº, apartamento" || cp.value == "" || loc.value == "" || !envio()){
+    if(!recogida.checked && (nombre.value == "" || dir.value == "" || dir.value == "C/, nº, apartamento" || cp.value == "" || loc.value == "" || !envio())){
         if(perror.style.visibility ==  'hidden')
         {
           perror.style.visibility = 'visible';
@@ -539,6 +543,9 @@
     localStorage.setItem("idUsuario", idUsuario);
 
     const nombre = document.getElementById('nombre').value;
+    if (document.getElementById('direccion').value== "C/, nº, apartamento") {
+      document.getElementById('direccion').value = "Recogida en Alcorcón";
+    }
     const direccion = document.getElementById('direccion').value;
     const codigoPostal = document.getElementById('cp').value;
     const localidad = document.getElementById('localidad').value;
