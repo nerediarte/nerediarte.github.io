@@ -45,12 +45,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto d-flex justify-content-center align-items-center flex-wrap" style="float:none;gap:2.2rem;">
-        <li class="nav-item"><a class="fixed-bar nav-link" href="index.html">INICIO</a></li>
         <li class="nav-item"><a class="fixed-bar nav-link" href="shop.html">TIENDA</a></li>
-        <li class="nav-item"><a class="fixed-bar nav-link" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a></li>
-        <li class="nav-item"><div class="fixed-bar nav-link p-0"><button onclick="window.location.replace('index.html')" style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
-        <li class="nav-item"><a class="fixed-bar nav-link" href="fines.html">FINES SOLIDARIOS</a></li>
-        <li class="nav-item"><a class="fixed-bar nav-link" href="nerediarte.html">NEREDIARTE</a></li>
+          <li class="nav-item"><a class="fixed-bar nav-link" href="encargos.html">ENCARGOS</a></li>
+          <li class="nav-item"><a class="fixed-bar nav-link" href="celebraciones.html">BODAS</a></li>
+          <li class="nav-item"><div class="fixed-bar nav-link p-0"><button onclick="window.location.replace('index.html')" style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
+          <li class="nav-item"><a class="fixed-bar nav-link" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a></li>
+          <li class="nav-item"><a class="fixed-bar nav-link" href="nerediarte.html">NEREDIARTE</a></li>
+          <li class="nav-item" style="cursor:auto;"><a class="fixed-bar nav-link" style="cursor:auto;"> </a></li>
       </ul>
       </div>
     </div>
@@ -62,6 +63,7 @@
           <div class="col-md-1 thumbnails">
             <img id="product-image0" class="thumbnail" style="margin-top:0;">
             <img id="product-image1" class="thumbnail">
+            <img id="product-image2" class="thumbnail">
           </div>
           <div class="col-md-6 main-image">
             <img id="product-image" style="width:100%;">
@@ -247,8 +249,10 @@
         image: "images/visitaPapa.png",
         image0: "images/visitaPapa.png",
         image1: "images/visitaPapaII.png",
+        image2: "images/visitaPapaIII.png",
         price: "3.90",
       },
+      /*
       calendario: {
         title: "CALENDARIO 2026",
         subtitle: "Calendario de pared A4 horizontal (A3 abierto)",
@@ -261,10 +265,10 @@
         image0: "images/calendarioI.png",
         image1: "images/calendarioII.png",
         price: "10",
-      },
+      },*/
       agenda: {
-        title: "AGENDA 2026",
-        subtitle: "Agenda anual 2026 (Enero-Diciembre) tamaño A5.",
+        title: "AGENDA 2026/27",
+        subtitle: "Agenda ESCOLAR 2026/27 tamaño A5.",
         description: "Con estas agendas no solo podrás planificarte durante todo el curso a la perfección, sino que podrás hacerlo de la mano de Jesús y los apóstoles en una aventura que nos acercará juntos al corazón de Cristo.",
         includes: "Cada mes incluye:",
         caract1: "Un evangelio acompañado de una ilustración, una reflexión y un reto.",
@@ -273,6 +277,7 @@
         image: "images/agenda.png",
         image0: "images/agendaI.png",
         image1: "images/agendaII.png",
+        image2: "images/agendaIII.png",
         price: "20",
       },
     };
@@ -319,6 +324,7 @@
       document.getElementById('product-image').src = product.image;
       document.getElementById('product-image0').src = product.image0;
       document.getElementById('product-image1').src = product.image1;
+      document.getElementById('product-image2').src = product.image2;
       document.getElementById('product-price').textContent = product.price;
       updateSubtotal(1);
       updateShippingInfo();
@@ -332,6 +338,11 @@
       setTimeout(() => this.classList.remove('clicked'), 300);
     });
     document.getElementById('product-image1').addEventListener('click', function() {
+      document.getElementById('product-image').src = this.src;
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+    document.getElementById('product-image2').addEventListener('click', function() {
       document.getElementById('product-image').src = this.src;
       this.classList.add('clicked');
       setTimeout(() => this.classList.remove('clicked'), 300);

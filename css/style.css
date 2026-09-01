@@ -508,6 +508,17 @@ img {
     height: auto;
 }
 
+.image-equal-padding {
+    display: inline-block;
+    padding: 10px; /* ajusta este valor según lo que quieras */
+}
+
+.image-equal-padding img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 form{
     padding: 15px;
 }

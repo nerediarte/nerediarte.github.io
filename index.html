@@ -34,6 +34,43 @@
    </head>
    <style> 
       /*<!-- elementos que solo están en este index-->*/
+      .novedades{
+         margin:50px 160px;
+         display: flex; /* Activa flexbox */
+         flex-direction: row; /* Elementos en fila (valor por defecto) */
+         align-items: stretch;
+         justify-content: space-between; /* Espaciado entre elementos */
+         gap: 80px;
+         /*place-items: center;*/
+      }
+      .resaltarImagen{
+         flex:1;
+         width: fit-content;
+         border: 10px solid #294550;
+         display: flex;
+         align-items: center;
+      }
+
+      .resaltarImagen img{
+         display: block;
+         width: 100%;
+         height: auto;
+      }
+
+      .novedades .text-left{
+         flex: 1;
+         margin-top: 0 !important;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+
+      .novedades_button{
+            margin-bottom: 60px;
+            text-align: left;
+            padding-left: 0px;
+         }
+
       @media only screen and (max-width: 480px){
          .banner_main .mobilee {
             content: url(/images/main_vMobile.png);
@@ -55,27 +92,28 @@
             height: 45px !important;
             margin: 5px auto 5px auto !important;
          }
-
-         .novedades{
-            display: flex;
-            flex-direction: column !important;
-            gap: 20px;
-         }
          .carousel-side{
             display:none;
          }
+         .novedades{
+            margin: 20px 30px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+         }
          .resaltarImagen{
-            margin: 0 !important;
+            margin-left: 0 !important;
             width: 100% !important;
+            display: block !important;
          }
          .text-left{
             margin-top: 0 !important;
+            display: block !important;
          }
          .text-left p{
             padding-right: 0 !important;
-         }
-         .yellow_button{
-            margin-top: 30px !important;
          }
          .showMore_btn{
             margin-bottom: 20px !important;
@@ -101,41 +139,17 @@
          .spanTitle{
             padding: 60px 20px !important;
          }
+         .novedades{
+            margin: 20px 30px !important;
+            gap: 40px;
+         }
+         .resaltarImagen{
+            margin-left: 0 !important;
+            width: auto !important;
+         }
+
       }
 
-      /*CAROUSEL NOVEDADES*/
-      .novedades{
-         margin: 50px 60px;
-         display: flex; /* Activa flexbox */
-         flex-direction: row; /* Elementos en fila (valor por defecto) */
-         justify-content: space-between; /* Espaciado entre elementos */
-         gap: 40px;
-         /*place-items: center;*/
-      }
-      .carousel-center{
-         padding: 10px;
-         background-color: #4b5745;
-      }
-      .carousel-side{
-         width: 50%;
-         padding: 10px;
-         background-color: #4b5745;
-      }
-      .showMore_btn{
-         margin:50px 0; 
-         width: auto;
-      }
-      .resaltarImagen{
-         margin-left:220px;
-         width: 40%;
-         padding: 10px;
-         background-color: #e3c16f;
-      }
-      .yellow_button{
-            margin-top: 100px;
-            padding: 0;
-            width: 180px;
-         }
    </style>
    <!-- body -->
    <body class="main-layout">
@@ -151,7 +165,7 @@
                <button class="navbar-toggler lg-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border:none;background:transparent;">
                   <span class="navbar-toggler-icon d-flex align-items-center justify-content-center"><img src="images/menu_icon.png" alt="Menú" style="height: 36px;"></span>
                </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
+               <!--div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav mx-auto d-flex justify-content-center align-items-center flex-wrap" style="float:none;gap:2.2rem;">
                      <li class="nav-item"><a class="fixed-bar nav-link" href="index.html">INICIO</a></li>
                      <li class="nav-item"><a class="fixed-bar nav-link" href="shop.html">TIENDA</a></li>
@@ -159,6 +173,17 @@
                      <li class="nav-item"><div class="fixed-bar nav-link p-0"><button onclick="window.location.replace('index.html')" style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
                      <li class="nav-item"><a class="fixed-bar nav-link" href="fines.html">FINES SOLIDARIOS</a></li>
                      <li class="nav-item"><a class="fixed-bar nav-link" href="nerediarte.html">NEREDIARTE</a></li>
+                  </ul>
+               </div-->
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav mx-auto d-flex justify-content-center align-items-center flex-wrap" style="float:none;gap:2.2rem;">
+                     <li class="nav-item"><a class="fixed-bar nav-link" href="shop.html">TIENDA</a></li>
+                     <li class="nav-item"><a class="fixed-bar nav-link" href="encargos.html">ENCARGOS</a></li>
+                     <li class="nav-item"><a class="fixed-bar nav-link" href="celebraciones.html">BODAS</a></li>
+                     <li class="nav-item"><div class="fixed-bar nav-link p-0"><button onclick="window.location.replace('index.html')" style="background:transparent;border:none;"><img src="images/avatar.png" alt="#"></button></div></li>
+                     <li class="nav-item"><a class="fixed-bar nav-link" style="color: #000;" onclick="window.open('./portfolio.pdf');">PORTFOLIO</a></li>
+                     <li class="nav-item"><a class="fixed-bar nav-link" href="nerediarte.html">NEREDIARTE</a></li>
+                     <li class="nav-item" style="cursor:auto;"><a class="fixed-bar nav-link" style="cursor:auto;"> </a></li>
                   </ul>
                </div>
             </div>
@@ -205,7 +230,7 @@
                     </div>
                  </div>
               </div>
-              <div class="container-fluid" style="padding:0;"><img src="images/separador_SV2.png" style="width:100%;"></div>
+              <div class="container-fluid" style="padding:0;"><img src="images/separador_blue.png" style="width:100%;"></div>
            </section>
            
            <!-- licens -->
@@ -239,18 +264,19 @@
             <div class="container-flex">
                <div class="novedades">
                      <div class="resaltarImagen">
-                        <img src="images/visitaPapaII.png" style="transition:all 0.6s ease;">
+                        <img src="images/agenda.png" style="transition:all 0.6s ease;">
                      </div>
-                     <div class="text-left" style = "margin-top:40px;">
-                        <img src="images/visitaPapa_title.png">
-                        <p style="color:#e3c16f; font-size: 21px; font-style: italic; margin-top: 40px;">Alzad la mirada</p>
-                        <p style="margin-top: 20px; padding-right:240px;">Tras la visita del Santo Padre a España, queremos seguir alzando la mirada, y quién mejor que Nuestra Madre para recordárnoslo.</p>
-                        <p style="color:#e3c16f; font-size: 21px; font-style: bold; margin-top: 40px;">€3.90 EUR</p>
-                        <a href="producto.html?product=visitaPapa" class="btn yellow_button"><img src="images/yellow_button.png"></a>
+                     <div class="text-left">
+                        <img style="width: fit-content; margin-top: 60px;" src="images/agendas_title.png">
+                        <p style="color:#294550; font-size: 21px; font-style: italic; ">Un nuevo curso. Un nuevo camino.</p>
+                        <p >Comienza un nuevo curso y, con él, un nuevo camino para disfrutar, aprender, mejorar y descubrir que Jesús está presente en cada paso.</p>
+                        <p >Descubre esta agenda, pensada para acompañarte en ese camino durante todo el curso.</p>
+                        <p style="color:#294550; font-size: 21px; font-style: bold; margin-top: 60px; ">€20 EUR</p>
+                        <a href="producto.html?product=agenda" class="btn novedades_button"><img src="images/blue_button.png"></a>
                      </div>
                   
                </div>
-               <div class="container-flex" style="height:15px; background-color: #e3c16f;"></div>
+               <div class="container-flex" style="height:15px; background-color: #294550;"></div>
             </div>
 
          <!-- end lLicens -->
