@@ -481,6 +481,11 @@ p {
     line-height: 24px;
 }
 
+p .description{
+    font-size: 12px;
+    text-align: center;
+}
+
 a {
     color: #222222;
     text-decoration: none;
@@ -779,7 +784,7 @@ button:hover{
 .portfolio_btn{
     position:absolute; 
     left:0; 
-    margin-left: 7.75rem;
+    margin-left: 12.50rem;
     top:75%;
     height:60px;
     width:220px;
@@ -953,11 +958,60 @@ button:hover{
 }
 .game-link:hover{
     transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    border-radius: 10%;
     .game_box h3{
         font-weight: bold;
     }
+}
+.sections > .expandable-game-right.is-expanded,
+.sections > .expandable-game-left.is-expanded {
+    flex-basis: 100%;
+    transform: none;
+}
+.sections > .expandable-game-right,
+.sections > .expandable-game-left {
+    flex: 0 0 350px;
+    transition: flex-basis 1.2s ease-in-out, transform 1.2s ease-in-out;
+}
+.sections > .expandable-game-left {
+    order: 0;
+}
+.sections > .expandable-game-right {
+    order: 1;
+}
+.sections > .expandable-game-right .container,
+.sections > .expandable-game-left .container {
+    width: 100%;
+    max-width: 1170px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: max-width 1.2s ease-in-out, padding 1.2s ease-in-out;
+}
+.sections > .expandable-game-right.is-expanded .container,
+.sections > .expandable-game-left.is-expanded .container {
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+}
+.sections > .expandable-game-right.is-expanded .row,
+.sections > .expandable-game-left.is-expanded .row {
+    width: 100%;
+    margin: 0;
+}
+.sections > .expandable-game-right.is-expanded .game_box,
+.sections > .expandable-game-left.is-expanded .game_box {
+    border-radius: 0;
+}
+.sections > .expandable-game-right .game_box,
+.sections > .expandable-game-left .game_box {
+    transition: border-radius 1.2s ease-in-out;
+}
+.sections.left-card-expanded > .expandable-game-right {
+    display: none;
+}
+
+.expandable-game-left:focus-visible {
+    outline: 2px solid #4b5745;
+    outline-offset: 4px;
 }
 .game-link .game_box, .proximamente .game_box{
     background-color: #f2f5f6;
@@ -965,6 +1019,14 @@ button:hover{
     padding: 10px 10px;
     border-radius: 10%;
     justify-content: center;
+}
+.game-link .game_box {
+    width: 100%;
+    height: 100%;
+
+}
+.game-link:hover .game_box {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 .game-link .game-box img{
     width: 85%;
@@ -1646,10 +1708,7 @@ ul.spinit li a:hover {
 
 .customer {
     background-color: #4b5745;
-    padding: 50px 0;
-}
-.customer .titlepage{
-    margin-right: 180px;
+    padding: 40px 0;
 }
 .customer .titlepage h2{
     text-align: left;

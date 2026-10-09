@@ -35,7 +35,6 @@
    <style> 
       /*<!-- elementos que solo están en este index-->*/
       .novedades{
-         margin:50px 160px;
          display: flex; /* Activa flexbox */
          flex-direction: row; /* Elementos en fila (valor por defecto) */
          align-items: stretch;
@@ -74,11 +73,11 @@
       @media only screen and (max-width: 480px){
          .banner_main .mobilee {
             content: url(/images/main_vMobile.png);
-            object-position: 85%;
+            object-position: 0%;
          }
          
          .portfolio_btn{
-            margin-left:-45px;
+            margin-left:225px;
             top: 52% !important;
             transform: scale(44%) !important;
             background-color: #ffffff9a !important;
@@ -261,22 +260,23 @@
          </div-->
 
          <!-- visita del papa -->
-            <div class="container-flex">
+            <span style="display: flex;height: 40px;"></span>
+            <div class="container">
                <div class="novedades">
                      <div class="resaltarImagen">
                         <img src="images/agenda.png" style="transition:all 0.6s ease;">
                      </div>
                      <div class="text-left">
                         <img style="width: fit-content; margin-top: 60px;" src="images/agendas_title.png">
-                        <p style="color:#294550; font-size: 21px; font-style: italic; ">Un nuevo curso. Un nuevo camino.</p>
+                        <p style="color:#294550; font-size: 21px; font-style: italic;">Un nuevo curso. Un nuevo camino.</p>
                         <p >Comienza un nuevo curso y, con él, un nuevo camino para disfrutar, aprender, mejorar y descubrir que Jesús está presente en cada paso.</p>
                         <p >Descubre esta agenda, pensada para acompañarte en ese camino durante todo el curso.</p>
-                        <p style="color:#294550; font-size: 21px; font-style: bold; margin-top: 60px; ">€20 EUR</p>
+                        <p style="color:#294550; font-size: 21px; font-style: bold; margin-top: 20px; ">€20 EUR</p>
                         <a href="producto.html?product=agenda" class="btn novedades_button"><img src="images/blue_button.png"></a>
                      </div>
                   
                </div>
-               <div class="container-flex" style="height:15px; background-color: #294550;"></div>
+               <div class="container-flex" style="margin-top: 100px; margin-bottom: 50px; height:5px; background-color: #294550;"></div>
             </div>
 
          <!-- end lLicens -->
@@ -348,7 +348,7 @@
          
          <!-- customer -->
          <div id="customer"  class="customer">
-            <div class="container-flex">
+            <div class="container">
                <div class="row">
                   <div class="col-md-6" style="display: flex; justify-content: right; align-items: center;">
                      <div class="avatar-container"><img src="images/avatarPortfolio.png" style="width: 450px; margin-top: 0px;"></div>
